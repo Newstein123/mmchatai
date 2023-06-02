@@ -1,0 +1,44 @@
+/* universal  */
+* {
+    font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.bg-custom {
+    background-color: #11529c;
+    color: #ffe;
+}
+
+.bg-custom1 {
+    background-color: #ccd3de;
+    color: #000;
+}
+
+.btn:hover {
+    background-color: #11529c;
+    color: #ffe;
+}
+
+/* chat history  */
+
+#chat_history {
+    height: 80vh;
+}
+
+#chat_history_container {
+    display: none;
+}
+
+@media(max-width : 768px) {
+    #chat_history_container {
+        display: none;
+    }
+    .active {
+        position: absolute;
+        z-index: 100;
+    }
+    #prompt {
+        width: 100% !important;
+    }
+    .prompt-button {
+        width: 45%;
+    }
+}
