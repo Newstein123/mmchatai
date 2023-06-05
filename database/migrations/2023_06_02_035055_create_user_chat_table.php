@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_chat', function (Blueprint $table) {
             $table->id();
-            $table->integer('conversation_id');
+            $table->string('conversation_id');
             $table->integer('user_id');
             $table->string('name');
             $table->timestamps();

@@ -6,20 +6,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <?php if(isset($name)): ?>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <?php echo $name ?>
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="logout.php"> Logout </a></li>
-                  </ul>
-              </li>
-          <?php else :  ?>
+          @if (auth()->user())
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{auth()->user()->name}}
+              </a>
+              <ul class="dropdown-menu">
+                  <li>
+                    <form action="{{route('logout')}}" method="POST">
+                      @csrf 
+                      <button type="submit" class="dropdown-item"> Logout </button>
+                    </form>
+                  </li>
+              </ul>
+            </li>
+          @else 
               <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="login.php"> Login </a>
               </li>
-          <?php endif ?> 
+          @endif
         </ul>
       </div>
     </div>

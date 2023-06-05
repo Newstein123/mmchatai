@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chat_history', function (Blueprint $table) {
+        Schema::create('chat_user', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('conversation_id');
-            $table->text('human');
-            $table->text('translated_human_text');
-            $table->text('ai');
-            $table->text('translated_ai_text');
-            $table->integer('prompt_tokens')->default(0);
-            $table->integer('completion_tokens')->default(0);
-            $table->integer('total_tokens')->default(0);
-            $table->dateTime('expire_date');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chat_history');
+        Schema::dropIfExists('chat_user');
     }
 };

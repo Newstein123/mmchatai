@@ -11,8 +11,8 @@ $(document).ready(function(){
 
     function getResponse(prompt) {
         $.ajax({
-            url: 'ai.php',
             method: 'GET', // or 'GET' depending on your requirement
+            url: "/ai_response",
             data : {prompt : prompt},
             beforeSend :  function(){
                 $('#loading').show();
