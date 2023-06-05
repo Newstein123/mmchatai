@@ -38,7 +38,7 @@
             <p><i class="fa-solid fa-user-tie me-3"></i> {{session('user')->name}} </p>
         </div>
     @endif
-    <button type="button" class="btn bg-danger text-white w-100" id="clear_all">
+    <button type="button" class="btn bg-danger btn-sm text-white w-100" id="clear_all">
         <i class="fa-solid fa-trash-can"></i>
     </button>
 
