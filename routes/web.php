@@ -30,7 +30,11 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.su
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Chat 
 Route::get('/ai_response', [ChatController::class, 'aiResponse'])->name('aiResponse');
+Route::get('chat/{id}', [ChatController::class, 'chat_detail'])->name('chatDetail');
+Route::post('/chat/update/{id}', [ChatController::class, 'chat_name_update'])->name('chatNameUpdate');
 
 // Backend 
 

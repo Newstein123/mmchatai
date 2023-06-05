@@ -7,6 +7,7 @@ $(document).ready(function(){
         $('#text-loading').show();
         $('#data').append(`<h5 class="lh-base"> <span class="badge ms-3 bg-custom"> User </span> ${prompt} </h5>`);
         getResponse(prompt)
+          
     })
 
     function getResponse(prompt) {
@@ -37,14 +38,12 @@ $(document).ready(function(){
         } else {
             if(response.success) {
                 res = `<p class="history-answer lh-lg"> <span class="badge ms-3 bg-custom"> Answer </span>${response.data} </p>
-                <p> You have spend ${response.token} tokens for this conversation. You have ${4000 - parseInt(response.token)} tokens left. </p>
                 `
             } else {
                 res = `<p class="history-answer lh-lg"> ${response.message} </p>`
             }
         }
         
-
         $('#loading').hide();
         $('#text-loading').hide();
         $('#generate').show();
@@ -71,21 +70,6 @@ $(document).ready(function(){
         }
     }
 
-    // get english version 
-    $('#lang').on('click', function(){
-        const text = $('#data').find('p').html()
-        $.ajax({
-            method : 'get',
-            url : 'translate_english.php',
-            data : {text : text},
-            success : function(res){
-                $('#data').append(`<small class="lh-base"> ${res} </small>`)
-            },
-            error : function(e) {
-                console.log(e)
-            }
-        })
-    })
 
     // clear the form 
     $('#clear').on('click', function(){
@@ -100,19 +84,13 @@ $(document).ready(function(){
     // new conversation 
 
     $('#new_conversation').on('click', function() {
-        const chat_name = $('#chat_name').val();
         $.ajax({
             method : 'GET',
-            url : 'new_conversation.php',
-            data : {chat_name : chat_name},
+            url : "/",
             success : function(res) {
-                console.log(res)
-                if(res.success) {
-                    $('#data').html("");
-                    $('#exampleModal').modal('hide')
-                } else {
-                    alert('Error')
-                }
+                if (res.success) {
+                    window.location.href = '/';
+                }                
             },
             error : function(err, xhr) {
                 console.log(err, xhr)
@@ -122,7 +100,21 @@ $(document).ready(function(){
 
     $('ul').on('click', '.editChatName', function() {
         const name = $(this).attr('data-chatName');
-        console.log(name);
+        const conversationId = $(this).attr('data-conversationId');
+        $('#chat_name').val(name)
+        $('#update_name').on('click', function() {
+            $.ajax({
+                'url' : `{{ route('chatNameUpdate', ${conversationId}) }}`,
+                'method' : 'POST',
+                'data' : {conversationId : conversationId},
+                success  : function(res) {
+                    console.log(res)
+                },
+                error : function(e) {
+                    console.log(e)
+                }
+            })
+        })
       });
       
 })

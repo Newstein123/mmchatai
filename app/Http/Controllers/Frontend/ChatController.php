@@ -11,7 +11,7 @@ use App\Models\ChatUser;
 use Illuminate\Support\Carbon;
 
 class ChatController extends Controller
-{
+{   
     public function aiResponse(Request $request)
     {
         $prompt = $request->prompt;
@@ -21,10 +21,15 @@ class ChatController extends Controller
             $input = $this->translate('en', $prompt);
         }
 
-        if(auth()->user()) { 
-            $open_ai_key = "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";
+        if(session('user')) { 
+            $open_ai_key = "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";
             $open_ai = new OpenAi($open_ai_key);
-            $results = Chat::where()->limit(5)->get();
+            $user = ChatUser::where('user_id', session('user')->id)->first();
+            if($user) {
+                $results = Chat::where('conversation_id', $user->conversation_id)->limit(5)->get();
+            } else {
+                $results = [];
+            }
             $messages[] = ["role" => 'system', "content" => "You are a helpful assistant."];
             foreach($results as $row) {
                 $messages[] = ["role" => 'user', "content" => $row->translated_human_text];
@@ -67,7 +72,7 @@ class ChatController extends Controller
                     $chat_name = "New Chat";
                     ChatUser::create([
                         'name' => $chat_name,
-                        'user_id' => auth()->id(),
+                        'user_id' => session('user')->id,
                         'conversation_id' => $conversation_id,
                     ]);
                     
@@ -106,10 +111,9 @@ class ChatController extends Controller
                     'status' => 200,
                     'message' => 'You have no tokens left create another conversation',
                 );
-        
-                $jsonData = json_encode($data);
+    
                 header('Content-Type: application/json');
-                echo $jsonData;   
+                return response()->json($data);
             }
         } else {
             $data = array(
@@ -124,7 +128,24 @@ class ChatController extends Controller
         
     }
 
-    
+    public function chat_detail($id)
+    {
+        $chats = Chat::where('conversation_id', $id)->get();
+        return view('frontend.chat.detail', compact('chats'));
+    }
+
+    public function chat_name_update(Request $request, $id)
+    {   
+        return "hello";
+        $chat = ChatUser::find($id);
+
+        if($chat) {
+            $chat->update([
+                'name' => $request->name,
+            ]);
+        }
+    }
+
     function generateUniqueID($length) {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $uniqueID = '';
