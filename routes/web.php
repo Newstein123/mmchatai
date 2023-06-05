@@ -35,6 +35,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/ai_response', [ChatController::class, 'aiResponse'])->name('aiResponse');
 Route::get('chat/{id}', [ChatController::class, 'chat_detail'])->name('chatDetail');
 Route::post('/chat/update/{id}', [ChatController::class, 'chat_name_update'])->name('chatNameUpdate');
+Route::post('/chat/delete/{id}', [ChatController::class, 'chat_delete'])->name('chatDelete');
+Route::post('/chat/clear', [ChatController::class, 'clear_all']);
 
 // Backend 
 

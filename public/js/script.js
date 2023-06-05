@@ -1,5 +1,13 @@
+
+
 $(document).ready(function(){   
-        
+    
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $('#form').submit(function(e){  
         e.preventDefault();
         const prompt = $('#prompt').val();
@@ -71,14 +79,40 @@ $(document).ready(function(){
     }
 
 
-    // clear the form 
-    $('#clear').on('click', function(){
-        if($(window).width() < 786) {
-            $('#clear').hide()
-        }
-        $('.history-data').empty();
-        $('#chat_history_container').hide() 
-        $('.question-container').removeClass('col-md-8')
+    // clear all conversation 
+    $('#clear_all').on('click', function(){
+        swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+            url : '/chat/clear',
+            method  : 'POST',
+            success : function(res) {
+                if(res.success) {
+                    swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      ).then(result => {
+                        if(result.isConfirmed) {
+                            window.location.reload();
+                        }
+                      })
+                }
+            },
+            error : function(e, xhr) {
+                console.log(e, xhr)
+            }
+        })
+            }
+          })
     })
 
     // new conversation 
@@ -98,17 +132,25 @@ $(document).ready(function(){
         })
     })
 
+    // Update Chat Name 
+
     $('ul').on('click', '.editChatName', function() {
         const name = $(this).attr('data-chatName');
         const conversationId = $(this).attr('data-conversationId');
+        console.log(conversationId)
         $('#chat_name').val(name)
+
         $('#update_name').on('click', function() {
+            const chat_name = $('#chat_name').val();
             $.ajax({
-                'url' : `{{ route('chatNameUpdate', ${conversationId}) }}`,
+                'url' : `/chat/update/${conversationId}`,
                 'method' : 'POST',
-                'data' : {conversationId : conversationId},
+                'data' : {name : chat_name},
                 success  : function(res) {
-                    console.log(res)
+                    if(res.success) {
+                        $('#editChatName').modal('hide');
+                        window.location.reload();
+                    }
                 },
                 error : function(e) {
                     console.log(e)
@@ -116,5 +158,23 @@ $(document).ready(function(){
             })
         })
       });
+
+    //   Delete Conversation 
+
+    $('.delete_chat').on('click', function() {
+        const conversationId = $(this).attr('data-conversationId');
+        $.ajax({
+            url : `/chat/delete/${conversationId}`,
+            method : 'POST',
+            success : function(res) {
+                if(res.success) {
+                    window.location.reload();
+                }
+            },
+            error : function(e, xhr) {
+                console.log(e, xhr)
+            }
+        })
+    })
       
 })

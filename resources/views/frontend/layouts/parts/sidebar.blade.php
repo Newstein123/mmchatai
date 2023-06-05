@@ -1,30 +1,36 @@
 
     <div class="overflow-scroll bg-light p-2" id="chat_history">
-        @if (count($chats) > 0)
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark" id="new_conversation"> New Conversation </button>  
-                </li>
-                @foreach ($chats as $row)    
-                    <li class="list-group-item"> 
-                        <a href="{{route('chatDetail', $row->conversation_id)}}">
-                            {{$row->name}}
-                        </a>
-                        <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
-                        data-conversationId="{{$row->conversation_id}}"    
-                        >
-                            <i class="fa-regular fa-pen-to-square fa-bounce"></i>
-                        </button>
-                        <i class="fa-solid fa-trash-can" id="delete"></i>
+        <ul class="list-group chat_history_list">
+            <li class="list-group-item">
+                <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark" id="new_conversation"> New Conversation </button>  
+            </li>
+            @if (count($chats) > 0)
+                @foreach ($chats as $row) 
+                @php
+                    $value = Request::segment(2);
+                @endphp
+                    <li class="list-group-item {{$value == $row->conversation_id ? 'list-active' : '' }} ">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark">
+                                {{$row->name}}
+                            </a>
+                            <div class="action-button">
+                                <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
+                                data-conversationId="{{$row->conversation_id}}"    
+                                >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                                <button class="btn btn-sm delete_chat" data-conversationId="{{$row->conversation_id}}" >
+                                    <i class="fa-solid fa-trash-can" ></i>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                 @endforeach
-            </ul>
-        @else 
-            <ul class="list-group">                  
+            @else              
                 <li class="list-group-item">
                     <p> No Conversations Yet </p>
                 </li>
-            </ul>
         @endif
     </div>
     @if (session('user'))
@@ -32,7 +38,7 @@
             <p><i class="fa-solid fa-user-tie me-3"></i> {{session('user')->name}} </p>
         </div>
     @endif
-    <button type="button" class="btn bg-custom w-100" id="clear">
+    <button type="button" class="btn bg-danger text-white w-100" id="clear_all">
         <i class="fa-solid fa-trash-can"></i>
     </button>
 

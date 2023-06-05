@@ -18,6 +18,14 @@
 }
 
 /* chat history  */
+.list-active {
+    background-color: rgba(240, 242, 240, 0.8) !important;
+}
+
+.chat_history_list li:hover {
+    background-color: rgba(240, 242, 240, 0.8);
+}
+
 
 #chat_history {
     height: 80vh;
