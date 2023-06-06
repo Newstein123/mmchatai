@@ -13,7 +13,7 @@ $(document).ready(function(){
         const prompt = $('#prompt').val();
         $('#generate').hide();
         $('#text-loading').show();
-        $('#data').append(`<h5 class="lh-base"> <span class="badge ms-3 bg-custom"> User </span> ${prompt} </h5>`);
+        $('#data').append(`<h5 class="lh-base p-3 rounded bg-light my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  ${prompt}</h5>`);
         getResponse(prompt)
           
     })
@@ -40,15 +40,18 @@ $(document).ready(function(){
     function addResult(response) {
         let res = ""
         if(response.status == 401) {
-            res = `<div class="alert alert-primary" role="alert">
-            ${response.message}
-          </div>`
+            $('.alert-warning').show()
+            $('#data').html('')
+            $('#prompt').val('')
         } else {
-            if(response.success) {
-                res = `<p class="history-answer lh-lg"> <span class="badge ms-3 bg-custom"> Answer </span>${response.data} </p>
+            if(response.success) {                
+                res = `
+                <p class="history-answer lh-lg p-3 my-2"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.data} </p>
                 `
             } else {
-                res = `<p class="history-answer lh-lg"> ${response.message} </p>`
+                res = `
+                <p class="history-answer lh-lg p-3 my-2"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.message} </p>
+                `
             }
         }
         

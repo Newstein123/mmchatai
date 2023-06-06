@@ -34,13 +34,23 @@
         @endif
     </div>
     @if (session('user'))
-        <div  class="bg-light px-3 py-2 w-100">
-            <p><i class="fa-solid fa-user-tie me-3"></i> {{session('user')->name}} </p>
+        <div class="dropup-center dropup">
+            <button class="btn btn-custom btn-sm w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fa-solid fa-user"></i> {{session('user')->name}}
+            </button>
+            <ul class="dropdown-menu w-100 lh-lg">
+                <li class="dropdown-item">                 
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf 
+                        <button type="submit" class="dropdown-item"> <i class="fa-solid fa-right-from-bracket me-2"></i> Logout </button>
+                    </form>
+                </li>
+                <li class="dropdown-item" id="clear_all">        
+                    <p class="cursor-pointer"><i class="fa-solid fa-trash-can me-2"></i> Clear Conversation</p>
+                </li>
+            </ul>
         </div>
     @endif
-    <button type="button" class="btn bg-danger btn-sm text-white w-100" id="clear_all">
-        <i class="fa-solid fa-trash-can"></i>
-    </button>
 
     <!-- Edit Conversation  -->
 <div class="modal fade" id="editChatName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

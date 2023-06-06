@@ -123,8 +123,7 @@ class ChatController extends Controller
                 'message' =>  'Authorization fail',
             );
             header('Content-Type: application/json');
-            $jsonData = json_encode($data);
-            echo $jsonData;
+            return response()->json($data);
         }
         
     }

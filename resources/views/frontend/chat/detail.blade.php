@@ -1,28 +1,13 @@
 @extends('layouts.frontend')
 @section('content')
-    <div class="overflow-auto vh-100">
+    <div class="vh-100 overflow-scroll">
         @if (count($chats) > 0)      
             @foreach ($chats as $row)
                 <div class="conversation">
                     <!-- User question  -->
-                    <div class="row align-items-center my-3 bg-light p-2 border">
-                        <div class="col-md-1">
-                            <i class="fa-solid fa-user p-3 text-white bg-primary rounded-circle"></i>
-                        </div>
-                        <div class="col-md-11">
-                            <p> {{$row->human}}  </p> 
-                        </div>
-                    </div>
-                    <!-- Ai Answer  -->
-
-                    <div class="row align-items-center my-3 p-2">
-                        <div class="col-md-1">
-                            <i class="fa-solid fa-exclamation"></i>
-                        </div>
-                        <div class="col-md-11">
-                            <p> {{$row->translated_ai_text}} </p> 
-                        </div>
-                    </div>
+                    <h5 class="lh-base p-3 rounded bg-light my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  {{$row->human}} </h5>
+                    {{-- Ai Answer  --}}
+                    <p class="history-answer lh-lg p-3 my-2"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> {{$row->translated_ai_text}} </p>
                 </div>
             @endforeach 
         @endif

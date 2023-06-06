@@ -1,20 +1,34 @@
-/* universal  */
-* {
-    font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500&display=swap');
+@font-face {
+    src: url('/fonts/MyanmarSansPro-Regular.eot'); 
+    src: url('/fonts/MyanmarSansPro-Regular.eot?#iefix') format('embedded-opentype'), 
+         url('/fonts/MyanmarSansPro-Regular.woff2') format('woff2'),
+         url('/fonts/MyanmarSansPro-Regular.woff') format('woff'), 
+         url('/fonts/MyanmarSansPro-Regular.ttf')  format('truetype'),
+         url('/fonts/MyanmarSansPro-Regular.svg#svgFontName') format('svg');
+      font-family:'Myanmar Sans Pro';
 }
+/* universal  */
+*   {
+        font-family: 'Myanmar Sans Pro', sans-serif;
+    }
+.text-custom {
+    color: #11529c !important;
+}
+
 .bg-custom {
-    background-color: #11529c;
-    color: #ffe;
+    background-color: #11529c !important;
+    color: #ffe !important;
 }
 
 .bg-custom1 {
-    background-color: #ccd3de;
-    color: #000;
+    background-color: #ccd3de !important;
+    color: #000 !important;
 }
 
 .btn:hover {
-    background-color: #11529c;
-    color: #ffe;
+    background-color: #11529c !important;
+    color: #ffe !important;
 }
 
 /* chat history  */
@@ -50,3 +64,27 @@
         width: 45%;
     }
 }
+
+/* scroll bar  */
+
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  

@@ -38,6 +38,11 @@ Route::post('/chat/update/{id}', [ChatController::class, 'chat_name_update'])->n
 Route::post('/chat/delete/{id}', [ChatController::class, 'chat_delete'])->name('chatDelete');
 Route::post('/chat/clear', [ChatController::class, 'clear_all']);
 
+// Socialite Login 
+
+Route::get('login/{website}', [AuthController::class, 'redirectToProvider'])->name('websitelogin');
+Route::get('login/{website}/callback', [AuthController::class, 'handleProviderCallback']);
+
 // Backend 
 
 // Custom Login Route

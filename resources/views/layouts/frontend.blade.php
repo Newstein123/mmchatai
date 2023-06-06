@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<body>
+<body class="overflow-x-hidden">
     @include('frontend.layouts.header')
-    <div class="row my-3">
+    <div class="row my-3 overflow-x-hidden">
         <div class="col-md-3">
             @include('frontend.layouts.parts.sidebar')
         </div>
