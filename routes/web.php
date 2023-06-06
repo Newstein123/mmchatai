@@ -5,6 +5,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\ChatController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\GeneralSettingController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,3 +56,37 @@ Route::post('admin/login', [LoginController::class, 'login']);
 // Custom Register Route
 Route::get('admin/register', [RegisterController::class, 'showRegistrationForm'])->name('adminRegister');
 Route::post('admin/register', [RegisterController::class, 'register']);
+
+// Admin Middleware 
+
+Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // User 
+
+    Route::get('/user', [UserController::class, 'index'])->name('userIndex');
+    Route::get('/user/create', [UserController::class, 'create'])->name('userCreate');
+    Route::post('/user/store', [UserController::class, 'store'])->name('userStore');
+    Route::get('/user/{id}', [UserController::class, 'show'])->name('userView');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('userEdit');
+    Route::put('/user/edit/{id}', [UserController::class, 'update'])->name('userUpdate');
+    Route::post('/user/delete', [UserController::class, 'delete'])->name('userDelete');
+
+    Route::prefix('setting')->group(function() {
+
+        // Permissions 
+        Route::get('/permission', [PermissionController::class, 'get_all_roles'])->name('permissionIndex');
+        Route::get('/permission/edit/{id}', [PermissionController::class, 'edit'])->name('permissionEdit');
+        Route::post('/permission/give', [PermissionController::class, 'grant_permission'])->name('grantPermission');
+
+        // General Setting 
+
+        Route::get('/general', [GeneralSettingController::class, 'index'])->name('generalIndex');
+        Route::get('/general/edit/{id}', [GeneralSettingController::class, 'edit'])->name('generalEdit');
+        Route::put('/general/edit/{id}', [GeneralSettingController::class, 'update'])->name('generalUpdate');
+
+         // change State 
+        Route::post('/changeUserState', [UserController::class, 'change_state'])->name('changeUserState');
+    });
+
+});
