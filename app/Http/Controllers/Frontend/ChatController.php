@@ -22,6 +22,7 @@ class ChatController extends Controller
         }
 
         if(session('user')) { 
+
             $open_ai_key = "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"; // MISL Key 
             $open_ai = new OpenAi($open_ai_key);
             $user = ChatUser::where('user_id', session('user')->id)->first();
@@ -52,7 +53,7 @@ class ChatController extends Controller
                 ob_flush();
                 flush();
                 return strlen($data);
-            });
+            }); 
             $response = json_decode($complete, true);
             if (isset($response['choices'][0]['message']['content'])) {
                 header('Content-type: text/event-stream');
@@ -131,17 +132,68 @@ class ChatController extends Controller
     public function chat_detail($id)
     {
         $chats = Chat::where('conversation_id', $id)->get();
-        return view('frontend.chat.detail', compact('chats'));
+        if(count($chats) > 0) {
+            return view('frontend.chat.detail', compact('chats'));
+        } else {
+            return view('frontend.home');
+        }
     }
 
     public function chat_name_update(Request $request, $id)
     {   
-        return "hello";
-        $chat = ChatUser::find($id);
+        $chat = ChatUser::where('conversation_id', $id)->first();
 
         if($chat) {
             $chat->update([
                 'name' => $request->name,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'data' => $chat,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message'=> "Something Wrong",
+            ]);
+        }
+    }
+
+    public function chat_delete($id)
+    {
+        $chat = ChatUser::where('conversation_id', $id)->first();
+        if($chat) {
+            $chat->delete();
+            $conversation = Chat::where('conversation_id', $id)->get();
+            foreach($conversation as $con) {
+                $con->delete();
+            }
+            return response()->json([
+                'success' => true,
+                'message' => 'Chat Deleted',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Something Wrong',
+            ]);
+        }
+    }
+
+    public function clear_all()
+    {
+        if(session('user')) {
+            ChatUser::where('user_id', session('user')->id)->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'Chat Cleared',
+                'data' => [],
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Something Wrong',
             ]);
         }
     }

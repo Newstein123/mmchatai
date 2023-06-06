@@ -44,10 +44,17 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect('/');
+        $user = User::where('email', $request->email)->first();
+        if($user) {
+            $check = Hash::check($request->password, $user->password);
+            if($check) {
+                session(['user' => $user]);
+                return redirect('/')->with('message', 'Login Successfully');
+            } else {
+                return redirect()->back()->with('error', 'Your password is incorrect');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Your email is incorrect');
         }
 
         return redirect()->back()->withErrors([
@@ -57,8 +64,7 @@ class AuthController extends Controller
 
     public function logout()
     {   
-        Auth::logout();
-        // session()->forget('user');
+        session()->forget('user');
         return redirect('/');
     }
 }

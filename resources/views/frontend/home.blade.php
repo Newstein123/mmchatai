@@ -30,8 +30,8 @@
                         $chats = App\Models\Chat::where('conversation_id', session('conversation_id'))->get();
                     @endphp
                     @foreach ($chats as $row)
-                        <h5 class="lh-base"> <span class="badge ms-3 bg-custom"> User </span> {{$row->human}} </h5>
-                        <p class="history-answer lh-lg"> <span class="badge ms-3 bg-custom"> Answer </span> {{$row->translated_ai_text}} </p>
+                        <h5 class="lh-base p-3 rounded bg-light my-2"> <i class="fa-solid fa-user p-2 text-white bg-primary rounded-circle me-2"></i>  {{$row->human}} </h5>
+                        <p class="history-answer lh-lg p-3 my-2"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> {{$row->translated_ai_text}} </p>
                     @endforeach
                 @endif
             </div>

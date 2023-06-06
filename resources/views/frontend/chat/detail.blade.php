@@ -7,7 +7,7 @@
                     <!-- User question  -->
                     <div class="row align-items-center my-3 bg-light p-2 border">
                         <div class="col-md-1">
-                            <i class="fa-solid fa-user fa-beat-fade p-3 text-white bg-primary rounded-circle"></i>
+                            <i class="fa-solid fa-user p-3 text-white bg-primary rounded-circle"></i>
                         </div>
                         <div class="col-md-11">
                             <p> {{$row->human}}  </p> 
