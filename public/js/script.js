@@ -26,9 +26,11 @@ $(document).ready(function(){
             beforeSend :  function(){
                 $('#loading').show();
             },
-            success: function(response) { 
-                console.log(response);   
+            success: function(response) {  
                 addResult(response) 
+                if(response.chat_count) {
+                    window.location.reload();
+                }
                 $('#prompt').val('')
             },
             error : function(e, xhr) {
@@ -66,6 +68,7 @@ $(document).ready(function(){
         if ($(window).width() > 768) {           
             $('#chat_history_container').show() 
         } else {
+            $('#chat_history_container').hide()
             $('#toggle').show()
             $('#toggle').on('click', function() {
                 $(this).hide()
@@ -82,6 +85,7 @@ $(document).ready(function(){
         }
     }
 
+    showAndHideToggle()
 
     // clear all conversation 
     $('#clear_all').on('click', function(){
@@ -102,13 +106,19 @@ $(document).ready(function(){
                 if(res.success) {
                     swal.fire(
                         'Deleted!',
-                        'Your file has been deleted.',
+                        res.message,
                         'success'
                       ).then(result => {
                         if(result.isConfirmed) {
                             window.location.reload();
                         }
                       })
+                } else {
+                    swal.fire(
+                        'Deleted!',
+                        res.message,
+                        'success'
+                      )
                 }
             },
             error : function(e, xhr) {

@@ -10,4 +10,8 @@ class Chat extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = "chat_history";
+
+    function user_chat() {
+        return $this->hasOne(ChatUser::class, 'conversation_id', 'conversation_id');
+    }
 }

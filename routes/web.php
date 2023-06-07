@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,7 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
 
     Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    // User 
+    // Admin User 
 
     Route::get('/user', [UserController::class, 'index'])->name('userIndex');
     Route::get('/user/create', [UserController::class, 'create'])->name('userCreate');
@@ -73,6 +74,18 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('userEdit');
     Route::put('/user/edit/{id}', [UserController::class, 'update'])->name('userUpdate');
     Route::post('/user/delete', [UserController::class, 'delete'])->name('userDelete');
+
+    // Customers 
+
+    Route::prefix('customer')->group(function() {
+        Route::get('/', [CustomerController::class, 'index'])->name('customerIndex');
+        Route::get('/create', [CustomerController::class, 'create'])->name('customerCreate');
+        Route::post('/store', [CustomerController::class, 'store'])->name('customerStore');
+        Route::get('/{id}', [CustomerController::class, 'show'])->name('customerView');
+        Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customerEdit');
+        Route::put('/edit/{id}', [CustomerController::class, 'update'])->name('customerUpdate');
+        Route::post('/delete', [CustomerController::class, 'delete'])->name('customerDelete');
+    });
 
     Route::prefix('setting')->group(function() {
 

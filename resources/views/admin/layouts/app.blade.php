@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>  @yield('title') </title>
-    {{-- <link rel="shortcut icon" href="{{asset('img/logo/'.generalSetting('logo'))}}" type="image/jpg"> --}}
+    <title> {{generalSetting('title')}} | @yield('title') </title>
+    <link rel="shortcut icon" href="{{asset('img/logo/'.generalSetting('logo'))}}" type="image/png">
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{asset('template/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/animate.css') }}" rel="stylesheet">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/plugins/switchery/switchery.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/plugins/splide/splide.min.css')}}">
-    <link rel="stylesheet" href="{{asset('template/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
     <div id="wrapper">

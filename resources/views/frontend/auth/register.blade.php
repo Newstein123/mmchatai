@@ -79,8 +79,10 @@
 </div> --}}
 <div class="middle-box text-center loginscreen   animated fadeInDown">
     <div>
-        <h3>Register to MISL ChatAI</h3>
-        <p>Create account to see it in action.</p>
+        <a href="/">
+            <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
+        </a>
+        <h3 class="my-3">Register to MISL ChatAI</h3>
         <form class="m-t" role="form" action="{{route('register.submit')}}" method="POST">
             @csrf
             <div class="form-group">

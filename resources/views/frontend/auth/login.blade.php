@@ -3,8 +3,10 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <p>Welcome to MISL ChatAI  </p>
-            <h3>User Login</h3>
+            <a href="/" class="my-3">
+                <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
+            </a>
+            <h3 class="my-3">User Login</h3>
             @if (session('error'))
                 <div class="alert alert-danger">
                     <small class="fw-bold"> {{session('error')}} </small>
@@ -25,7 +27,7 @@
                         Login with Facebook
                     </a>
                     <a href="{{route('websitelogin','google')}}" class="btn bg-custom btn-sm text-white">
-                        <i class="fab fa-google fa-fw"></i>
+                        <i class="fa-brands fa-google"></i>
                         Login with Google
                     </a>       
                 </div>
@@ -39,7 +41,6 @@
                 <p class="text-muted text-center"><small>Do not have an account?</small></p>
                 <a class="btn btn-sm bg-custom btn-block" href="{{route('register')}}">Create an account</a>
             </form>
-            <p class="m-t"> <small> MISL &copy; 2014</small> </p>
         </div>
     </div>
 @endsection

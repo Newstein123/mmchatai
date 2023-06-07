@@ -1,8 +1,7 @@
-
     <div class="overflow-scroll bg-light p-2" id="chat_history">
         <ul class="list-group chat_history_list">
             <li class="list-group-item">
-                <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark fw-bold" id="new_conversation"> <i class="fa-solid fa-plus me-2"></i> New Conversation </button>  
+                <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark fw-bold fs-6" id="new_conversation"> <i class="fa-solid fa-plus me-2"></i> New Conversation </button>  
             </li>
             @if (count($chats) > 0)
                 @foreach ($chats as $row) 
@@ -11,7 +10,7 @@
                 @endphp
                     <li class="list-group-item {{$value == $row->conversation_id ? 'list-active' : '' }} ">
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark">
+                            <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark overflow-hidden">
                                 {{$row->name}}
                             </a>
                             <div class="action-button">
@@ -29,13 +28,13 @@
                 @endforeach
             @else              
                 <li class="list-group-item text-center">
-                    <small> No Conversations Yet </p>
+                    <small> No Conversations Yet </small>
                 </li>
         @endif
     </div>
     @if (session('user'))
         <div class="dropup-center dropup">
-            <button class="btn btn-custom btn-sm w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn bg-custom w-100 dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                <i class="fa-solid fa-user"></i> {{session('user')->name}}
             </button>
             <ul class="dropdown-menu w-100 lh-lg">

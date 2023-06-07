@@ -4,12 +4,12 @@
             <li class="nav-header"> 
                 <div class="profile-element">
                     <div class=" d-flex justify-content-between align-items-center">
-                        {{-- <img src="{{asset("img/logo/".generalSetting('logo'))}}" alt="" class="img-fluid w-50 p-2 rounded-circle"> --}}
-                        <span class="text-white"> မီးသတ်ဦးစီးဌာန</span>
+                        <img src="{{asset("img/logo/".generalSetting('logo'))}}" alt="" class="img-fluid w-50 p-2 rounded-circle">
+                        <span class="text-white"> {{generalSetting('Website Name')}} </span>
                     </div>
                 </div>
                 <div class="logo-element">
-                    {{-- <img src="{{asset("img/logo/".generalSetting('logo'))}}" alt="" class="img-fluid p-2 rounded-circle"> --}}
+                    <img src="{{asset("img/logo/".generalSetting('logo'))}}" alt="" class="img-fluid p-2 rounded-circle">
                 </div>
             </li>
             <li class="{{url()->current() == url('/admin/dashboard') ? 'active' : '' }}">
@@ -18,6 +18,11 @@
             @can('view users')
                 <li class="{{request()->is('admin/user*') ? 'active' : ''}}">
                     <a href="{{route('userIndex')}}"><i class="fa fa-users"></i> <span class="nav-label"> Admin အသုံးပြုသူများ  </span></a>
+                </li>
+            @endcan
+            @can('view customers')
+                <li class="{{request()->is('admin/customer*') ? 'active' : ''}}">
+                    <a href="{{route('customerIndex')}}"><i class="fa fa-users"></i> <span class="nav-label"> Customers  </span></a>
                 </li>
             @endcan
             @can('view setting')

@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+@section('title', "UserChatDetail")
 @section('content')
     <div class="vh-100 overflow-scroll">
         @if (count($chats) > 0)      

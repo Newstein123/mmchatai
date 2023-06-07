@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+@section('title', 'Home')
 @section('content')
 <div class="container-fluid my-3">
     @if (session('message'))
@@ -10,12 +11,6 @@
     <div class="alert alert-warning text-center my-3" style="display: none">
         <p> Authentication fail, please login to continue. </p>
     </div>
-    <button type="button" id="toggle" class="bg-custom btn mt-3" style="display : none">
-        <i class="fa-solid fa-bars"></i>
-    </button>
-    <button type="button" id="close" class="bg-danger btn mt-3 text-white" style="display : none">
-        <i class="fa-solid fa-xmark"></i>
-    </button>
     <div class="question-container">
         <form action="ai.php" method="post" id="form" class="text-center">
             <div class="d-flex align-items-center">
@@ -25,7 +20,7 @@
                 </button>
                 <button id="text-loading" style="display: none;" class="btn bg-custom mt-2 mt-md-0 prompt-button me-2 me-md-0" disabled>
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                Generating
+                <span class="d-none d-md-inline"> Generating </span>
                 </button>
             </div>
         </form>

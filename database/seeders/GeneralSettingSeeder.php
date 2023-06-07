@@ -22,12 +22,12 @@ class GeneralSettingSeeder extends Seeder
         ]);
         GeneralSetting::create([
             'name' => 'title',
-            'value' => 'မီးသတ်ဦးစီးဌာန QR စနစ်',
+            'value' => 'MMChatAI',
             'type' => 'string',
         ]);
         GeneralSetting::create([
             'name' => 'Website Name',
-            'value' => 'မီးသတ်ဦးစီးဌာန',
+            'value' => 'MMChatAI',
             'type' => 'string',
         ]);
     }

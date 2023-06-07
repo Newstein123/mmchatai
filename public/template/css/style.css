@@ -870,6 +870,7 @@ h5 {
 }
 .nav > li.active > a {
   color: #ffffff;
+
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
@@ -1020,7 +1021,7 @@ ul.nav-second-level {
   background: #293846;
 }
 .nav > li.active {
-  border-left: 4px solid #19aa8d;
+  border-left: 4px solid #11529c;
   background: #293846;
 }
 .nav.nav-second-level > li.active {

@@ -22,8 +22,7 @@ class ChatController extends Controller
         }
 
         if(session('user')) { 
-
-            $open_ai_key = "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"; // MISL Key 
+            $open_ai_key = ""; // MISL Key 
             $open_ai = new OpenAi($open_ai_key);
             $user = ChatUser::where('user_id', session('user')->id)->first();
             if($user) {
@@ -70,7 +69,7 @@ class ChatController extends Controller
         
                     // $parts = explode(" ", $input);
                     // $chat_name = implode(" ", array_slice($parts, 0, 4)); 
-                    $chat_name = "New Chat";
+                    $chat_name = $input;
                     ChatUser::create([
                         'name' => $chat_name,
                         'user_id' => session('user')->id,
@@ -97,12 +96,15 @@ class ChatController extends Controller
                     'conversation_id' => $conversation_id,
                     'expire_date' => $expirationDateTime,
                 ]);
-                // Create an associative array with your data
+
+                $chat_count = getConversationCount(session('user')->id);
+                // Create an associative array with  data
                 $data = array(
                     'success' => true,
                     'message' => 'success',
                     'data' => $chatgpt_response,
                     'token' => $total_tokens,
+                    'chat_count' => $chat_count <= 1 ? true : false,
                 );
                 header('Content-Type: application/json');
                 return response()->json($data);
@@ -110,7 +112,7 @@ class ChatController extends Controller
                 $data = array(
                     'success' => false,
                     'status' => 200,
-                    'message' => 'You have no tokens left create another conversation',
+                    'message' => 'Opps ! Something Wrong, try again later.',
                 );
     
                 header('Content-Type: application/json');
@@ -168,9 +170,10 @@ class ChatController extends Controller
             foreach($conversation as $con) {
                 $con->delete();
             }
+
             return response()->json([
                 'success' => true,
-                'message' => 'Chat Deleted',
+                'message' => 'Your convsersation has been deleted',
             ]);
         } else {
             return response()->json([
@@ -184,6 +187,9 @@ class ChatController extends Controller
     {
         if(session('user')) {
             ChatUser::where('user_id', session('user')->id)->delete();
+            // delete coversation session 
+
+            session()->forget('conversation_id');
             return response()->json([
                 'success' => true,
                 'message' => 'Chat Cleared',

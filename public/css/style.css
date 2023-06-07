@@ -10,8 +10,12 @@
 }
 /* universal  */
 *   {
-        font-family: 'Myanmar Sans Pro', sans-serif;
-    }
+    font-family: 'Myanmar Sans Pro', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .text-custom {
     color: #11529c !important;
 }
@@ -30,7 +34,11 @@
     background-color: #11529c !important;
     color: #ffe !important;
 }
+/* navbar  */
 
+#navbarNav ul li {
+    margin-left: 20px;
+}
 /* chat history  */
 .list-active {
     background-color: rgba(240, 242, 240, 0.8) !important;
@@ -42,12 +50,9 @@
 
 
 #chat_history {
-    height: 80vh;
+    height: 85vh;
 }
 
-#chat_history_container {
-    display: none;
-}
 
 @media(max-width : 768px) {
     #chat_history_container {
@@ -55,6 +60,7 @@
     }
     .active {
         position: absolute;
+        left: 0;
         z-index: 100;
     }
     #prompt {
