@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('title', 'Home')
 @section('content')
-<div class="container-fluid my-3">
+<div class="me-3 home-container">
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong> {{session('message')}}. Welcome {{ session('user') ? session('user')->name : ''}}  </strong> 
@@ -24,15 +24,15 @@
                 </button>
             </div>
         </form>
-        <div class="data-container w-100 rounded mt-4 p-3 overflow-scroll" style="height : 80vh">
+        <div class="data-container w-100 rounded mt-4 p-3 overflow-auto" style="height : 80vh">
             <div id="data">
                 @if (session('conversation_id'))
                     @php
                         $chats = App\Models\Chat::where('conversation_id', session('conversation_id'))->get();
                     @endphp
                     @foreach ($chats as $row)
-                        <h5 class="lh-base p-3 rounded bg-light my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  {{$row->human}} </h5>
-                        <p class="history-answer lh-lg p-3 my-2"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> {{$row->translated_ai_text}} </p>
+                        <h5 class="lh-base p-2 rounded bg-mute text-gray my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  {{$row->human}} </h5>
+                        <p class="history-answer lh-lg p-3 my-2 text-mute"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> {{$row->translated_ai_text}} </p>
                     @endforeach
                 @endif
             </div>

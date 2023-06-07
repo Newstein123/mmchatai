@@ -16,6 +16,18 @@
     box-sizing: border-box;
 }
 
+.text-mute {
+    color: #afafaf;
+}
+
+.bg-mute {
+    background-color: #464444;
+}
+
+.text-gray {
+    color: #898d91 ;
+}
+
 .text-custom {
     color: #11529c !important;
 }
@@ -34,11 +46,28 @@
     background-color: #11529c !important;
     color: #ffe !important;
 }
+
 /* navbar  */
 
 #navbarNav ul li {
-    margin-left: 20px;
+    margin-left: 10px;
+    font-size: 15px;
 }
+
+.nav-item .btn:hover .fa-user {
+    color: #fff !important;
+}
+
+/* home container  */
+
+.home-container {
+    background-image: url('/img/page.png');
+    background-color: #303843;
+    z-index: 2;
+    font-size: 18px;
+    padding: 10px;
+}
+
 /* chat history  */
 .list-active {
     background-color: rgba(240, 242, 240, 0.8) !important;
@@ -50,7 +79,7 @@
 
 
 #chat_history {
-    height: 85vh;
+    height: 80vh;
 }
 
 

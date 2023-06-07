@@ -49,11 +49,11 @@ $(document).ready(function(){
         } else {
             if(response.success) {                
                 res = `
-                <p class="history-answer lh-lg p-3 my-2"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.data} </p>
+                <p class="history-answer lh-lg p-3 my-2 text-mute"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.data} </p>
                 `
             } else {
                 res = `
-                <p class="history-answer lh-lg p-3 my-2"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.message} </p>
+                <p class="history-answer lh-lg p-3 my-2 text-mute"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.message} </p>
                 `
             }
         }
