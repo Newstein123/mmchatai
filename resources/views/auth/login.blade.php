@@ -1,73 +1,26 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('adminLogin') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+    <div class="text-center loginscreen animated fadeInDown d-flex justify-content-center align-items-center vh-100">
+        <div class="w-25">
+            <p>Welcome to MISL ChatAI  </p>
+            <h3>Admin Login</h3>
+            <form class="m-t" role="form" action="{{route('adminLogin')}}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="email" class="form-control my-3 @error('email') is-invalid @enderror" name="email" placeholder="Username"  name="email" value="{{ old('email') }}" autocomplete="email" autofocus required="">
                 </div>
-            </div>
+                @error('email')
+                    <span class="text-danger"> {{$message}} </span>
+                @enderror
+                <div class="form-group">
+                    <input type="password" class="form-control my-3" name="password" placeholder="Password" required="">
+                </div>
+                @error('password')
+                    <span class="text-danger"> {{$message}} </span>
+                @enderror
+                <button type="submit" class="btn bg-custom btn-sm block full-width m-b">Login</button>
+            </form>
+            <p class="m-t"> <small> MISL &copy; 2014</small> </p>
         </div>
     </div>
-</div>
 @endsection

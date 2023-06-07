@@ -3,14 +3,13 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div class="logo-name">
-                IN+
-            </div>
-            <h3>Welcome to MISL ChatAI</h3>
-            <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
-            </p>
-            <p> Login </p>
+            <p>Welcome to MISL ChatAI  </p>
+            <h3>User Login</h3>
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    <small class="fw-bold"> {{session('error')}} </small>
+                </div>
+            @endif
             <form class="m-t" role="form" action="{{route('login.submit')}}" method="POST">
                 @csrf
                 <div class="form-group">

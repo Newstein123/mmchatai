@@ -40,6 +40,7 @@ $(document).ready(function() {
 })
 
 function changeState(url, id) {
+    console.log(url)
     $.ajax({
         url : url,
         method : 'POST',

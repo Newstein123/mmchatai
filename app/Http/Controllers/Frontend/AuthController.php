@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -31,7 +32,7 @@ class AuthController extends Controller
             'terms&policy' => 'required'
         ]);
         
-        $user = new User();
+        $user = new Customer();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
@@ -55,7 +56,8 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        $user = User::where('email', $request->email)->first();
+        
+        $user = Customer::where('email', $request->email)->first();
         if($user) {
             $check = Hash::check($request->password, $user->password);
             if($check) {
@@ -88,7 +90,7 @@ class AuthController extends Controller
     public function handleProviderCallback($website)
     {   
         $user = Socialite::driver($website)->user();
-        $user=User::where('email',$user->getEmail())->first();
+        $user=Customer::where('email',$user->getEmail())->first();
         if(!$user){
             $user = User::create([
                 'name'=> $user->getName(),

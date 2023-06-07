@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('login_type')->after('password')->default('manual');
+            $table->tinyInteger('status')->comment('1=ban, 0= active')->default(0);
         });
     }
 

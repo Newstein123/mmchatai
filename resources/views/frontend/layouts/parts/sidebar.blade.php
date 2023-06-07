@@ -2,7 +2,7 @@
     <div class="overflow-scroll bg-light p-2" id="chat_history">
         <ul class="list-group chat_history_list">
             <li class="list-group-item">
-                <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark" id="new_conversation"> New Conversation </button>  
+                <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark fw-bold" id="new_conversation"> <i class="fa-solid fa-plus me-2"></i> New Conversation </button>  
             </li>
             @if (count($chats) > 0)
                 @foreach ($chats as $row) 
@@ -28,8 +28,8 @@
                     </li>
                 @endforeach
             @else              
-                <li class="list-group-item">
-                    <p> No Conversations Yet </p>
+                <li class="list-group-item text-center">
+                    <small> No Conversations Yet </p>
                 </li>
         @endif
     </div>
@@ -45,8 +45,8 @@
                         <button type="submit" class="dropdown-item"> <i class="fa-solid fa-right-from-bracket me-2"></i> Logout </button>
                     </form>
                 </li>
-                <li class="dropdown-item" id="clear_all">        
-                    <p class="cursor-pointer"><i class="fa-solid fa-trash-can me-2"></i> Clear Conversation</p>
+                <li class="dropdown-item w-100" id="clear_all">        
+                    <p class="cursor-pointer ms-3"><i class="fa-solid fa-trash-can me-2"></i> Clear Conversation</p>
                 </li>
             </ul>
         </div>

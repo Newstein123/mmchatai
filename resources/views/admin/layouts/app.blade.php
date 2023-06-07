@@ -12,7 +12,7 @@
     <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('template/css/plugins/toastr/toastr.min.css')}}">
-    <link rel="stylesheet" href="{{asset('template/css/plugins/sweetalert/sweetalert.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/plugins/switchery/switchery.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/plugins/splide/splide.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/custom.css')}}">
@@ -54,7 +54,7 @@
     <script src="{{asset('template/js/demo/sparkline-demo.js')}}"></script>
     <script src="{{asset('template/js/plugins/dataTables/datatables.min.js') }}"></script>
     <script src="{{asset('template/js/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{asset('template/js/plugins/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <script src="{{asset('template/js/plugins/switchery/switchery.js')}}"></script>
     <script src="{{asset('template/js/plugins/splide/splide.min.js')}}"></script>
     <script src="{{ asset('template/js/ajax_method.js') }}"></script>

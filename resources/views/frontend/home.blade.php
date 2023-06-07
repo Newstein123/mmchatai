@@ -1,6 +1,12 @@
 @extends('layouts.frontend')
 @section('content')
 <div class="container-fluid my-3">
+    @if (session('message'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong> {{session('message')}}. Welcome {{ session('user') ? session('user')->name : ''}}  </strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+        </div>
+    @endif
     <div class="alert alert-warning text-center my-3" style="display: none">
         <p> Authentication fail, please login to continue. </p>
     </div>
@@ -12,10 +18,10 @@
     </button>
     <div class="question-container">
         <form action="ai.php" method="post" id="form" class="text-center">
-            <div class="d-flex align-items-center flex-wrap">
-                <input type="text" name="prompt" id="prompt" class="form-control w-75 w-sm-100 me-4" placeholder="Send a message..." required>
-                <button id="generate" type="submit" class="btn bg-custom mt-2 mt-md-0 prompt-button me-2 me-md-0"  > 
-                <i class="fa-regular fa-paper-plane me-2"></i> Generate 
+            <div class="d-flex align-items-center">
+                <input type="text" name="prompt" id="prompt" class="w-75 form-control me-4" placeholder="Send a message..." required>
+                <button id="generate" type="submit" class="btn bg-custom prompt-button"  > 
+                    <i class="fa-regular fa-paper-plane me-2"></i> <span class="d-none d-md-inline" >Generate </span>
                 </button>
                 <button id="text-loading" style="display: none;" class="btn bg-custom mt-2 mt-md-0 prompt-button me-2 me-md-0" disabled>
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,8 +61,9 @@ Route::post('admin/register', [RegisterController::class, 'register']);
 // Admin Middleware 
 
 Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // User 
 
     Route::get('/user', [UserController::class, 'index'])->name('userIndex');
@@ -84,6 +86,12 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::get('/general', [GeneralSettingController::class, 'index'])->name('generalIndex');
         Route::get('/general/edit/{id}', [GeneralSettingController::class, 'edit'])->name('generalEdit');
         Route::put('/general/edit/{id}', [GeneralSettingController::class, 'update'])->name('generalUpdate');
+
+         // Account 
+
+         Route::get('/account/{id}', [AccountController::class , 'show'])->name('accountShow');
+         Route::get('/account/edit/{id}', [AccountController::class , 'edit'])->name('accountEdit');
+         Route::put('/account/edit/{id}', [AccountController::class , 'update'])->name('accountUpdate');
 
          // change State 
         Route::post('/changeUserState', [UserController::class, 'change_state'])->name('changeUserState');

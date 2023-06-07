@@ -28,7 +28,8 @@ $(document).ready(function(){
             },
             success: function(response) { 
                 console.log(response);   
-                addResult(response)  
+                addResult(response) 
+                $('#prompt').val('')
             },
             error : function(e, xhr) {
                 console.log(e);

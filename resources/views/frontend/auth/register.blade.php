@@ -79,9 +79,6 @@
 </div> --}}
 <div class="middle-box text-center loginscreen   animated fadeInDown">
     <div>
-        <div>
-            <h1 class="logo-name">IN+</h1>
-        </div>
         <h3>Register to MISL ChatAI</h3>
         <p>Create account to see it in action.</p>
         <form class="m-t" role="form" action="{{route('register.submit')}}" method="POST">
@@ -106,7 +103,6 @@
             <p class="text-muted text-center"><small>Already have an account?</small></p>
             <a class="btn btn-sm bg-custom btn-block" href="{{route('login')}}">Login</a>
         </form>
-        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
     </div>
 </div>
 @endsection
