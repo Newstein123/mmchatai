@@ -23,7 +23,7 @@ class ChatController extends Controller
         }
 
         if(session('user')) { 
-            $open_ai_key = "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"; // MISL Key 
+            // $open_ai_key = "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"; // MISL Key 
             $open_ai = new OpenAi($open_ai_key);
             $user = ChatUser::where('user_id', session('user')->id)->first();
             if($user) {
