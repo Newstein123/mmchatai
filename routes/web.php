@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,13 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customerEdit');
         Route::put('/edit/{id}', [CustomerController::class, 'update'])->name('customerUpdate');
         Route::post('/delete', [CustomerController::class, 'delete'])->name('customerDelete');
+    });
+
+    // Question 
+
+    Route::prefix('question')->group(function() {
+        Route::get('/history-data', [QuestionController::class, 'history_data'])->name('historyData');
+        Route::get('/old-data', [QuestionController::class, 'old_data'])->name('oldData');
     });
 
     Route::prefix('setting')->group(function() {

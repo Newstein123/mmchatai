@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('title', 'Home')
 @section('content')
-<div class="me-3 home-container shadow-lg rounded">
+<div class="me-3">
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong> {{session('message')}}. Welcome {{ session('user') ? session('user')->name : ''}}  </strong> 
@@ -11,7 +11,7 @@
     <div class="alert alert-warning text-center my-3" style="display: none">
         <p> Authentication fail, please login to continue. </p>
     </div>
-    <div class="question-container">
+    <div class="question-container mt-3">
         <form action="ai.php" method="post" id="form" class="text-center">
             <div class="d-flex align-items-center">
                 <input type="text" name="prompt" id="prompt" class="w-75 form-control me-4" placeholder="Send a message..." required>
@@ -32,7 +32,10 @@
                     @endphp
                     @foreach ($chats as $row)
                         <h5 class="lh-base p-2 rounded bg-mute text-gray my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  {{$row->human}} </h5>
-                        <p class="history-answer lh-lg p-3 my-2 text-mute"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> {{$row->translated_ai_text}} </p>
+                        <p class="history-answer lh-lg p-3 my-2 text-mute">
+                             <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2">
+                            </i> {{$row->translated_ai_text}} 
+                        </p>
                     @endforeach
                 @endif
             </div>

@@ -14,4 +14,5 @@ class Chat extends Model
     function user_chat() {
         return $this->hasOne(ChatUser::class, 'conversation_id', 'conversation_id');
     }
+
 }

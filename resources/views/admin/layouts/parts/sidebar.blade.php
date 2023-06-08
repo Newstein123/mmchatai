@@ -25,6 +25,19 @@
                     <a href="{{route('customerIndex')}}"><i class="fa fa-users"></i> <span class="nav-label"> Customers  </span></a>
                 </li>
             @endcan
+            @can('view questions')
+            <li class ="{{request()->is('admin/question*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-question-circle"></i> <span class="nav-label"> Questions  </span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        @can('view account setting')
+                            <li class="{{request()->is('admin/question/history-data') ? 'active' : ''}}"><a href="{{route('historyData')}}"> Customer Questions </a></li>
+                        @endcan
+                        @can('view permissions')
+                            <li class="{{request()->is('admin/question/old-data') ? 'active' : ''}}"><a href="{{route('oldData')}}"> Customer Old Questions </a></li>
+                        @endcan  
+                    </ul>
+                </li>
+            @endcan
             @can('view setting')
                 <li class ="{{request()->is('admin/setting*') ? 'active' : '' }}">
                     <a href=""><i class="fa fa-cogs"></i> <span class="nav-label"> Setting  </span><span class="fa arrow"></span></a>

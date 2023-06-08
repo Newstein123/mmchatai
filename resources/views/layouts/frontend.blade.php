@@ -1,6 +1,6 @@
 @php
    if(session('user')) {
-        $chats = App\Models\ChatUser::where('user_id', session('user')->id)->orderBy('id', 'desc')->get();
+        $chats = App\Models\UserChat::where('user_id', session('user')->id)->orderBy('id', 'desc')->get();
    } else {
         $chats = [];
    }
@@ -21,7 +21,7 @@
 </head>
 <body class="overflow-x-hidden">
     @include('frontend.layouts.header')
-    <div class="row overflow-x-hidden">
+    <div class="row overflow-x-hidden home-container">
         <div class="col-md-3" id="chat_history_container">
             @include('frontend.layouts.parts.sidebar')
         </div>

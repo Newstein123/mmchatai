@@ -11,4 +11,9 @@ class UserOldData extends Model
 
     protected $guarded = [];
     protected $table = "user_old_data";
+
+    function user()
+    {
+        return $this->hasOne(Customer::class, 'id', 'user_id');
+    }
 }

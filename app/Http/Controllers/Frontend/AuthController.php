@@ -128,12 +128,12 @@ class AuthController extends Controller
 
     public function handleProviderCallback($website)
     {   
-        $user = Socialite::driver($website)->user();
-        $user=Customer::where('email',$user->getEmail())->first();
+        $social_user = Socialite::driver($website)->user();
+        $user=Customer::where('email',$social_user->getEmail())->first();
         if(!$user){
-            $user = User::create([
-                'name'=> $user->getName(),
-                'email'=> $user->getEmail(),
+            $user = Customer::create([
+                'name'=> $social_user->getName(),
+                'email'=> $social_user->getEmail(),
                 'password' => "",
                 'login_type' => $website
             ]);

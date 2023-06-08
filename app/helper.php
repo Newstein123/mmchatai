@@ -2,7 +2,7 @@
 
 use App\Models\GeneralSetting;
 use App\Models\Chat;
-use App\Models\ChatUser;
+use App\Models\UserChat;
 
     function generalSetting($name) {
         $setting = GeneralSetting::where('name', $name)->first();
@@ -46,7 +46,7 @@ use App\Models\ChatUser;
     
     function getUserTokens($user_id, $name) {
       $data = 0;
-      $chats = ChatUser::where('user_id', $user_id)->get();
+      $chats = UserChat::where('user_id', $user_id)->get();
       foreach ($chats as $chat) {
           $data += Chat::select($name)->where('conversation_id', $chat->conversation_id)->sum($name);
       }
@@ -55,7 +55,7 @@ use App\Models\ChatUser;
 
     function getConversationCount($user_id) {
       $data = 0;
-      $chats = ChatUser::where('user_id', $user_id)->get();
+      $chats = UserChat::where('user_id', $user_id)->get();
       foreach ($chats as $chat) {
           $data += Chat::select('id')->where('conversation_id', $chat->conversation_id)->count();
       }

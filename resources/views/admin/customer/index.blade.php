@@ -33,7 +33,7 @@
             <tr>
                 <th> Id </th>
                 <th> Name </th>
-                <th> Email </th>
+                <th> Email/Phone </th>
                 <th> Total Tokens </th>
                 <th> Date </th>
                 <th> Action </th>
@@ -97,8 +97,9 @@
             <tfoot>
             <tr>
                 <th> Id </th>
-                <th> User Name </th>
-                <th> User Role </th>
+                <th> Name </th>
+                <th> Email/Phone </th>
+                <th> Total Tokens </th>
                 <th> Date </th>
                 <th> Action </th>
             </tr>

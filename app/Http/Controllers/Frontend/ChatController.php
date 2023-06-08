@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Orhanerday\OpenAi\OpenAi;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\UserChat;
 use Google\Cloud\Translate\V2\TranslateClient;
 
 class ChatController extends Controller
@@ -23,9 +24,9 @@ class ChatController extends Controller
         }
 
         if(session('user')) { 
-            // $open_ai_key = "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"; // MISL Key 
+            $open_ai_key = ""; // MISL Key 
             $open_ai = new OpenAi($open_ai_key);
-            $user = ChatUser::where('user_id', session('user')->id)->first();
+            $user = UserChat::where('user_id', session('user')->id)->first();
             if($user) {
                 $results = Chat::where('conversation_id', $user->conversation_id)->limit(5)->get();
             } else {
@@ -71,7 +72,7 @@ class ChatController extends Controller
                     // $parts = explode(" ", $input);
                     // $chat_name = implode(" ", array_slice($parts, 0, 4)); 
                     $chat_name = $input;
-                    ChatUser::create([
+                    UserChat::create([
                         'name' => $chat_name,
                         'user_id' => session('user')->id,
                         'conversation_id' => $conversation_id,
@@ -143,7 +144,7 @@ class ChatController extends Controller
 
     public function chat_name_update(Request $request, $id)
     {   
-        $chat = ChatUser::where('conversation_id', $id)->first();
+        $chat = UserChat::where('conversation_id', $id)->first();
 
         if($chat) {
             $chat->update([
@@ -165,7 +166,7 @@ class ChatController extends Controller
     // Delete one conversation 
     public function chat_delete($id)
     {
-        $chat = ChatUser::where('conversation_id', $id)->first();
+        $chat = UserChat::where('conversation_id', $id)->first();
         if($chat) {
             $chat->delete();
             $conversation = Chat::where('conversation_id', $id)->get();
@@ -257,7 +258,7 @@ class ChatController extends Controller
     }
     
     function deleteUserConversations($user_id) {
-        $chat = ChatUser::where('user_id', $user_id)->pluck('conversation_id')->toArray();
+        $chat = UserChat::where('user_id', $user_id)->pluck('conversation_id')->toArray();
         if($chat) {
             $user_old_data = Chat::whereIn('conversation_id', $chat)->get();
 
@@ -273,7 +274,7 @@ class ChatController extends Controller
             Chat::whereIn('conversation_id', $chat)->delete();
 
             // delete user conversation 
-            ChatUser::where('user_id', session('user')->id)->delete();
+            UserChat::where('user_id', session('user')->id)->delete();
             // delete conversation id 
             session()->forget('conversation_id');
             return true;
