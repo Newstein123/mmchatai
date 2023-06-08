@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('title', "UserChatDetail")
 @section('content')
-    <div class="overflow-scroll me-3 p-2" style="height : 90vh">
+    <div class="overflow-auto me-3 p-2" style="height : 90vh">
         @if (count($chats) > 0)      
             @foreach ($chats as $row)
                 <div class="conversation">

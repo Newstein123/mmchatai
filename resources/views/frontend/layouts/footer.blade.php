@@ -1,9 +1,8 @@
 <div class="block-footer">
     <div class="footer-widgets">
         <div class="container">
-            <div class="row">
-                <div class="row">
-					<div class="col-sm-4">
+            <div class="row">             
+					<div class="col-6 col-md-4">
 						<div data-toggle="collapse" data-target="#ServicesMenuList">
 							<h4>Our Services </h4>
 						</div>
@@ -18,7 +17,7 @@
 						</ul>
 					</div>
 					
-					<div class="col-sm-4">
+					<div class="col-6 col-md-4">
 						<div data-toggle="collapse" data-target="#SupportMenuList">
 							<h4>Support </h4>
 						</div>
@@ -32,7 +31,7 @@
 						</ul>				
 					</div>					
 
-					<div class="col-sm-4 hidden-sm hidden-xs social">
+					<div class="col-12 col-md-4 hidden-sm hidden-xs social">
 						<h4>Contact Us</h4>
 						<p class="bigger-130"><i class="fas fa-map-marker-alt"></i> 42 (Ground Floor), Zatila Street,Tamwe Township, Yangon, Myanmar.</p>
 						<p class="bigger-130"><i class="fas fa-mobile-alt"></i> (+95.9) 765101660</p>
@@ -44,7 +43,6 @@
 							<li><a href="https://twitter.com/misl_pro" target="blank" class="btn-social btn-twitter"><i class="fab fa-twitter icon-only"></i></a></li>
 						</ul>						
 					</div>
-                </div>
             </div>
         </div>
     </div>

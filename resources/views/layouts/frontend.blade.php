@@ -19,13 +19,13 @@
     <link rel="stylesheet" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<body class="overflow-x-hidden">
+<body>
     @include('frontend.layouts.header')
-    <div class="row overflow-x-hidden home-container">
-        <div class="col-md-3" id="chat_history_container">
+    <div class="row home-container">
+        <div class="col-12 col-md-3" id="chat_history_container">
             @include('frontend.layouts.parts.sidebar')
         </div>
-        <div class="col-md-9" style="height : 500px">
+        <div class="col-12 col-md-9">
             @yield('content')
         </div>
     </div>

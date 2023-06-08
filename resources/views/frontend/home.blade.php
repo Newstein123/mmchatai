@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('title', 'Home')
 @section('content')
-<div class="me-3">
+<div class="me-0 me-md-3">
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong> {{session('message')}}. Welcome {{ session('user') ? session('user')->name : ''}}  </strong> 
@@ -31,9 +31,12 @@
                         $chats = App\Models\Chat::where('conversation_id', session('conversation_id'))->get();
                     @endphp
                     @foreach ($chats as $row)
-                        <h5 class="lh-base p-2 rounded bg-mute text-gray my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  {{$row->human}} </h5>
-                        <p class="history-answer lh-lg p-3 my-2 text-mute">
-                             <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2">
+                        <h5 class="lh-base p-2 rounded bg-mute text-gray my-2"> 
+                            <i class="fa-solid fa-user p-3 text-white bg-custom rounded-circle me-2" style="font-size: 12px"></i>  
+                            {{$row->human}} 
+                        </h5>
+                        <p class="history-answer lh-lg p-2 my-2 text-mute">
+                             <i class="fa-solid fa-exclamation px-3 py-2  text-white bg-success rounded-circle me-2" style="font-size: 12px">
                             </i> {{$row->translated_ai_text}} 
                         </p>
                     @endforeach
