@@ -13,7 +13,8 @@ $(document).ready(function(){
         const prompt = $('#prompt').val();
         $('#generate').hide();
         $('#text-loading').show();
-        $('#data').append(`<h5 class="lh-base p-3 rounded bg-light my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  ${prompt}</h5>`);
+        $('#data').append(`<h5 class="lh-base p-3 rounded bg-mute text-gray my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  ${prompt}</h5>`);
+        $('.data-container').scrollTop($('.data-container')[0].scrollHeight);
         getResponse(prompt)
           
     })
@@ -32,6 +33,7 @@ $(document).ready(function(){
                     window.location.reload();
                 }
                 $('#prompt').val('')
+                $('.data-container').scrollTop($('.data-container')[0].scrollHeight);
             },
             error : function(e, xhr) {
                 console.log(e);

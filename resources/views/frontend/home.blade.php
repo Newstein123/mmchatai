@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 @section('title', 'Home')
 @section('content')
-<div class="me-3 home-container">
+<div class="me-3 home-container shadow-lg rounded">
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong> {{session('message')}}. Welcome {{ session('user') ? session('user')->name : ''}}  </strong> 
@@ -24,7 +24,7 @@
                 </button>
             </div>
         </form>
-        <div class="data-container w-100 rounded mt-4 p-3 overflow-auto" style="height : 80vh">
+        <div class="data-container w-100 rounded mt-4 p-3 overflow-auto" style="height : 75vh">
             <div id="data">
                 @if (session('conversation_id'))
                     @php
@@ -36,7 +36,7 @@
                     @endforeach
                 @endif
             </div>
-            <div id="loading" style="display : none"> Loading ... </div>
+            <div id="loading" class="text-mute" style="display : none"> Loading ... </div>
         </div>
     </div>
 </div>

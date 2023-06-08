@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -24,17 +25,42 @@ class AuthController extends Controller
     public function register(Request $request)
     {   
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
+            'type' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $value) &&
+                        !preg_match('/^\d{10}$/', $value)
+                    ) {
+                        $fail('Enter valid email or phone number.');
+                    }
+                },
+            ],
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
             'confirm_password' => 'required| same:password',
             'terms&policy' => 'required'
         ]);
-        
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $type = $request->type;
+        $phone = "";
+        $email = "";
+
+        if(preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $type)) {
+            $email .=  $type;
+        } else {
+            $phone .= $type;
+        }
+
         $user = new Customer();
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $user->email = $email;
+        $user->phone = $phone;
+        $user->company = $request->input('company');
         $user->password = Hash::make($request->input('password'));
         $user->save();
         session()->put('user', $user);
@@ -52,12 +78,25 @@ class AuthController extends Controller
     public function login(Request $request)
     {   
     
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+        $validator = Validator::make($request->all(), [
+            'type' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $value) &&
+                        !preg_match('/^\d{10}$/', $value)
+                    ) {
+                        $fail('Enter valid email or phone number.');
+                    }
+                },
+            ],
+            'password' => 'required|min:8',
         ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         
-        $user = Customer::where('email', $request->email)->first();
+        $user = Customer::where('email', $request->type)->orWhere('phone', $request->type)->first();
         if($user) {
             $check = Hash::check($request->password, $user->password);
             if($check) {
@@ -67,7 +106,7 @@ class AuthController extends Controller
                 return redirect()->back()->with('error', 'Your password is incorrect');
             }
         } else {
-            return redirect()->back()->with('error', 'Your email is incorrect');
+            return redirect()->back()->with('error', 'Your credentials do not match our records');
         }
 
         return redirect()->back()->withErrors([

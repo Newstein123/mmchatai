@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<body class="overflow-hidden">
+<body class="overflow-x-hidden">
     @include('frontend.layouts.header')
     <div class="row overflow-x-hidden">
         <div class="col-md-3" id="chat_history_container">
@@ -29,6 +29,7 @@
             @yield('content')
         </div>
     </div>
+    @include('frontend.layouts.footer')
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>

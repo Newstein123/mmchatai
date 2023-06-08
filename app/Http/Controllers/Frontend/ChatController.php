@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Orhanerday\OpenAi\OpenAi;
-use Google\Cloud\Translate\V2\TranslateClient;
 use App\Models\Chat;
 use App\Models\ChatUser;
+use App\Models\UserOldData;
+use Illuminate\Http\Request;
+use Orhanerday\OpenAi\OpenAi;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use Google\Cloud\Translate\V2\TranslateClient;
 
 class ChatController extends Controller
 {   
@@ -22,7 +23,7 @@ class ChatController extends Controller
         }
 
         if(session('user')) { 
-            $open_ai_key = ""; // MISL Key 
+            $open_ai_key = "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"; // MISL Key 
             $open_ai = new OpenAi($open_ai_key);
             $user = ChatUser::where('user_id', session('user')->id)->first();
             if($user) {
@@ -161,6 +162,7 @@ class ChatController extends Controller
         }
     }
 
+    // Delete one conversation 
     public function chat_delete($id)
     {
         $chat = ChatUser::where('conversation_id', $id)->first();
@@ -168,6 +170,11 @@ class ChatController extends Controller
             $chat->delete();
             $conversation = Chat::where('conversation_id', $id)->get();
             foreach($conversation as $con) {
+                UserOldData::create([
+                    'user_id' => session('user')->id,
+                    'question' => $con->human,
+                ]);
+                
                 $con->delete();
             }
 
@@ -183,22 +190,27 @@ class ChatController extends Controller
         }
     }
 
+    // Delete All Conversation 
     public function clear_all()
     {
         if(session('user')) {
-            ChatUser::where('user_id', session('user')->id)->delete();
-            // delete coversation session 
-
-            session()->forget('conversation_id');
-            return response()->json([
-                'success' => true,
-                'message' => 'Chat Cleared',
-                'data' => [],
-            ]);
+            if($this->deleteUserConversations(session('user')->id)) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Chat Cleared',
+                    'data' => [],
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Something Wrong, please try again',
+                ]);
+            }
+            
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Something Wrong',
+                'message' => 'Something Wrong, user not found.',
             ]);
         }
     }
@@ -244,4 +256,29 @@ class ChatController extends Controller
         }
     }
     
+    function deleteUserConversations($user_id) {
+        $chat = ChatUser::where('user_id', $user_id)->pluck('conversation_id')->toArray();
+        if($chat) {
+            $user_old_data = Chat::whereIn('conversation_id', $chat)->get();
+
+            // insert user old data to new table 
+            foreach($user_old_data as $row) {
+                UserOldData::create([
+                    'user_id' => $user_id,
+                    'question' => $row->human,
+                ]);
+            }
+
+            // delele user old data 
+            Chat::whereIn('conversation_id', $chat)->delete();
+
+            // delete user conversation 
+            ChatUser::where('user_id', session('user')->id)->delete();
+            // delete conversation id 
+            session()->forget('conversation_id');
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

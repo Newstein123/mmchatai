@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\ChatUser;
 use Illuminate\Http\Request;
-use Spatie\FlareClient\View;
-use App\Models\User;
+use App\Models\Chat;
+use App\Models\UserOldData;
 
 class HomeController extends ChatController
 {
@@ -29,8 +29,9 @@ class HomeController extends ChatController
                 'success' => true,
             ]);
 
-        } else {
+        } else {   
             return view('frontend.home');
         }
     }
+    
 }

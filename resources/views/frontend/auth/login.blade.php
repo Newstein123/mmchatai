@@ -8,18 +8,30 @@
             </a>
             <h3 class="my-3">User Login</h3>
             @if (session('error'))
-                <div class="alert alert-danger">
+                <div class="alert alert-danger p-1">
                     <small class="fw-bold"> {{session('error')}} </small>
                 </div>
             @endif
             <form class="m-t" role="form" action="{{route('login.submit')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <input type="email" class="form-control my-3" name="email" placeholder="Username" required="">
+                    <input type="text" class="form-control my-3 {{session('error') ? 'is-invalid' : ''}} " name="type" placeholder="Email Or Phone" required="">
                 </div>
+                @error('type')
+                    <span class="text-danger">
+                        <small> {{ $message }}</small>
+                    </span>
+                @enderror
+
                 <div class="form-group">
                     <input type="password" class="form-control my-3" name="password" placeholder="Password" required="">
                 </div>
+                @error('password')
+                    <span class="text-danger">
+                        <small> {{ $message }}</small>
+                    </span>
+                @enderror
+
                 <button type="submit" class="btn bg-custom btn-sm block full-width m-b">Login</button>
                 <div class="d-flex justify-content-between align-items-center">
                     <a href="{{route('websitelogin','facebook')}}" class="btn bg-custom btn-sm text-white">

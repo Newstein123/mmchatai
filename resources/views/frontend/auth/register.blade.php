@@ -83,20 +83,48 @@
             <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
         </a>
         <h3 class="my-3">Register to MISL ChatAI</h3>
+        
         <form class="m-t" role="form" action="{{route('register.submit')}}" method="POST">
             @csrf
             <div class="form-group">
                 <input type="text" class="form-control my-3" name="name" placeholder="Name" required="">
             </div>
+            @error('name')
+                <span class="text-danger">
+                    <small> {{$message}} </small>
+                </span> 
+            @enderror
+
             <div class="form-group">
-                <input type="email" class="form-control my-3" name="email" placeholder="Email" required="">
+                <input type="text" class="form-control my-3" name="type" placeholder="Email or Phone" required="">
             </div>
+            @error('type')
+                <span class="text-danger">
+                    <small>{{$message}}</small>
+                </span>
+             @enderror
+
+            <div class="form-group">
+                <input type="text" class="form-control my-3" name="company" placeholder="Company Name (Optional)">
+            </div>
+
             <div class="form-group">
                 <input type="password" class="form-control my-3" name="password" placeholder="Password" required="">
             </div>
+            @error('password')
+                <span class="text-danger">
+                    <small> {{$message}} </small>
+                </span> 
+            @enderror
+
             <div class="form-group">
                 <input type="password" class="form-control my-3" name="confirm_password" placeholder="Confirm Password" required="">
             </div>
+            @error('confirm_password')
+                <span class="text-danger">
+                    <small> {{$message}} </small>
+                </span> 
+            @enderror
             <div class="form-group">
                     <div class="checkbox i-checks"><label> <input type="checkbox" name="terms&policy" required><i></i> Agree the terms and policy </label></div>
             </div>
