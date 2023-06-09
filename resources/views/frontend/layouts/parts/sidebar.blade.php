@@ -1,5 +1,5 @@
-    <div class="overflow-auto p-0 p-md-2" id="chat_history">
-        <ul class="list-group chat_history_list mt-2">
+    <div class="overflow-auto p-2 mt-3" id="chat_history">
+        <ul class="list-group chat_history_list">
             <li class="list-group-item">
                 <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark fw-bold fs-6" id="new_conversation"> <i class="fa-solid fa-plus me-2"></i> New Conversation </button>  
             </li>
@@ -56,7 +56,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit Conversation Name </h1>
+          <small class="modal-title fw-bold" id="exampleModalLabel"> Edit Conversation Name </small>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -64,8 +64,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="update_name"> Save </button>
+          <button type="button" class="btn bg-custom" id="update_name"> Save </button>
         </div>
       </div>
     </div>
-  </div>
+</div>

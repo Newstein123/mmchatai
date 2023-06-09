@@ -3,18 +3,18 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2> User </h2>
+        <h2> Admin </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="index.html">Home</a>
             </li>
             <li class="breadcrumb-item active">
-                <a> User </a>
+                <a> Admin </a>
             </li>
         </ol>
     </div>
     <div class="col-md-2 mt-4">
-        <a href="{{ route('userCreate') }}" class="btn btn-secondary btn-sm"> <i class="fa fa-plus mr-2"></i> Add User </a>
+        <a href="{{ route('userCreate') }}" class="btn btn-secondary btn-sm"> <i class="fa fa-plus mr-2"></i> Add Admin </a>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -23,7 +23,7 @@
         <div class="ibox ">
             <div class="ibox-title">
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                    <h5> User Table </h5>
+                    <h5> Admin Table </h5>
                 </div>
             </div>
             <div class="ibox-content">
@@ -59,36 +59,22 @@
                                     <a href="{{ route('userView', $user->id)}}" class="btn btn-secondary btn-sm"> View Detail </a> 
                                 </div>
                             @endcan
-                            @can('edit users')
-                                <div class="mr-2">
-                                    <a href="{{route('userEdit', $user->id)}}" class="btn btn-primary btn-sm" ><i class="fa fa-edit" aria-hidden="true"
-                                    data-toggle="tooltip" data-placement="top" title="ပြင်ဆင်မည်"     
-                                    ></i></a>
-                                </div>
-                            @endcan
-                            @can('ban users')
-                                @if ($user->status == 0)
+
+                            @if (!$user->hasRole('super-admin'))
+                                @can('edit users')
                                     <div class="mr-2">
-                                        <button class="btn btn-info btn-sm" onclick="changeState('{{route('changeUserState')}}', {{$user->id}})"> <i class="fa fa-ban" aria-hidden="true" 
-                                        data-toggle="tooltip" data-placement="top" title="ban" 
-                                        ></i>
-                                        </button>
+                                        <a href="{{route('userEdit', $user->id)}}" class="btn bg-custom btn-sm" ><i class="fa fa-edit" aria-hidden="true"
+                                        data-toggle="tooltip" data-placement="top" title="ပြင်ဆင်မည်"     
+                                        ></i></a>
                                     </div>
-                                @else 
+                                @endcan
+                                @can('delete users')
                                     <div class="mr-2">
-                                        <button class="btn btn-warning btn-sm" onclick="changeState('{{route('changeUserState')}}', {{$user->id}})"> <i class="fa fa-repeat" aria-hidden="true"
-                                        data-toggle="tooltip" data-placement="top" title="redo"     
-                                        ></i> </i>
-                                        </button>
+                                        <button class="btn btn-danger btn-sm" onclick="deleteForm('{{route('userDelete')}}', {{$user->id}})" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
+                                            ></i></button>
                                     </div>
-                                @endif
-                            @endcan
-                            @can('delete users')
-                                <div class="mr-2">
-                                    <button class="btn btn-danger btn-sm" onclick="deleteForm('{{route('userDelete')}}', {{$user->id}})" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
-                                        ></i></button>
-                                </div>
-                            @endcan
+                                @endcan
+                            @endif
                             </div>
                         </td>
                     </tr>

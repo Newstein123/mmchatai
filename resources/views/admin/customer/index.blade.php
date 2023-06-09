@@ -13,9 +13,6 @@
             </li>
         </ol>
     </div>
-    <div class="col-md-2 mt-4">
-        <a href="{{ route('customerCreate') }}" class="btn btn-secondary btn-sm"> <i class="fa fa-plus mr-2"></i> Add Customer </a>
-    </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
@@ -61,7 +58,7 @@
                             @endcan
                             @can('edit users')
                                 <div class="mr-2">
-                                    <a href="{{route('customerEdit', $user->id)}}" class="btn btn-primary btn-sm" ><i class="fa fa-edit" aria-hidden="true"
+                                    <a href="{{route('customerEdit', $user->id)}}" class="btn bg-custom btn-sm" ><i class="fa fa-edit" aria-hidden="true"
                                     data-toggle="tooltip" data-placement="top" title="ပြင်ဆင်မည်"     
                                     ></i></a>
                                 </div>

@@ -13,7 +13,17 @@ $(document).ready(function(){
         const prompt = $('#prompt').val();
         $('#generate').hide();
         $('#text-loading').show();
-        $('#data').append(`<h5 class="lh-base p-3 rounded bg-mute text-gray my-2"> <i class="fa-solid fa-user p-2 text-white bg-custom rounded-circle me-2"></i>  ${prompt}</h5>`);
+        const html = `
+        <div class="d-flex my-2 bg-mute p-2 align-items-center">
+            <div class="me-2">
+                <i class="fa-solid fa-user bg-custom p-3 text-white rounded-circle me-2" style="font-size: 12px"></i>   
+            </div>
+            <div class="text-white">
+                <h5> ${prompt} </h5>
+            </div>
+        </div>
+        `
+        $('#data').append(html);
         $('.data-container').scrollTop($('.data-container')[0].scrollHeight);
         getResponse(prompt)
           
@@ -52,7 +62,14 @@ $(document).ready(function(){
         } else {
             if(response.success) {                
                 res = `
-                <p class="history-answer lh-lg p-3 my-2 text-mute"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.data} </p>
+                <div class="d-flex my-2 p-2">
+                            <div class="me-2">
+                                <i class="fa-solid fa-reply p-3  text-white bg-success rounded-circle me-2" style="font-size: 12px"> </i>
+                            </div>
+                            <div class="text-white">
+                                <p> ${response.data}</p>
+                            </div>
+                </div>
                 `
             } else {
                 res = `

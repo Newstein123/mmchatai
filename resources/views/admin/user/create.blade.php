@@ -52,7 +52,7 @@
                         <label for="role" class="font-weight-bold"> Assign Role  </label>
                         <select name="role" class="form-control">
                             @foreach ($roles as $role)
-                                <option value="{{$role->id}}" class="text-uppercase"> 
+                                <option  value="{{$role->id}}" class="text-uppercase"> 
                                     <span > {{$role->name}} </span> 
                                 </option>
                             @endforeach

@@ -32,7 +32,7 @@ class GeneralSettingSeeder extends Seeder
         ]);
         GeneralSetting::create([
             'name' => 'openai_key',
-            'value' => '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',
+            'value' => '', //Delete it when you push to git hub
             'type' => 'string',
         ]);
         GeneralSetting::create([

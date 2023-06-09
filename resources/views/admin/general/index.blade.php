@@ -50,7 +50,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             @can('edit general setting')
                                 <div>
-                                    <a href="{{route('generalEdit', $general->id)}}" class="btn btn-primary btn-sm" ><i class="fa fa-edit" aria-hidden="true"
+                                    <a href="{{route('generalEdit', $general->id)}}" class="btn bg-custom btn-sm" ><i class="fa fa-edit" aria-hidden="true"
                                     data-toggle="tooltip" data-placement="top" title="ပြင်ဆင်မည်"     
                                     ></i></a>
                                 </div>

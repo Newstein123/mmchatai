@@ -3,13 +3,13 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2> User  </h2>
+        <h2> Customer  </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="index.html">Home</a>
             </li>
             <li class="breadcrumb-item">
-                <a> User </a>
+                <a> Customer </a>
             </li>
             <li class="breadcrumb-item active">
                 <a> Edit </a>
@@ -17,7 +17,7 @@
         </ol>
     </div>
     <div class="col-md-2 mt-4">
-        <a href="{{ route('userIndex') }}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i> Go Back </a>
+        <a href="{{ route('customerIndex') }}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i> Go Back </a>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -26,7 +26,7 @@
     <div class="ibox ">
         <div class="ibox-title">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <h5> Edit User </h5>
+                <h5> Edit Customer </h5>
             </div>
         </div>
         <div class="ibox-content">

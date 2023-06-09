@@ -1,8 +1,8 @@
 <div class="footer">
     <div class="float-right">
-        10GB of <strong>250GB</strong> Free.
+        Developed by <strong> MISL </strong>
     </div>
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2018
+        <strong>Copyright</strong> {{generalSetting('Website Name')}} &copy; {{date('Y')}}
     </div>
 </div>

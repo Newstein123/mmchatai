@@ -109,7 +109,7 @@
             </div>
 
             <div class="form-group">
-                <input type="password" class="form-control my-3" name="password" placeholder="Password" required="">
+                <input type="password" class="form-control my-3" name="password" placeholder="Password (Needs at least 8 characters)" required="">
             </div>
             @error('password')
                 <span class="text-danger">

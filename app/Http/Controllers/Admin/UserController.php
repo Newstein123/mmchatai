@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\ResponseController;
+use App\Models\Customer;
 
 class UserController extends ResponseController
-{
+{   
     public function index()
     {   
         $users = User::whereHas('roles', function ($query) {
@@ -26,7 +27,7 @@ class UserController extends ResponseController
 
     public function create()
     {   
-        $roles = Role::all();
+        $roles = Role::where('name', '!=', 'super-admin')->get();
         return view('admin.user.create', compact('roles'));
     }
 
@@ -78,7 +79,7 @@ class UserController extends ResponseController
 
     public function change_state(Request $request)
     {
-        $user = User::findOrFail($request->id);
+        $user = Customer::findOrFail($request->id);
         if($user) {
             if($user->status == 0) {
                 $user->status = 1;

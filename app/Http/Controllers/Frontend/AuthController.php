@@ -30,7 +30,7 @@ class AuthController extends Controller
                 'required',
                 function ($attribute, $value, $fail) {
                     if (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $value) &&
-                        !preg_match('/^\d{10}$/', $value)
+                        !preg_match('/^09/', $value)
                     ) {
                         $fail('Enter valid email or phone number.');
                     }
@@ -58,8 +58,8 @@ class AuthController extends Controller
 
         $user = new Customer();
         $user->name = $request->input('name');
-        $user->email = $email;
-        $user->phone = $phone;
+        $user->email = $email != "" ? $email :  NULL;
+        $user->phone = $phone ?? NULL;
         $user->company = $request->input('company');
         $user->password = Hash::make($request->input('password'));
         $user->save();
@@ -83,7 +83,7 @@ class AuthController extends Controller
                 'required',
                 function ($attribute, $value, $fail) {
                     if (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $value) &&
-                        !preg_match('/^\d{10}$/', $value)
+                        !preg_match('/^09/', $value)
                     ) {
                         $fail('Enter valid email or phone number.');
                     }
@@ -98,6 +98,9 @@ class AuthController extends Controller
         
         $user = Customer::where('email', $request->type)->orWhere('phone', $request->type)->first();
         if($user) {
+            if($user->status == 1) {
+                return redirect()->back()->with('error', 'You have been banned');
+            }
             $check = Hash::check($request->password, $user->password);
             if($check) {
                 session(['user' => $user]);
