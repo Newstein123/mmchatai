@@ -1,5 +1,5 @@
     <div class="overflow-auto p-0 p-md-2" id="chat_history">
-        <ul class="list-group chat_history_list">
+        <ul class="list-group chat_history_list mt-2">
             <li class="list-group-item">
                 <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark fw-bold fs-6" id="new_conversation"> <i class="fa-solid fa-plus me-2"></i> New Conversation </button>  
             </li>

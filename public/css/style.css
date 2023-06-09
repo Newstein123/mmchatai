@@ -86,6 +86,11 @@ body {
     background-color: rgba(240, 242, 240, 0.8);
 }
 
+#chat_history {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
 
 #chat_history {
     height: 80vh;

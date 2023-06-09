@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\TermsPolicyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,11 @@ Route::post('/chat/clear', [ChatController::class, 'clear_all']);
 
 Route::get('login/{website}', [AuthController::class, 'redirectToProvider'])->name('websitelogin');
 Route::get('login/{website}/callback', [AuthController::class, 'handleProviderCallback']);
+
+// terms and policy 
+
+Route::get('/terms-of-service', [TermsPolicyController::class, 'terms_of_service'])->name('termsOfService');
+Route::get('/privacy-policy', [TermsPolicyController::class, 'privacy_policy'])->name('privacyPolicy');
 
 // Backend 
 

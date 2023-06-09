@@ -24,7 +24,7 @@ class ChatController extends Controller
         }
 
         if(session('user')) { 
-            $open_ai_key = ""; // MISL Key 
+            $open_ai_key = generalSetting('openai_key'); // MISL Key 
             $open_ai = new OpenAi($open_ai_key);
             $user = UserChat::where('user_id', session('user')->id)->first();
             if($user) {
@@ -42,7 +42,7 @@ class ChatController extends Controller
                 'model' => 'gpt-3.5-turbo',
                 'messages' => $messages,
                 'temperature' => 1.0,
-                'max_tokens' => 300,
+                'max_tokens' => $int = (int)generalSetting('max_tokens'),
                 'frequency_penalty' => 0,
                 'presence_penalty' => 0,
             ];
@@ -54,7 +54,7 @@ class ChatController extends Controller
                 ob_flush();
                 flush();
                 return strlen($data);
-            }); 
+            });
             $response = json_decode($complete, true);
             if (isset($response['choices'][0]['message']['content'])) {
                 header('Content-type: text/event-stream');

@@ -31,12 +31,18 @@
                         $chats = App\Models\Chat::where('conversation_id', session('conversation_id'))->get();
                     @endphp
                     @foreach ($chats as $row)
-                        <h5 class="lh-base p-2 rounded bg-mute text-gray my-2"> 
-                            <i class="fa-solid fa-user p-3 text-white bg-custom rounded-circle me-2" style="font-size: 12px"></i>  
+                        <div class="d-flex">
+                            <div class="me-2"><i class="fa-solid fa-user bg-custom p-3 text-white rounded-circle" style="font-size: 12px"></i> </div>
+                            <div class="text-white">
+                                <p>{{$row->translated_ai_text}}</p>
+                            </div>
+                        </div>
+                        <h5 class="lh-base text-white my-2 p-3 bg-mute"> 
+                            <i class="fa-solid fa-user bg-custom p-3 text-white rounded-circle me-2" style="font-size: 12px"></i>  
                             {{$row->human}} 
                         </h5>
-                        <p class="history-answer lh-lg p-2 my-2 text-mute">
-                             <i class="fa-solid fa-exclamation px-3 py-2  text-white bg-success rounded-circle me-2" style="font-size: 12px">
+                        <p class="history-answer my-2 p-3 text-white">
+                             <i class="fa-solid fa-reply p-3  text-white bg-success rounded-circle me-2" style="font-size: 12px">
                             </i> {{$row->translated_ai_text}} 
                         </p>
                     @endforeach

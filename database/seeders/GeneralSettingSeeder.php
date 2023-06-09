@@ -30,5 +30,15 @@ class GeneralSettingSeeder extends Seeder
             'value' => 'MMChatAI',
             'type' => 'string',
         ]);
+        GeneralSetting::create([
+            'name' => 'openai_key',
+            'value' => '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',
+            'type' => 'string',
+        ]);
+        GeneralSetting::create([
+            'name' => 'max_tokens',
+            'value' => '300',
+            'type' => 'integer',
+        ]);
     }
 }

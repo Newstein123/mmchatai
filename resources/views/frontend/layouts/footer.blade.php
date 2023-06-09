@@ -50,8 +50,8 @@
         <div class="container-fluid">
             <div class="">
                 <ul class="d-flex list-unstyled justify-content-center">
-                    <li><a href="/terms-of-services.php" class="text-mute me-2 text-decoration-none">Terms of Services</a></li>
-                    <li><a href="/privacy-policy.php" class="text-mute text-decoration-none">Privacy Policy</a></li>
+                    <li><a href="{{route('termsOfService')}}" class="text-mute me-2 text-decoration-none">Terms of Services</a></li>
+                    <li><a href="{{route('privacyPolicy')}}" class="text-mute text-decoration-none">Privacy Policy</a></li>
                  </ul>
             </div>
         </div>
