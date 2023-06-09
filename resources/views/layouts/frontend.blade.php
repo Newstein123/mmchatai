@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
 </head>
 <body>
     @include('frontend.layouts.header')
@@ -31,8 +32,9 @@
     </div>
     @include('frontend.layouts.footer')
 <script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+{{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
 <script src="{{asset('js/script.js')}}"></script>
 </body>

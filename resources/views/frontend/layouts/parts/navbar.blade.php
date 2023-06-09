@@ -4,8 +4,16 @@
     <a class="navbar-brand" href="/">
       <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-25">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <div class="mx-2">
+        <button type="button" id="toggle" class="bg-custom btn" style="display : none">
+          <i class="fa-brands fa-rocketchat"></i>
+        </button>
+        <button type="button" id="close" class="bg-danger btn text-white" style="display : none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <button class="navbar-toggler bg-custom btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">

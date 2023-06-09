@@ -27,7 +27,8 @@ $(document).ready(function(){
             beforeSend :  function(){
                 $('#loading').show();
             },
-            success: function(response) {  
+            success: function(response) { 
+                console.log(response) 
                 addResult(response) 
                 if(response.chat_count) {
                     window.location.reload();
@@ -138,6 +139,7 @@ $(document).ready(function(){
             method : 'GET',
             url : "/",
             success : function(res) {
+                console.log(res)
                 if (res.success) {
                     window.location.href = '/';
                 }                

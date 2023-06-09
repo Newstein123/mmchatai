@@ -15,11 +15,6 @@ class HomeController extends ChatController
     {   
         if ($request->ajax()) {
             if(session('conversation_id')) {
-                $chat = UserChat::find(session('conversation_id'));
-                foreach($chat->history_data as $data) {
-                    return $data;
-                }
-                
                 session()->forget('conversation_id');
             }
 
@@ -33,6 +28,7 @@ class HomeController extends ChatController
 
             return response()->json([
                 'success' => true,
+                'message' => 'Conversation created'
             ]);
 
         } else {   

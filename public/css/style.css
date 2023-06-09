@@ -216,6 +216,14 @@ body {
     .data-container {
         height: 100vh;
     }
+
+    .navbar-collapse {
+        height: 100vh;
+    }
+
+    .navbar-toggler {
+        padding: 5px 10px !important;
+    }
 }
 
 /* scroll bar  */
