@@ -31,6 +31,7 @@
                 <th> Id </th>
                 <th> Name </th>
                 <th> Email/Phone </th>
+                <th> Login Type </th>
                 <th> Total Tokens </th>
                 <th> Date </th>
                 <th> Action </th>
@@ -44,7 +45,8 @@
                     <tr class="gradeU">
                         <td> {{ $id++ }} </td>
                         <td> {{ $user->name }}</td>
-                        <td> {{$user->email}}</td>
+                        <td> {{$user->email ?? $user->phone}}</td>
+                        <td> {{$user->login_type}} </td>
                         <td> 
                             {{getUserTokens($user->id, 'total_tokens')}}
                         </td>

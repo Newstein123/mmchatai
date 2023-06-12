@@ -11,7 +11,7 @@
                 <h5> Users  </h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins"> {{ $users_count}} </h1>
+                <h1 class="no-margins"> {{ number_format($users_count, 0, '.', ',')}} </h1>
                 <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
                 <small>Total Users </small>
             </div>
@@ -26,7 +26,7 @@
                 <h5> Tokens Used </h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins"> {{$tokens}} </h1>
+                <h1 class="no-margins"> {{number_format($tokens, 0, '.', ',')}} </h1>
                 <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
                 <small> Total Tokens </small>
             </div>
@@ -41,7 +41,7 @@
                 <h5> Tokens Used </h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins"> {{$daily_tokens}} </h1>
+                <h1 class="no-margins"> {{number_format($daily_tokens, 0, '.', ',')}} </h1>
                 <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
                 <small> Total Tokens </small>
             </div>
@@ -56,7 +56,7 @@
                 <h5> Total Character Used </h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins"> {{$tokens * 4}} </h1>
+                <h1 class="no-margins"> {{number_format($tokens*4, 0, '.', ',')}} </h1>
                 <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
                 <small> Total Characters </small>
             </div>

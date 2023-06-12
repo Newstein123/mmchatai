@@ -38,8 +38,12 @@
                             <td> {{ $user->name }}</td>
                         </tr>
                         <tr>
-                            <td> Email </td>
-                            <td> {{ $user->email }}</td>
+                            <td> Email/Phone </td>
+                            <td> {{ $user->email ?? $user->phone }}</td>
+                        </tr>
+                        <tr>
+                            <td> Company Name </td>
+                            <td> {{ $user->company }}</td>
                         </tr>
                         <tr>
                             <td> Question </td>

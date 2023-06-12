@@ -59,7 +59,7 @@
 
     <div class="footer-copyright">
         <div class="container">
-           <p>Copyright &copy; 2023 Myanmar ICT Solutions Limited. <span class="hidden-xs">All Rights Reserved.</span></p>
+           <p>Copyright &copy; {{date('Y')}} {{generalSetting('Website Name')}} <span class="hidden-xs">All Rights Reserved.</span></p>
         </div>
     </div>
 </div>
