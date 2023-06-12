@@ -204,6 +204,12 @@ body {
     text-decoration: none;
 }
 
+/* modal  */
+
+.modal {
+    top : 30% !important;
+}
+
 
 @media(max-width : 992px) {
     #chat_history_container {
@@ -241,8 +247,8 @@ body {
     }
 
     .modal-backdrop {
-        background-color: transparent !important;
-        z-index: 0 !important;
+        /* background-color: transparent !important; */
+        z-index: 20 !important;
     }
 
     .home-container {

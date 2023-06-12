@@ -1,6 +1,14 @@
 @extends('layouts.frontend')
 @section('title', 'Home')
 @section('content')
+
+{{--show login form --}}
+@if (!session('user'))
+    @section('script')
+        @include('frontend.layouts.parts.modal')
+    @endsection
+@endif
+
 <div class="me-0 me-md-3">
     @if (session('message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">

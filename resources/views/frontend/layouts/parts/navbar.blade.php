@@ -65,19 +65,6 @@
         <li class="nav-item">
           <a class="nav-link" href="https://myanmarictsolutions.pro/contact.php"> Contact Us </a>
         </li>
-        @if (!session('user'))
-          <li class="nav-item">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">               
-                <i class="fa-solid fa-user text-custom"></i>
-              </a>            
-              <ul class="dropdown-menu dropdown-menu-light">
-                <li><a class="dropdown-item" href="{{route('login')}}">Login </a></li>
-                <li><a class="dropdown-item" href="{{route('register')}}"> Register </a></li>
-              </ul>
-            </li>
-          </li>
-          @endif
       </ul>
     </div>
   </div>
