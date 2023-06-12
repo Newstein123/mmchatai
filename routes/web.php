@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\TermsPolicyController;
+use App\Http\Controllers\Admin\AdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,5 +124,8 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
          // change State 
         Route::post('/changeUserState', [UserController::class, 'change_state'])->name('changeUserState');
     });
+
+        // Ads 
+        Route::get('/adsPage',[AdController::class,'index'])->name('adsPage');
 
 });
