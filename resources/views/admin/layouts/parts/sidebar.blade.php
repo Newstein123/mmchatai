@@ -48,7 +48,7 @@
             @endcan
             {{-- ads link --}}
             <li>
-                <a href="{{ route('adsPage') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Advertise</span></a>
+                <a href="{{ route('ads#Page') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Advertise</span></a>
             </li>
             @can('view setting')
                 <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}">

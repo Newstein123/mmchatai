@@ -24,7 +24,7 @@ class AdController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.Ads.create');
     }
 
     /**
@@ -44,9 +44,9 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('admin.Ads.edit');
     }
 
     /**

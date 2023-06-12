@@ -30,7 +30,7 @@ use App\Http\Controllers\Admin\AdController;
 
 // Frontend 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');    
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Auth 
 
@@ -85,7 +85,7 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
 
     // Customers 
 
-    Route::prefix('customer')->group(function() {
+    Route::prefix('customer')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('customerIndex');
         Route::get('/create', [CustomerController::class, 'create'])->name('customerCreate');
         Route::post('/store', [CustomerController::class, 'store'])->name('customerStore');
@@ -97,12 +97,12 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
 
     // Question 
 
-    Route::prefix('question')->group(function() {
+    Route::prefix('question')->group(function () {
         Route::get('/history-data', [QuestionController::class, 'history_data'])->name('historyData');
         Route::get('/old-data', [QuestionController::class, 'old_data'])->name('oldData');
     });
 
-    Route::prefix('setting')->group(function() {
+    Route::prefix('setting')->group(function () {
 
         // Permissions 
         Route::get('/permission', [PermissionController::class, 'get_all_roles'])->name('permissionIndex');
@@ -115,17 +115,18 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::get('/general/edit/{id}', [GeneralSettingController::class, 'edit'])->name('generalEdit');
         Route::put('/general/edit/{id}', [GeneralSettingController::class, 'update'])->name('generalUpdate');
 
-         // Account 
+        // Account 
 
-         Route::get('/account/{id}', [AccountController::class , 'show'])->name('accountShow');
-         Route::get('/account/edit/{id}', [AccountController::class , 'edit'])->name('accountEdit');
-         Route::put('/account/edit/{id}', [AccountController::class , 'update'])->name('accountUpdate');
+        Route::get('/account/{id}', [AccountController::class, 'show'])->name('accountShow');
+        Route::get('/account/edit/{id}', [AccountController::class, 'edit'])->name('accountEdit');
+        Route::put('/account/edit/{id}', [AccountController::class, 'update'])->name('accountUpdate');
 
-         // change State 
+        // change State 
         Route::post('/changeUserState', [UserController::class, 'change_state'])->name('changeUserState');
     });
 
-        // Ads 
-        Route::get('/adsPage',[AdController::class,'index'])->name('adsPage');
-
+    // Advertisement (tyt)
+    Route::get('/adsPage', [AdController::class, 'index'])->name('ads#Page');
+    Route::get('/adsCreatePage',[AdController::class,'create'])->name('ads#CreatePage');
+    Route::get('/adsEditPage',[AdController::class,'show'])->name('ads#EditPage');
 });
