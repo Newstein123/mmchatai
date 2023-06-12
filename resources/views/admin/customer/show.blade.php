@@ -42,6 +42,10 @@
                             <td> {{ $user->email ?? $user->phone }}</td>
                         </tr>
                         <tr>
+                            <td> Login Type </td>
+                            <td> {{ $user->login_type }}</td>
+                        </tr>
+                        <tr>
                             <td> Company Name </td>
                             <td> {{ $user->company }}</td>
                         </tr>
