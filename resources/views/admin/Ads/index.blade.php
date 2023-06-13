@@ -51,7 +51,11 @@
                         <td>{{$ad->name}}</td>
                         <td>{{$ad->description}}</td>
                         <td>
-                            <img src="" alt="">
+                            @if ($ad->image == null)
+                                <img src="{{ asset('img/ads/default-img.jpg') }}" style="width:150px;height:100px;" alt="">
+                            @else
+                            <img src="{{ asset('storage/ads/'.$ad->image) }}" class="img-thumbnail" style="width:150px;height:100px;" alt="">
+                            @endif
                         </td>
                         <td width='20%'>
                             <div class="switch">
@@ -69,15 +73,17 @@
                             <div class="d-flex align-items-center">
                             @can('edit users')
                                 <div class="mr-2">
-                                    <a href="{{route('ads#EditPage')}}" class="btn bg-custom btn-sm" ><i class="fa fa-edit" aria-hidden="true"
+                                    <a href="{{route('ads#EditPage',$ad->id)}}" class="btn bg-custom btn-sm" ><i class="fa fa-edit" aria-hidden="true"
                                     data-toggle="tooltip" data-placement="top" title="ပြင်ဆင်မည်"     
                                     ></i></a>
                                 </div>
                             @endcan
                             @can('delete users')
                                 <div class="mr-2">
-                                    <a href={{route('ads#delete',$ad->id)}} class="btn btn-danger btn-sm" onclick="deleteForm()" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
+                                    <a href="{{route('ads#delete',$ad->id)}}" class="btn bg-danger btn-sm" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
                                         ></i></a>
+                                    {{-- <button class="btn btn-danger btn-sm" onclick="deleteForm('{{route('ads#delete',$ad->id)}}', {{$ad->id}})" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
+                                        ></i></button> --}}
                                 </div>
                             @endcan
                             </div>

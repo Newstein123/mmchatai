@@ -3,7 +3,7 @@
 @section('content')
 
 <!--Start Form -->
-    <form method="post" action="" enctype="multipart/form-data">
+    <form method="post" action="{{ route('ads#edit',$ads->id) }}" enctype="multipart/form-data">
         @csrf
         <!-- Page Heading -->
         <div class="row wrapper border-bottom white-bg page-heading">
@@ -39,7 +39,7 @@
                     <div class="ibox-content">
                         <div class="form-group  row">
                             <div class="col-sm-12">
-                                <input type="text" name="name"  class="form-control" @error('name') is-invalid @enderror>
+                                <input type="text" name="name"  class="form-control" @error('name') is-invalid @enderror value="{{ old('name',$ads->name) }}">
                                 @error('name')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror 
@@ -50,13 +50,13 @@
                 <!--Position-->
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>position</h5>
+                        <h5>description</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="form-group  row">
                             <div class="col-sm-12">
-                                <input type="text" name="position"  class="form-control" @error('position') is-invalid @enderror>
-                                @error('position')
+                                <input type="text" name="description"  class="form-control" @error('description') is-invalid @enderror value="{{ old('description',$ads->description) }}">
+                                @error('description')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror 
                             </div>
@@ -69,7 +69,7 @@
                         <h5>image</h5>
                     </div>
                     <div class="ibox-content">
-                        <img src="" class="img-fluid w-25 mb-2" id="preview_image_before_upload">
+                        <img src="{{asset('storage/ads/'. $ads->image)}}" class="img-fluid w-25 mb-2" id="preview_image_before_upload">
                         <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"  upload="image">
                         @error('image')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>

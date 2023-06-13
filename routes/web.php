@@ -128,7 +128,8 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
     // Advertisement (tyt)
     Route::get('/adsPage', [AdController::class, 'index'])->name('ads#Page');
     Route::get('/adsCreatePage',[AdController::class,'create'])->name('ads#CreatePage');
-    Route::get('/adsEditPage',[AdController::class,'show'])->name('ads#EditPage');
+    Route::get('/adsEditPage/{id}',[AdController::class,'show'])->name('ads#EditPage');
     Route::post('/create',[AdController::class,'store'])->name('ads#store');
+    Route::post('/adsEdit/{id}',[AdController::class,'update'])->name('ads#edit');
     Route::get('/adsDelete/{id}',[AdController::class,'destroy'])->name('ads#delete');
 });
