@@ -28,7 +28,6 @@ use App\Models\UserChat;
             $img->fit(400,300, function ($constraint) {
 				$constraint->aspectRatio();
 			})->save($path.'/'.$filename);
-        // Storing Original Imgae 
       $image->move(public_path('img/original'), $filename);
       return $filename;
     }

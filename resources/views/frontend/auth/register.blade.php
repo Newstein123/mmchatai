@@ -126,7 +126,12 @@
                 </span> 
             @enderror
             <div class="form-group">
-                    <div class="checkbox i-checks"><label> <input type="checkbox" name="terms&policy" required><i></i> Agree the terms and policy </label></div>
+                    <div class="checkbox i-checks">
+                    <label> <input type="checkbox" name="terms&policy" required>
+                        Agree the <a href="{{route('termsOfService')}}">Terms</a> and 
+                        <a href="{{route('privacyPolicy')}}">Policy</a>
+                    </label>
+                    </div>
             </div>
             <button type="submit" class="btn bg-custom block full-width m-b my-3">Register</button>
 

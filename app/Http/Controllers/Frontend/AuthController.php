@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\User;
 use App\Models\Customer;
+use App\Mail\VerifyEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 
@@ -56,6 +56,8 @@ class AuthController extends Controller
             $phone .= $type;
         }
 
+        
+
         $user = new Customer();
         $user->name = $request->input('name');
         $user->email = $email != "" ? $email :  NULL;
@@ -63,6 +65,14 @@ class AuthController extends Controller
         $user->company = $request->input('company');
         $user->password = Hash::make($request->input('password'));
         $user->save();
+
+        if($email != "") {
+            Mail::to($user->email)->send(new VerifyEmail($user));
+            return redirect('/login')->with('message', 'Click <a href="https://gmail.com"> here </a>to verify you email');
+        } else {
+            return redirect('/login')->with('message', 'Please verify your phone number');
+        }
+        
         session()->put('user', $user);
         return redirect('/');
     }
@@ -77,7 +87,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {   
-    
+        
         $validator = Validator::make($request->all(), [
             'type' => [
                 'required',
@@ -98,6 +108,9 @@ class AuthController extends Controller
         
         $user = Customer::where('email', $request->type)->orWhere('phone', $request->type)->first();
         if($user) {
+            if($user->email_verified_at == "") {
+                return redirect()->back()->with('error', 'Please verify your email address');
+            }
             if($user->status == 1) {
                 return redirect()->back()->with('error', 'You have been banned');
             }

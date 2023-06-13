@@ -7,11 +7,7 @@
                 <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
             </a>
             <h3 class="my-3">User Login</h3>
-            @if (session('error'))
-                <div class="alert alert-danger p-1">
-                    <small class="fw-bold"> {{session('error')}} </small>
-                </div>
-            @endif
+            @include('frontend.session.message')
             <form class="m-t" role="form" action="{{route('login.submit')}}" method="POST">
                 @csrf
                 <div class="form-group">

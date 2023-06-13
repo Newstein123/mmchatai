@@ -1,19 +1,20 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\TermsPolicyController;
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\ChatController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
-use App\Http\Controllers\Admin\UserController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AccountController;
-use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\QuestionController;
-use App\Http\Controllers\TermsPolicyController;
+use App\Http\Controllers\Frontend\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,11 @@ Route::post('admin/login', [LoginController::class, 'login']);
 // Custom Register Route
 Route::get('admin/register', [RegisterController::class, 'showRegistrationForm'])->name('adminRegister');
 Route::post('admin/register', [RegisterController::class, 'register']);
+
+// Verified Email
+
+Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
+
 
 // Admin Middleware 
 
