@@ -1,7 +1,10 @@
 <div class="block-footer">
+	<div class="pt-2">
+		@include('frontend.layouts.parts.ads') 
+	</div>
     <div class="footer-widgets">
         <div class="container">
-            <div class="row">             
+            <div class="row">       
 					<div class="col-6 col-md-4">
 						<div data-toggle="collapse" data-target="#ServicesMenuList">
 							<h4>Our Services </h4>

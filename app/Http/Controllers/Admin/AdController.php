@@ -24,7 +24,7 @@ class AdController extends Controller
 
     public function store(Request $request)
     {
-        $this->adsDatavalidate($request,'create');
+        $this->adsDatavalidate($request, 'create');
         $data = $this->getData($request);
         // Start image create
         if ($request->hasFile('image')) {
@@ -32,7 +32,8 @@ class AdController extends Controller
             $request->file('image')->storeAs('public/ads', $fileName);
             $data['image'] = $fileName;
         }
-         // end image create
+        // end image create
+
         Ad::create($data);
         return redirect()->route('ads#Page')->with(['created', 'Ads Created Successfully']);
     }
@@ -51,7 +52,7 @@ class AdController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->adsDatavalidate($request,'update');
+        $this->adsDatavalidate($request, 'update');
         $data = $this->getData($request);
 
         // Start image update
@@ -79,6 +80,20 @@ class AdController extends Controller
         return redirect()->route('ads#Page')->with(['deleted', 'Ads Deleted Successfully']);
     }
 
+    // status
+    public function updateStatus(Request $request, $id)
+    {
+    $exampleModel = Ad::find($id);
+    
+    // Update the status based on your business logic
+    $newStatus = $request->input('status');
+    $exampleModel->status = $newStatus;
+    
+    // Save the changes
+    $exampleModel->save();
+    return redirect()->route('ads#Page');
+    }
+
     // ads data
     private function getData($request)
     {
@@ -91,12 +106,11 @@ class AdController extends Controller
     }
 
     // ads validate
-    private function adsDatavalidate($request,$action)
+    private function adsDatavalidate($request, $action)
     {
         $adsDataValidate = [
-            'name' => 'require',
+            'name' => 'required',
             'description' => 'required',
-            // 'image' => 'mimes:mimes:jpg,png,jpeg,webp|file'
         ];
         $validationRule['image'] = $action == 'create' ? 'required|mimes:jpg,png,jpeg,webp|file' : "mimes:jpg,png,jpeg,webp|file";
         Validator::make($request->all(), $adsDataValidate);

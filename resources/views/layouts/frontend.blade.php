@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/splide.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sweetalert.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
     <style>
         .splide__slide img {
             width: 100%;
@@ -56,6 +57,7 @@
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/splide.min.js') }}"></script>
+    <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
 </body>
 
 </html>

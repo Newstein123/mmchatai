@@ -39,7 +39,7 @@
                     <div class="ibox-content">
                         <div class="form-group  row">
                             <div class="col-sm-12">
-                                <input type="text" name="name"  class="form-control" @error('name') is-invalid @enderror>
+                                <input type="text" name="name"  class="form-control @error('name') is-invalid @enderror" >
                                 @error('name')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror 

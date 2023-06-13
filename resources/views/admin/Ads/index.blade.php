@@ -58,7 +58,7 @@
                             @endif
                         </td>
                         <td width='20%'>
-                            <div class="switch">
+                            {{-- <div class="switch">
                                 <div class="onoffswitch slide round">
                                     <input type="checkbox" value="" class="onoffswitch-checkbox adsView" id="" name="status">
                                     <label class="onoffswitch-label" for="">
@@ -66,7 +66,15 @@
                                     <span class="onoffswitch-switch"></span>
                                     </label>
                                 </div>
-                            </div>
+                            </div> --}}
+                            <form action="{{ route('example.updateStatus', ['id' => $ad->id]) }}" method="POST">
+                                @csrf
+                                <select name="status">
+                                    <option value="1">Approved</option>
+                                    <option value="2">Rejected</option>
+                                </select>
+                                <button type="submit">Update Status</button>
+                            </form>
                         </td>
                         <td></td>
                         <td>

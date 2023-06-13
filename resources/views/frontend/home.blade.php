@@ -25,7 +25,7 @@
                     </button>
                 </div>
             </form>
-            <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 55vh">
+            <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 62vh">
                 <div id="data">
                     @if (session('conversation_id'))
                         @php
@@ -56,7 +56,7 @@
 
                 <div id="loading" class="text-mute" style="display : none"> Loading ... </div>
             </div>
-            @include('frontend.layouts.parts.ads')
+            
         </div>
     </div>
 @endsection
