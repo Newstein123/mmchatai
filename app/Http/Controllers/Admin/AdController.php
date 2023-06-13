@@ -26,11 +26,13 @@ class AdController extends Controller
     {
         $this->adsDatavalidate($request,'create');
         $data = $this->getData($request);
+        // Start image create
         if ($request->hasFile('image')) {
             $fileName = uniqid() . '_' . $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/ads', $fileName);
             $data['image'] = $fileName;
         }
+         // end image create
         Ad::create($data);
         return redirect()->route('ads#Page')->with(['created', 'Ads Created Successfully']);
     }
@@ -52,7 +54,7 @@ class AdController extends Controller
         $this->adsDatavalidate($request,'update');
         $data = $this->getData($request);
 
-        // image 
+        // Start image update
         if ($request->hasFile('image')) {
             $oldImageName = Ad::where('id', $id)->first();
             $oldImageName = $oldImageName->image;
@@ -65,6 +67,7 @@ class AdController extends Controller
             $request->file('image')->storeAs('public/ads', $fileName);
             $data['image'] = $fileName;
         }
+        // end image update
 
         Ad::where('id', $id)->update($data);
         return redirect()->route('ads#Page')->with(['updated', 'Ads Created Successfully']);
@@ -93,7 +96,7 @@ class AdController extends Controller
         $adsDataValidate = [
             'name' => 'require',
             'description' => 'required',
-            'image' => 'mimes:mimes:jpg,png,jpeg,webp|file'
+            // 'image' => 'mimes:mimes:jpg,png,jpeg,webp|file'
         ];
         $validationRule['image'] = $action == 'create' ? 'required|mimes:jpg,png,jpeg,webp|file' : "mimes:jpg,png,jpeg,webp|file";
         Validator::make($request->all(), $adsDataValidate);

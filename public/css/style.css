@@ -105,6 +105,13 @@ body {
     height: 80vh;
 }
 
+/* ads */
+.splide__slide img {
+    width: 100%;
+    height: auto;
+    
+  }
+
 /* footer  */
 .block-footer {
     background-color: rgba(0,0,0,0.95);
