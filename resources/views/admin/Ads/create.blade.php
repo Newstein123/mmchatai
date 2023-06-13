@@ -3,7 +3,7 @@
 @section('content')
 
 <!--Start Form -->
-    <form method="post" action="" enctype="multipart/form-data">
+    <form method="post" action="{{route('ads#store')}}" enctype="multipart/form-data">
         @csrf
         <!-- Page Heading -->
         <div class="row wrapper border-bottom white-bg page-heading">
@@ -34,7 +34,7 @@
             <!--Name-->
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>name</h5>
+                        <h5>Title</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="form-group  row">
@@ -50,13 +50,13 @@
                 <!--Position-->
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>position</h5>
+                        <h5>Description</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="form-group  row">
                             <div class="col-sm-12">
-                                <input type="text" name="position"  class="form-control" @error('position') is-invalid @enderror>
-                                @error('position')
+                                <input type="text" name="description"  class="form-control" @error('description') is-invalid @enderror>
+                                @error('description')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror 
                             </div>

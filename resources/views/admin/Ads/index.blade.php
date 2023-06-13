@@ -45,11 +45,11 @@
                 @php
                     $id = 1;
                 @endphp
-                {{-- @foreach ($users as $user) --}}
+                @foreach ($ads as $ad)
                     <tr class="gradeU">
-                        <td>1</td>
-                        <td>Advertise</td>
-                        <td>This is Description</td>
+                        <td>{{$ad->id}}</td>
+                        <td>{{$ad->name}}</td>
+                        <td>{{$ad->description}}</td>
                         <td>
                             <img src="" alt="">
                         </td>
@@ -76,14 +76,14 @@
                             @endcan
                             @can('delete users')
                                 <div class="mr-2">
-                                    <button class="btn btn-danger btn-sm" onclick="deleteForm()" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
-                                        ></i></button>
+                                    <a href={{route('ads#delete',$ad->id)}} class="btn btn-danger btn-sm" onclick="deleteForm()" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
+                                        ></i></a>
                                 </div>
                             @endcan
                             </div>
                         </td>
                     </tr>
-                {{-- @endforeach --}}
+                @endforeach
             </tbody>
             <tfoot>
             <tr>
