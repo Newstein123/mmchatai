@@ -83,7 +83,7 @@
             <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
         </a>
         <h3 class="my-3">Register to MISL ChatAI</h3>
-        
+        @include('frontend.session.message')
         <form class="m-t" role="form" action="{{route('register.submit')}}" method="POST">
             @csrf
             <div class="form-group">
@@ -127,10 +127,10 @@
             @enderror
             <div class="form-group">
                     <div class="checkbox i-checks">
-                    <label> <input type="checkbox" name="terms&policy" required>
-                        Agree the <a href="{{route('termsOfService')}}">Terms</a> and 
-                        <a href="{{route('privacyPolicy')}}">Policy</a>
-                    </label>
+                        <label> <input type="checkbox" name="terms&policy" required>
+                            Agree the <a href="https://myanmarictsolutions.pro/terms-of-services.php">Terms</a> and 
+                            <a href="https://myanmarictsolutions.pro/privacy-policy.php">Policy</a>
+                        </label>
                     </div>
             </div>
             <button type="submit" class="btn bg-custom block full-width m-b my-3">Register</button>

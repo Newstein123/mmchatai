@@ -46,17 +46,21 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        
         $type = $request->type;
+        $user = Customer::where('phone', $type)->orWhere('email', $type)->first();
+
+        if($user) {
+            return redirect()->back()->with('error', 'User already exists');
+        }
+        
         $phone = "";
         $email = "";
-
         if(preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $type)) {
             $email .=  $type;
         } else {
             $phone .= $type;
-        }
-
-        
+        } 
 
         $user = new Customer();
         $user->name = $request->input('name');
@@ -72,9 +76,6 @@ class AuthController extends Controller
         } else {
             return redirect('/login')->with('message', 'Please verify your phone number');
         }
-        
-        session()->put('user', $user);
-        return redirect('/');
     }
 
     public function showLoginForm()
