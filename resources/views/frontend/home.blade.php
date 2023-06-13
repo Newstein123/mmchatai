@@ -25,7 +25,7 @@
                     </button>
                 </div>
             </form>
-            <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 58vh">
+            <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 55vh">
                 <div id="data">
                     @if (session('conversation_id'))
                         @php

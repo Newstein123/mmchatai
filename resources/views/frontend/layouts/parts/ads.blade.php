@@ -4,7 +4,7 @@
         <ul class="splide__list">
             @foreach ($ads as $ad)
                 <li class="splide__slide mx-5 px-5">
-                    <img src="{{ asset('storage/ads/' . $ad->image) }}" class="px-4" style="width:200px;height:130px;"
+                    <img src="{{ asset('storage/ads/' . $ad->image) }}" class="px-4" style="width:250px;height:130px;"
                         alt="">
                 </li>
             @endforeach
@@ -12,14 +12,18 @@
     </div>
 </section>
 
-
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        new Splide('#thumbnail-carousel', {
-            fixedWidth: 100,
-            gap: 10,
-            rewind: true,
-            pagination: false,
-        }).mount();
-    });
+    document.addEventListener( 'DOMContentLoaded', function () {
+  new Splide( '#thumbnail-carousel', {
+		fixedWidth: 200,
+		gap       : 10,
+		rewind    : true,
+		pagination: false,
+        type   : "loop",
+        perPage: 3,
+        arrows:false,
+  } ).mount();
+} );
+
+
 </script>
