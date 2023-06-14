@@ -1,4 +1,4 @@
-<div class="block-footer">
+<div class="block-footer d-none d-md-block">
     <div class="footer-widgets">
         <div class="container">
             <div class="row">             
@@ -60,6 +60,7 @@
     <div class="footer-copyright">
         <div class="container">
            <p>Copyright &copy; {{date('Y')}} {{generalSetting('Website Name')}} <span class="hidden-xs">All Rights Reserved.</span></p>
+		   <p class="mt-2"> Developed by <span> <a href="/">MISL.</a></span> Powered by Chat GPT and Google Translate </p>
         </div>
     </div>
 </div>

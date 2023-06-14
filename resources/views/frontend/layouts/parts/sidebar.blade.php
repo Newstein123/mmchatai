@@ -10,7 +10,8 @@
                 @endphp
                     <li class="list-group-item {{$value == $row->conversation_id ? 'list-active' : '' }} ">
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark overflow-hidden">
+                            <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark overflow-hidden myanmar-font"    
+                            >
                                 {{$row->name}}
                             </a>
                             <div class="action-button">

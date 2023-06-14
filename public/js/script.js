@@ -22,9 +22,10 @@ $(document).ready(function(){
                 <h5> ${prompt} </h5>
             </div>
         </div>
+        <div id="loading" class="text-white"> Loading ... </div>
         `
-        $('#data').append(html);
-        $('.data-container').scrollTop($('.data-container')[0].scrollHeight);
+        $('#data').prepend(html);
+        $('.data-container').scrollTop();
         getResponse(prompt)
           
     })
@@ -44,7 +45,7 @@ $(document).ready(function(){
                     window.location.reload();
                 }
                 $('#prompt').val('')
-                $('.data-container').scrollTop($('.data-container')[0].scrollHeight);
+                $('.data-container').scrollTop();
             },
             error : function(e, xhr) {
                 console.log(e);
@@ -81,7 +82,7 @@ $(document).ready(function(){
         $('#loading').hide();
         $('#text-loading').hide();
         $('#generate').show();
-        $('#data').append(res);
+        $('#data').prepend(res);
     }
 
     function showAndHideToggle() {

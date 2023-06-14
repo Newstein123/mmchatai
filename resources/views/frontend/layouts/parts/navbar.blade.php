@@ -1,12 +1,14 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
-    <a class="navbar-brand" href="/">
-      <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-25">
-    </a>
-    <button class="navbar-toggler bg-custom btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+   <div class="d-flex justify-content-between">
+      <a class="navbar-brand w-25" href="/">
+        <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
+      </a>
+      <button class="navbar-toggler bg-custom btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+   </div>
     <div class="mx-2">
         <button type="button" id="toggle" class="bg-custom btn" style="display : none">
           <i class="fa-brands fa-rocketchat"></i>

@@ -20,6 +20,10 @@ body {
     overflow-x: hidden;
 }
 
+.myanmar-font {
+    font-family: 'Myanmar Sans Pro';
+}
+
 .text-mute {
     color: #afafaf;
 }

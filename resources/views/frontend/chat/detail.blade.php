@@ -9,7 +9,7 @@
                     <i class="fa-solid fa-user bg-custom p-3 text-white rounded-circle me-2" style="font-size: 12px"></i>   
                 </div>
                 <div class="text-white">
-                    <h5>{!! $row->human !!}</h5>
+                    <p>{!! $row->human !!}</p>
                 </div>
             </div>
             <div class="d-flex my-2 p-2">

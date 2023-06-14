@@ -71,7 +71,7 @@ class ChatController extends Controller
         
                     // $parts = explode(" ", $input);
                     // $chat_name = implode(" ", array_slice($parts, 0, 4)); 
-                    $chat_name = $input;
+                    $chat_name = $prompt;
                     UserChat::create([
                         'name' => $chat_name,
                         'user_id' => session('user')->id,

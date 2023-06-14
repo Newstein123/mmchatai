@@ -18,7 +18,7 @@
   <div class="modal fade" id="authForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-body text-center">
+        <div class="modal-body text-center auth-modal-body">
             <div class="modal-img">
                 <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-25">
             </div>
@@ -34,3 +34,4 @@
   </div>
 
   {{-- end auth form  --}}
+
