@@ -56,7 +56,7 @@
 
                 <div id="loading" class="text-mute" style="display : none"> Loading ... </div>
             </div>
-            
+
         </div>
     </div>
 @endsection

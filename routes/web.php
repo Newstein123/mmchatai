@@ -132,6 +132,6 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::post('/create', [AdController::class, 'store'])->name('ads#store');
         Route::post('/adsEdit/{id}', [AdController::class, 'update'])->name('ads#edit');
         Route::get('/adsDelete/{id}', [AdController::class, 'destroy'])->name('ads#delete');
-        // status chg
-        Route::post('/example/{id}/update-status', [AdController::class, 'updateStatus'])->name('example.updateStatus');
+        // status change
+        Route::get('ads/changestatus', [AdController::class,'change_ads_status'])->name('ChangeAdsStatus');
 });

@@ -83,15 +83,15 @@ class AdController extends Controller
     // status
     public function updateStatus(Request $request, $id)
     {
-    $exampleModel = Ad::find($id);
-    
-    // Update the status based on your business logic
-    $newStatus = $request->input('status');
-    $exampleModel->status = $newStatus;
-    
-    // Save the changes
-    $exampleModel->save();
-    return redirect()->route('ads#Page');
+        $exampleModel = Ad::find($id);
+
+        // Update the status based on your business logic
+        $newStatus = $request->input('status');
+        $exampleModel->status = $newStatus;
+
+        // Save the changes
+        $exampleModel->save();
+        return redirect()->route('ads#Page');
     }
 
     // ads data
@@ -112,7 +112,25 @@ class AdController extends Controller
             'name' => 'required',
             'description' => 'required',
         ];
-        $validationRule['image'] = $action == 'create' ? 'required|mimes:jpg,png,jpeg,webp|file' : "mimes:jpg,png,jpeg,webp|file";
-        Validator::make($request->all(), $adsDataValidate);
+        $adsDataValidate['image'] = $action == 'create' ? 'required|mimes:jpg,png,jpeg,webp|file' : "mimes:jpg,png,jpeg,webp|file";
+        Validator::make($request->all(), $adsDataValidate)->validate();
+    }
+
+    public function change_ads_status(Request $request)
+    {
+        $ads = Ad::find($request->id);
+        $status = ($ads->status == 'yes') ? 'no' : 'yes';
+        if ($ads->update(['status' => $status])) {
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        };
+
+        // call ads image
+        //   public static function ads($Image,$Status){
+        // 	!empty($forImg)?$id = $forImg: $id = $forStatus;
+        // 	$ads = Ad::find($id);
+        // 	return !empty($forImg)?$ads->image : $ads->status;
+        // }
     }
 }
