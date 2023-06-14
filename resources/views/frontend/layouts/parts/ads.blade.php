@@ -3,21 +3,12 @@
      aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
      <div class="splide__track ">
          <ul class="splide__list ">
-             @if ($ads->count() <= 4)
-                 @foreach ($ads as $ad)
-                     <li class="mx-1 list-unstyled">
-                         <img src="{{ asset('storage/ads/' . $ad->image) }}" style="width:150px;height:100px;"
-                             alt="">
-                     </li>
-                 @endforeach
-             @else
                  @foreach ($ads as $ad)
                      <li class="splide__slide mx-2 list-unstyled">
                          <img src="{{ asset('storage/ads/' . $ad->image) }}" class=""
                              style="width:200px;height:100px;" alt="">
                      </li>
                  @endforeach
-             @endif
          </ul>
      </div>
  </section>
