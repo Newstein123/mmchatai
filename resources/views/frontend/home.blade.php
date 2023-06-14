@@ -56,6 +56,19 @@
 
                 <div id="loading" class="text-mute" style="display : none"> Loading ... </div>
             </div>
+            @if ($ads->count() <= 4)
+            <div class="d-flex justify-content-center">
+                @foreach ($ads as $ad)
+                    <li class="mx-4 list-unstyled">
+                        <a href="{{ $ad->link }}" target="_black"><img src="{{ asset('storage/ads/' . $ad->image) }}" style="width:210px;height:70px;pading:10px;" alt=""></a>
+                    </li>
+                @endforeach
+            </div>
+        @else
+            <div class="pt-3">
+                @include('frontend.layouts.parts.ads')
+            </div>
+        @endif
 
         </div>
     </div>

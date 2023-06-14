@@ -5,8 +5,8 @@
          <ul class="splide__list ">
                  @foreach ($ads as $ad)
                      <li class="splide__slide mx-2 list-unstyled">
-                         <img src="{{ asset('storage/ads/' . $ad->image) }}" class=""
-                             style="width:200px;height:100px;" alt="">
+                         <a href="{{ $ad->link }}" target="_black"><img src="{{ asset('storage/ads/' . $ad->image) }}" class=""
+                             style="width:150px;height:70px;" alt=""></a>
                      </li>
                  @endforeach
          </ul>
@@ -17,7 +17,7 @@
      document.addEventListener('DOMContentLoaded', function() {
          new Splide('.splide', {
              autoplay: true, // Enable auto-scrolling
-             interval: 4000, // Set the desired interval (in milliseconds) between each slide transition
+             interval: 3000, // Set the desired interval (in milliseconds) between each slide transition
              pauseOnHover: boolean = true,
              arrows: false,
              autoWidth: true,
@@ -28,7 +28,7 @@
              focus: 'center',
              perPage: 4,
              autoScroll: {
-                 speed: -2,
+                 speed: 1,
                  perMove: 1
              },
          }).mount();

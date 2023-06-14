@@ -1,17 +1,5 @@
 <div class="block-footer">
-    @if ($ads->count() <= 4)
-        <div class="d-flex justify-content-center pt-2">
-            @foreach ($ads as $ad)
-                <li class="mx-1 list-unstyled">
-                    <img src="{{ asset('storage/ads/' . $ad->image) }}" style="width:200px;height:100px;" alt="">
-                </li>
-            @endforeach
-        </div>
-    @else
-        <div class="pt-3">
-            @include('frontend.layouts.parts.ads')
-        </div>
-    @endif
+   
     <div class="footer-widgets">
         <div class="container">
             <div class="row">

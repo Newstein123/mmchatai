@@ -99,7 +99,7 @@ class AdController extends Controller
     {
         $response = [
             'name' => $request->name,
-            'description' => $request->description,
+            'link' => $request->link,
             'status' => $request->status
         ];
         return $response;
@@ -110,27 +110,21 @@ class AdController extends Controller
     {
         $adsDataValidate = [
             'name' => 'required',
-            'description' => 'required',
+            'link' => 'required',
         ];
         $adsDataValidate['image'] = $action == 'create' ? 'required|mimes:jpg,png,jpeg,webp|file' : "mimes:jpg,png,jpeg,webp|file";
         Validator::make($request->all(), $adsDataValidate)->validate();
     }
 
-    public function change_ads_status(Request $request)
+    // status change
+    public function change_ads_status(Request $requset)
     {
-        $ads = Ad::find($request->id);
+        $ads = Ad::find($requset->id);
         $status = ($ads->status == 'yes') ? 'no' : 'yes';
         if ($ads->update(['status' => $status])) {
             return response()->json(true);
         } else {
             return response()->json(false);
         };
-
-        // call ads image
-        //   public static function ads($Image,$Status){
-        // 	!empty($forImg)?$id = $forImg: $id = $forStatus;
-        // 	$ads = Ad::find($id);
-        // 	return !empty($forImg)?$ads->image : $ads->status;
-        // }
     }
 }

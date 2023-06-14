@@ -33,8 +33,8 @@
                                 <thead>
                                     <tr>
                                         <th> Id </th>
-                                        <th> Title </th>
-                                        <th> Description </th>
+                                        <th> Name </th>
+                                        <th> Link </th>
                                         <th>Image </th>
                                         <th>Status</th>
                                         <th></th>
@@ -42,14 +42,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $id = 1;
-                                    @endphp
                                     @foreach ($ads as $ad)
                                         <tr class="gradeU">
                                             <td>{{ $ad->id }}</td>
                                             <td>{{ $ad->name }}</td>
-                                            <td>{{ $ad->description }}</td>
+                                            <td>{{ $ad->link }}</td>
                                             <td>
                                                 @if ($ad->image == null)
                                                     <img src="{{ asset('img/ads/default-img.jpg') }}"
@@ -61,23 +58,14 @@
                                                 @endif
                                             </td>
                                             <td width='20%'>
-                                                {{-- <div class="switch">
-                                <div class="onoffswitch slide round">
-                                    <input type="checkbox" value="" class="onoffswitch-checkbox adsView" id="" name="status">
-                                    <label class="onoffswitch-label" for="">
-                                    <span class="onoffswitch-inner"></span>
-                                    <span class="onoffswitch-switch"></span>
-                                    </label>
-                                </div>
-                            </div> --}}
                                                 <div class="switch">
                                                     <div class="onoffswitch slide round">
                                                         <input type="checkbox" value="{{ $ad->id }}"
                                                             class="onoffswitch-checkbox adsView"
-                                                            id="{{ 'view_' . $ad->id }}" name="status"
+                                                            id="{{ $ad->id }}" name="status"
                                                             {{ $ad->status == 'yes' ? 'checked' : '' }}
                                                             route={{ route('ChangeAdsStatus', ['id' => $ad->id]) }}>
-                                                        <label class="onoffswitch-label" for="{{ 'view_' . $ad->id }}">
+                                                        <label class="onoffswitch-label" for="{{ $ad->id }}">
                                                             <span class="onoffswitch-inner"></span>
                                                             <span class="onoffswitch-switch"></span>
                                                         </label>
@@ -85,13 +73,13 @@
 
                                                     {{-- s --}}
                                                     {{-- <form action="{{ route('example.updateStatus', ['id' => $ad->id]) }}" method="POST">
-                                @csrf
-                                <select name="status">
-                                    <option value="1">Approved</option>
-                                    <option value="2">Rejected</option>
-                                </select>
-                                <button type="submit">Update Status</button>
-                            </form> --}}
+                                                    @csrf
+                                                    <select name="status">
+                                                         <option value="1">Approved</option>
+                                                         <option value="2">Rejected</option>
+                                                    </select>
+                                                    <button type="submit">Update Status</button>
+                                                    </form> --}}
                                             </td>
                                             <td></td>
                                             <td>
@@ -109,7 +97,8 @@
                                                             <a href="{{ route('ads#delete', $ad->id) }}"
                                                                 class="btn bg-danger btn-sm" onclick="deleteForm()"><i
                                                                     class="fa fa-trash" aria-hidden="true" data-toggle="tooltip"
-                                                                    data-placement="top" title="ဖျက်သိမ်းမည်"></i></a>
+                                                                    data-placement="top" title="ဖျက်သိမ်းမည်"></i>
+                                                                </a>
                                                             {{-- <button class="btn btn-danger btn-sm" onclick="deleteForm('{{route('ads#delete',$ad->id)}}', {{$ad->id}})" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
                                         ></i></button> --}}
                                                         </div>
@@ -122,8 +111,8 @@
                                 <tfoot>
                                     <tr>
                                         <th> Id </th>
-                                        <th> Title </th>
-                                        <th> Description </th>
+                                        <th> Name </th>
+                                        <th> Link </th>
                                         <th> Image </th>
                                         <th> Status</th>
                                         <th> </th>
@@ -138,4 +127,31 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function(e) {
+            $('.adsView').on('click', function(e) {
+                console.log('change');
+                e.preventDefault();
+                var url = $(this).attr('route');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        'id': $(this).val(),
+                        'token': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(res) {
+                        if (res) {
+                            toastr.success("success!");
+                            location.reload();
+                        } else {
+                            toastr.error("error!");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

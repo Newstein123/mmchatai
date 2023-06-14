@@ -125,13 +125,13 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::post('/changeUserState', [UserController::class, 'change_state'])->name('changeUserState');
     });
 
-        //  Advertisement (tyt)
-        Route::get('/adsPage', [AdController::class, 'index'])->name('ads#Page');
-        Route::get('/adsCreatePage', [AdController::class, 'create'])->name('ads#CreatePage');
-        Route::get('/adsEditPage/{id}', [AdController::class, 'show'])->name('ads#EditPage');
-        Route::post('/create', [AdController::class, 'store'])->name('ads#store');
-        Route::post('/adsEdit/{id}', [AdController::class, 'update'])->name('ads#edit');
-        Route::get('/adsDelete/{id}', [AdController::class, 'destroy'])->name('ads#delete');
-        // status change
-        Route::get('ads/changestatus', [AdController::class,'change_ads_status'])->name('ChangeAdsStatus');
+    //  Advertisement (tyt)
+    Route::get('/adsPage', [AdController::class, 'index'])->name('ads#Page');
+    Route::get('/adsCreatePage', [AdController::class, 'create'])->name('ads#CreatePage');
+    Route::get('/adsEditPage/{id}', [AdController::class, 'show'])->name('ads#EditPage');
+    Route::post('/create', [AdController::class, 'store'])->name('ads#store');
+    Route::post('/adsEdit/{id}', [AdController::class, 'update'])->name('ads#edit');
+    Route::get('/adsDelete/{id}', [AdController::class, 'destroy'])->name('ads#delete');
+    // status change
+    Route::get('ads/changestatus', [AdController::class, 'change_ads_status'])->name('ChangeAdsStatus');
 });

@@ -50,13 +50,13 @@
                 <!--Position-->
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>description</h5>
+                        <h5>Link</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="form-group  row">
                             <div class="col-sm-12">
-                                <input type="text" name="description"  class="form-control" @error('description') is-invalid @enderror value="{{ old('description',$ads->description) }}">
-                                @error('description')
+                                <input type="text" name="link"  class="form-control" @error('link') is-invalid @enderror value="{{ old('link',$ads->link) }}">
+                                @error('link')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror 
                             </div>
