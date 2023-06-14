@@ -14,15 +14,15 @@ $(document).ready(function(){
         $('#generate').hide();
         $('#text-loading').show();
         const html = `
-        <div class="d-flex my-2 bg-mute p-2 align-items-center">
+        <div class="d-flex my-2 bg-mute p-md-2">
             <div class="me-2">
-                <i class="fa-solid fa-user bg-custom p-3 text-white rounded-circle me-2" style="font-size: 12px"></i>   
+                <i class="fa-solid fa-user bg-custom p-md-3 p-1 text-white rounded-circle me-2"></i>   
             </div>
             <div class="text-white">
-                <h5> ${prompt} </h5>
+                <p> ${prompt} </p>
             </div>
         </div>
-        <div id="loading" class="text-white"> Loading ... </div>
+        <p id="loading" class="text-white"> Loading ... </p>
         `
         $('#data').prepend(html);
         $('.data-container').scrollTop();
@@ -63,9 +63,9 @@ $(document).ready(function(){
         } else {
             if(response.success) {                
                 res = `
-                <div class="d-flex my-2 p-2">
+                <div class="d-flex my-2 p-md-2">
                             <div class="me-2">
-                                <i class="fa-solid fa-reply p-3  text-white bg-success rounded-circle me-2" style="font-size: 12px"> </i>
+                                <i class="fa-solid fa-reply p-md-3 p-1  text-white bg-success rounded-circle me-2"> </i>
                             </div>
                             <div class="text-white">
                                 <p> ${response.data}</p>
@@ -74,7 +74,7 @@ $(document).ready(function(){
                 `
             } else {
                 res = `
-                <p class="history-answer lh-lg p-3 my-2 text-mute"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.message} </p>
+                <p class="history-answer lh-lg p-md-3 p-1 my-2 text-mute"> <i class="fa-solid fa-exclamation px-3 py-2 text-white bg-success rounded-circle me-2"></i> ${response.message} </p>
                 `
             }
         }

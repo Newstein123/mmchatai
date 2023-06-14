@@ -16,9 +16,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
         </div>
     @endif
-    <div class="alert alert-warning text-center my-3" style="display: none">
-        <p> Authentication fail, please login to continue. </p>
-    </div>
     <div class="question-container mt-3">
         <form action="ai.php" method="post" id="form" class="text-center">
             <div class="d-flex align-items-center">
@@ -39,18 +36,18 @@
                     @endphp
                     @foreach ($chats as $row)  
                     {{-- Questions --}}
-                    <div class="d-flex my-2 bg-mute p-2 align-items-center">
+                    <div class="d-flex my-2 bg-mute p-md-2">
                         <div class="me-2">
-                            <i class="fa-solid fa-user bg-custom p-3 text-white rounded-circle me-2 d-none d-md-block" style="font-size: 12px"></i>   
+                            <i class="fa-solid fa-user bg-custom p-md-3 p-1 text-white rounded-circle me-2"></i>   
                         </div>
                         <div class="text-white myanmar-font">
                             <p>{!! $row->human !!}</p>
                         </div>
                     </div> 
                     {{-- Answers  --}}
-                    <div class="d-flex my-2 p-2">
+                    <div class="d-flex my-2 p-md-2">
                         <div class="me-2">
-                            <i class="fa-solid fa-reply p-3  text-white bg-success rounded-circle me-2" style="font-size: 12px"> </i>
+                            <i class="fa-solid fa-reply p-md-3 p-1  text-white bg-success rounded-circle me-2"> </i>
                         </div>
                         <div class="text-white">
                             <p>{!! $row->translated_ai_text !!}</p>

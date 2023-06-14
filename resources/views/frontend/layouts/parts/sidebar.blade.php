@@ -1,4 +1,4 @@
-    <div class="overflow-auto p-2 mt-3" id="chat_history">
+    <div class="overflow-auto p-2 mt-md-3 d-md-block" id="chat_history">
         <ul class="list-group chat_history_list">
             <li class="list-group-item">
                 <button type="button" class="btn btn-outline-light btn-sm w-100 text-dark fw-bold fs-6" id="new_conversation"> <i class="fa-solid fa-plus me-2"></i> New Conversation </button>  

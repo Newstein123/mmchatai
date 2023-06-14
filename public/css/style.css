@@ -54,9 +54,14 @@ body {
     background-color: #11529c !important;
     color: #ffe !important;
 }
+/* data container  */
 
-.data-container h1, p {
+.data-container  p {
     font-family: 'Myanmar Sans Pro';
+}
+
+.data-container i {
+    font-size: 12px;
 }
 
 /* navbar  */
@@ -242,7 +247,7 @@ body {
     }
 
     .navbar-collapse {
-        height: 100vh;
+        /* height: 100vh; */
         margin-left: 0;
     }
 
@@ -258,15 +263,33 @@ body {
     .home-container {
         padding: 10px 5px;
     }
+
+    .data-container i {
+        font-size: 10px;
+    }
+
+    .data-container p, #loading {
+        font-size: 14px;
+    }
 }
 
-@media (min-width: 992px) and (max-width : 1400px) {
+@media (min-width: 992px) and (max-width : 1024px) {
     .navbar-expand-lg .navbar-collapse {
-        margin-left: 3em;
+        margin-left: 5em;
     }
 
     .navbar-expand-lg .navbar-collapse a {
         font-size: 12px;
+    }
+}
+
+@media (min-width: 1026px) and (max-width : 1400px) {
+    .navbar-expand-lg .navbar-collapse {
+        margin-left: 7em;
+    }
+
+    .navbar-expand-lg .navbar-collapse a {
+        font-size: 14px;
     }
 }
 

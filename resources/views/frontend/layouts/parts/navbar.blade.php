@@ -1,36 +1,26 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
-   <div class="d-flex justify-content-between">
       <a class="navbar-brand w-25" href="/">
-        <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
+        <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-75">
       </a>
       <button class="navbar-toggler bg-custom btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa-solid fa-bars"></i>
       </button>
-   </div>
-    <div class="mx-2">
-        <button type="button" id="toggle" class="bg-custom btn" style="display : none">
-          <i class="fa-brands fa-rocketchat"></i>
-        </button>
-        <button type="button" id="close" class="bg-danger btn text-white" style="display : none">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item d-md-block d-none">
           <a class="nav-link" href="https://myanmarictsolutions.pro/index.php" target="_blank">
             <i class="fa-solid fa-house me-1 text-custom"></i>  Home
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-md-block d-none">
           <a class="nav-link" href="https://myanmarictsolutions.pro/about-us.php" target="_blank"> About Us </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Our Services
-          </a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Our Services
+            </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="https://myanmarictsolutions.pro/our-services.php" target="_blank">All Services </a></li>
               <li><a class="dropdown-item" href="https://myanmarictsolutions.pro/web-development.php" target="_blank"> Website Development </a></li>
@@ -41,7 +31,7 @@
               <li><a class="dropdown-item" href="https://myanmarictsolutions.pro/iot-development.php" target="_blank"> IoT Development </a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown d-md-block d-none">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Our Products
           </a>
@@ -50,7 +40,7 @@
             <li><a class="dropdown-item" href="https://myanmarictsolutions.pro/domain-registeration.php" target="_blank"> Domanin Registeration </a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown d-md-block d-none">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Support 
           </a>
@@ -61,11 +51,20 @@
             <li><a class="dropdown-item" href="https://myanmarictsolutions.pro/severstatus.php" target="_blank"> Network Status </a></li>
           </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-md-block d-none">
           <a class="nav-link" href="https://myanmarictsolutions.pro/portfolio-page.php"> Portfolio </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-md-block d-none">
           <a class="nav-link" href="https://myanmarictsolutions.pro/contact.php"> Contact Us </a>
+        </li>
+        <li class="nav-item d-md-none">
+          <a class="nav-link" href="https://myanmarictsolutions.pro/contact.php"> Profile </a>
+        </li>
+        <li class="nav-item d-md-none">
+          <a class="nav-link"> Chat History 
+            <span><i class="fa-solid fa-caret-down" id="toggle"></i></span> 
+            <span><i class="fa-solid fa-caret-up" id="close" style="display: none"></i></span> 
+          </a>
         </li>
       </ul>
     </div>

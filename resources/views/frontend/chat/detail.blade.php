@@ -1,20 +1,20 @@
 @extends('layouts.frontend')
 @section('title', "UserChatDetail")
 @section('content')
-    <div class="overflow-auto me-3 p-2" style="height : 85vh">
+    <div class="overflow-auto me-3 p-2 data-container" style="height : 85vh">
         @if (count($chats) > 0)      
             @foreach ($chats as $row)
-            <div class="d-flex my-2 bg-mute p-2 align-items-center">
+            <div class="d-flex my-2 bg-mute p-md-2">
                 <div class="me-2">
-                    <i class="fa-solid fa-user bg-custom p-3 text-white rounded-circle me-2" style="font-size: 12px"></i>   
+                    <i class="fa-solid fa-user bg-custom p-md-3 p-1 text-white rounded-circle me-2"></i>   
                 </div>
                 <div class="text-white">
                     <p>{!! $row->human !!}</p>
                 </div>
             </div>
-            <div class="d-flex my-2 p-2">
+            <div class="d-flex my-2 p-md-2">
                 <div class="me-2">
-                    <i class="fa-solid fa-reply p-3  text-white bg-success rounded-circle me-2" style="font-size: 12px"> </i>
+                    <i class="fa-solid fa-reply p-md-3 p-1 text-white bg-success rounded-circle me-2"> </i>
                 </div>
                 <div class="text-white">
                     <p>{!! $row->translated_ai_text !!}</p>
