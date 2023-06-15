@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Frontend\VerificationController;
 use App\Http\Controllers\Admin\AdController;
+use App\Http\Controllers\Frontend\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,11 @@ Route::post('admin/register', [RegisterController::class, 'register']);
 
 Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
 
+// frontend profile
+Route::get('/userprofile',[ProfileController::class,'index'])->name('profilePage');
+// change password
+Route::post('passwordChange',[ProfileController::class, 'passwordChange'])->name('ProfilePasswordChange');
+
 
 // Admin Middleware 
 
@@ -100,6 +106,8 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::put('/edit/{id}', [CustomerController::class, 'update'])->name('customerUpdate');
         Route::post('/delete', [CustomerController::class, 'delete'])->name('customerDelete');
     });
+
+    
 
     // Question 
 
@@ -140,4 +148,6 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
     Route::post('/adsDelete/{id}', [AdController::class, 'destroy'])->name('ads#delete');
     // status change
     Route::get('ads/changestatus', [AdController::class, 'change_ads_status'])->name('ChangeAdsStatus');
+
+    
 });
