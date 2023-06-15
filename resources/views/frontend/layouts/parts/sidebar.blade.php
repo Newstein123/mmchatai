@@ -9,20 +9,24 @@
                     $value = Request::segment(2);
                 @endphp
                     <li class="list-group-item sidebar-item {{$value == $row->conversation_id ? 'list-active' : '' }} ">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark overflow-hidden myanmar-font"    
-                            >
-                                {{$row->name}}
-                            </a>
-                            <div class="action-button">
-                                <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
-                                data-conversationId="{{$row->conversation_id}}"    
-                                >
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </button>
-                                <button class="btn btn-sm delete_chat" data-conversationId="{{$row->conversation_id}}" >
-                                    <i class="fa-solid fa-trash-can" ></i>
-                                </button>
+                        <div class="row">
+                            <div class="col-10 col-lg-9">
+                                <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark overflow-hidden myanmar-font"    
+                                    >
+                                        {{$row->name}}
+                                </a>
+                            </div>
+                            <div class="col-2 col-lg-3">
+                                <div class="action-button">
+                                    <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
+                                    data-conversationId="{{$row->conversation_id}}"    
+                                    >
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </button>
+                                    <button class="btn btn-sm delete_chat" data-conversationId="{{$row->conversation_id}}" >
+                                        <i class="fa-solid fa-trash-can" ></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </li>

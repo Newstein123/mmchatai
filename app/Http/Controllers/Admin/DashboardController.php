@@ -16,6 +16,7 @@ class DashboardController extends Controller
         $users_count = Customer::select('id')->count('id');
         $tokens = Chat::select('total_tokens')->sum('total_tokens');
         $daily_tokens = Chat::whereDate('created_at', Carbon::now())->sum('total_tokens');
-        return view('admin.dashboard', compact('users_count', 'tokens','daily_tokens'));
+        $questions = Chat::count();
+        return view('admin.dashboard', compact('users_count', 'tokens','daily_tokens', 'questions'));
     }
 }

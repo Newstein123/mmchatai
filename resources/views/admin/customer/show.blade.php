@@ -46,6 +46,11 @@
                             <td> {{ $user->login_type }}</td>
                         </tr>
                         <tr>
+                            <td> Email Verified </td>
+                            <td> {{ $user->email_verified_at != "" ? 'YES' : 'NO' }}</td>
+                        </tr>
+                        
+                        <tr>
                             <td> Company Name </td>
                             <td> {{ $user->company }}</td>
                         </tr>

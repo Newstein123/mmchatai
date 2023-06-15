@@ -137,14 +137,13 @@ class AdController extends Controller
     }
 
     // status change
-    public function change_ads_status(Request $requset)
-    {
-        $ads = Ad::find($requset->id);
+    public function change_ads_status(Request $request)
+    {      
+        $ads = Ad::find($request->id);
         $status = ($ads->status == 'yes') ? 'no' : 'yes';
-        if ($ads->update(['status' => $status])) {
-            return response()->json(true);
-        } else {
-            return response()->json(false);
-        };
+        
+        $ads->status = $status;
+        $ads->save();
+        return response()->json(true);
     }
 }
