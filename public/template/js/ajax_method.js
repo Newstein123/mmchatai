@@ -39,6 +39,8 @@ $(document).ready(function() {
         }
 })
 
+
+
 function changeState(url, id) {
     console.log(url)
     $.ajax({
@@ -130,3 +132,32 @@ function grantPermission(id, name, permissionId) {
         }
     });
 }
+
+// Ad Status on/off
+
+$(document).ready(function(e) {
+    $('.adsView').on('change', function(e) {
+        e.preventDefault();
+        var url = $(this).attr('route');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {
+                'id': $(this).val(),
+                'token': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(res) {
+                console.log(res)
+                if (res) {
+                    toastr.success("success!");
+                    location.reload();
+                } else {
+                    toastr.error("error!");
+                }
+            },
+            error : function(e, xhr) {
+                console.log(e, xhr)
+            }
+        });
+    });
+});

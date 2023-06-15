@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('link');
             $table->string('image');
-            $table->tinyInteger('status')->default(0)->nullable();
+            $table->string('status')->default('yes')->nullable();
             $table->string('position');
             $table->timestamps();
         });

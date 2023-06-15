@@ -59,7 +59,7 @@
                                                         alt="">
                                                 @endif
                                             </td>
-                        
+                                            
                                             <td width='20%'>
                                                 <div class="switch">
                                                     <div class="onoffswitch slide round">
@@ -117,31 +117,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('script')
-    <script>
-        $(document).ready(function(e) {
-            $('.adsView').on('click', function(e) {
-                console.log('change');
-                e.preventDefault();
-                var url = $(this).attr('route');
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    data: {
-                        'id': $(this).val(),
-                        'token': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(res) {
-                        if (res) {
-                            toastr.success("success!");
-                            location.reload();
-                        } else {
-                            toastr.error("error!");
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 @endsection

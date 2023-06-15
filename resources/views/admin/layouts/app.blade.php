@@ -60,6 +60,7 @@
     <script src="{{asset('template/js/plugins/splide/splide.min.js')}}"></script>
     <script src="{{ asset('template/js/ajax_method.js') }}"></script>
     <script src="{{ asset('template/js/script.js') }}"></script>
+    <script src="{{ asset('template/js/plugins/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script>
         $('.switchery').each(function() {

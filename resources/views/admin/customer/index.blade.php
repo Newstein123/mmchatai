@@ -32,6 +32,7 @@
                 <th> Name </th>
                 <th> Email/Phone </th>
                 <th> Login Type </th>
+                <th> Email Verified </th>
                 <th> Total Tokens </th>
                 <th> Date </th>
                 <th> Action </th>
@@ -47,6 +48,7 @@
                         <td> {{ $user->name }}</td>
                         <td> {{$user->email ?? $user->phone}}</td>
                         <td> {{$user->login_type}} </td>
+                        <td> {{$user->email_verified_at != "" ? 'YES' : 'NO'}} </td>
                         <td> 
                             {{getUserTokens($user->id, 'total_tokens')}}
                         </td>
