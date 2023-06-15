@@ -28,7 +28,7 @@
                 </button>
             </div>
         </form>
-        <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 75vh">
+        <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 70vh">
             <div id="data">
                 @if (session('conversation_id'))
                     @php
@@ -52,13 +52,28 @@
                         <div class="text-white">
                             <p>{!! $row->translated_ai_text !!}</p>
                         </div>
-                    </div> 
-                        
-                        
+                    </div>      
                     @endforeach
                 @endif
             </div>
-            
         </div>
+        {{-- Ads  --}}
+
+        @if ($ads->count() <= 4)
+            <div class="d-flex justify-content-center">
+                @foreach ($ads as $ad)
+                    <li class="mx-4 list-unstyled">
+                        <a href="{{ $ad->link }}" target="_black"><img
+                                src="{{ asset('storage/ads/' . $ad->image) }}"
+                                style="width:250px;height:70px;pading:10px;" alt=""></a>
+                    </li>
+                @endforeach
+            </div>
+        @else
+            <div class="pt-3">
+                @include('frontend.layouts.parts.ads')
+            </div>
+        @endif
     </div>
+</div>
 @endsection

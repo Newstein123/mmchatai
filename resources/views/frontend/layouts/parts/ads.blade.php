@@ -6,7 +6,7 @@
                  @foreach ($ads as $ad)
                      <li class="splide__slide mx-2 list-unstyled">
                          <a href="{{ $ad->link }}" target="_black"><img src="{{ asset('storage/ads/' . $ad->image) }}" class=""
-                             style="width:150px;height:70px;" alt=""></a>
+                             style="width:250px;height:100px" alt=""></a>
                      </li>
                  @endforeach
          </ul>

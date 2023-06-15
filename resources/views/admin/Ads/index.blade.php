@@ -70,16 +70,6 @@
                                                             <span class="onoffswitch-switch"></span>
                                                         </label>
                                                     </div>
-
-                                                    {{-- s --}}
-                                                    {{-- <form action="{{ route('example.updateStatus', ['id' => $ad->id]) }}" method="POST">
-                                                    @csrf
-                                                    <select name="status">
-                                                         <option value="1">Approved</option>
-                                                         <option value="2">Rejected</option>
-                                                    </select>
-                                                    <button type="submit">Update Status</button>
-                                                    </form> --}}
                                             </td>
                                             <td></td>
                                             <td>
@@ -94,13 +84,10 @@
                                                     @endcan
                                                     @can('delete users')
                                                         <div class="mr-2">
-                                                            <a href="{{ route('ads#delete', $ad->id) }}"
-                                                                class="btn bg-danger btn-sm" onclick="deleteForm()"><i
-                                                                    class="fa fa-trash" aria-hidden="true" data-toggle="tooltip"
-                                                                    data-placement="top" title="ဖျက်သိမ်းမည်"></i>
-                                                                </a>
-                                                            {{-- <button class="btn btn-danger btn-sm" onclick="deleteForm('{{route('ads#delete',$ad->id)}}', {{$ad->id}})" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
-                                        ></i></button> --}}
+                                                            <button class="btn btn-danger btn-sm clear_all" data-url="{{route('ads#delete', $ad->id)}}">
+                                                             <i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
+                                                                ></i>
+                                                            </button>
                                                         </div>
                                                     @endcan
                                                 </div>

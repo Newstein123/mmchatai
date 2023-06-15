@@ -76,8 +76,24 @@ class AdController extends Controller
 
     public function destroy($id)
     {
-        Ad::where('id', $id)->delete();
-        return redirect()->route('ads#Page')->with(['deleted', 'Ads Deleted Successfully']);
+        $ad = Ad::find($id);
+
+        if($ad) {
+            Storage::delete('public/ads' . $ad->image);
+            $ad->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Ad Deleted Successfully',
+                'data' => [],
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'something wrong',
+            ]);
+        }
+        
     }
 
     // status

@@ -45,7 +45,7 @@
                         <button type="submit" class="dropdown-item"> <i class="fa-solid fa-right-from-bracket me-2"></i> Logout </button>
                     </form>
                 </li>
-                <li class="dropdown-item w-100" id="clear_all">        
+                <li class="dropdown-item w-100 clear_all" data-url={{route('clearAll')}}>        
                     <p class="cursor-pointer ms-3"><i class="fa-solid fa-trash-can me-2"></i> Clear Conversation</p>
                 </li>
             </ul>

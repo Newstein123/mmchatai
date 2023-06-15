@@ -103,7 +103,8 @@ $(document).ready(function(){
     showAndHideToggle()
 
     // clear all conversation 
-    $('#clear_all').on('click', function(){
+    $('.clear_all').on('click', function(){
+        var url = $(this).attr('data-url')
         swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -115,7 +116,7 @@ $(document).ready(function(){
           }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-            url : '/chat/clear',
+            url : url,
             method  : 'POST',
             success : function(res) {
                 if(res.success) {
@@ -130,9 +131,9 @@ $(document).ready(function(){
                       })
                 } else {
                     swal.fire(
-                        'Deleted!',
+                        'Opps!',
                         res.message,
-                        'success'
+                        'danger'
                       )
                 }
             },

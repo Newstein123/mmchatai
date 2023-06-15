@@ -46,7 +46,7 @@ Route::get('/ai_response', [ChatController::class, 'aiResponse'])->name('aiRespo
 Route::get('chat/{id}', [ChatController::class, 'chat_detail'])->name('chatDetail');
 Route::post('/chat/update/{id}', [ChatController::class, 'chat_name_update'])->name('chatNameUpdate');
 Route::post('/chat/delete/{id}', [ChatController::class, 'chat_delete'])->name('chatDelete');
-Route::post('/chat/clear', [ChatController::class, 'clear_all']);
+Route::post('/chat/clear', [ChatController::class, 'clear_all'])->name('clearAll');
 
 // Socialite Login 
 
@@ -137,7 +137,7 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
     Route::get('/adsEditPage/{id}', [AdController::class, 'show'])->name('ads#EditPage');
     Route::post('/create', [AdController::class, 'store'])->name('ads#store');
     Route::post('/adsEdit/{id}', [AdController::class, 'update'])->name('ads#edit');
-    Route::get('/adsDelete/{id}', [AdController::class, 'destroy'])->name('ads#delete');
+    Route::post('/adsDelete/{id}', [AdController::class, 'destroy'])->name('ads#delete');
     // status change
     Route::get('ads/changestatus', [AdController::class, 'change_ads_status'])->name('ChangeAdsStatus');
 });
