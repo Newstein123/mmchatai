@@ -86,7 +86,7 @@
                             @endcan
                             @can('delete users')
                                 <div class="mr-2">
-                                    <button class="btn btn-danger btn-sm" onclick="deleteForm('{{route('userDelete')}}', {{$user->id}})" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
+                                    <button class="btn btn-danger btn-sm" onclick="deleteForm('{{route('customerDelete')}}', {{$user->id}})" ><i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ဖျက်သိမ်းမည်" 
                                         ></i></button>
                                 </div>
                             @endcan

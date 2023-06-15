@@ -134,7 +134,7 @@ class ChatController extends Controller
 
     public function chat_detail($id)
     {
-        $chats = Chat::where('conversation_id', $id)->get();
+        $chats = Chat::where('conversation_id', $id)->orderBy('id','desc')->get();
         if(count($chats) > 0) {
             return view('frontend.chat.detail', compact('chats'));
         } else {
