@@ -85,12 +85,7 @@ $(document).ready(function(){
         $('#data').prepend(res);
     }
 
-    function showAndHideToggle() {
-        if ($(window).width() > 768) {           
-            $('#chat_history_container').show() 
-        } else {
-            $('#chat_history_container').hide()
-            $('#toggle').show()
+    function showAndHideToggle() {      
             $('#toggle').on('click', function() {
                 $(this).hide()
                 $('#close').show()
@@ -103,7 +98,6 @@ $(document).ready(function(){
                 $(this).hide()
                 $('#toggle').show()
             })
-        }
     }
 
     showAndHideToggle()

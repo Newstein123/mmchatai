@@ -281,6 +281,14 @@ body {
     .navbar-expand-lg .navbar-collapse a {
         font-size: 12px;
     }
+
+    #new_conversation {
+        font-size: 12px !important;
+    }
+
+    .sidebar-item a {
+        font-size: 12px !important;
+    }
 }
 
 @media (min-width: 1026px) and (max-width : 1400px) {

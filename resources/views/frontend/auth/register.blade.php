@@ -96,7 +96,7 @@
             @enderror
 
             <div class="form-group">
-                <input type="text" class="form-control my-3" name="type" placeholder="Email or Phone" required="">
+                <input type="email" class="form-control my-3" name="type" placeholder="Email" required="">
             </div>
             @error('type')
                 <span class="text-danger">
