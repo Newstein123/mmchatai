@@ -43,6 +43,10 @@
                <i class="fa-solid fa-user"></i> {{session('user')->name}}
             </button>
             <ul class="dropdown-menu w-100 lh-lg">
+                {{-- profile --}}
+                <li class="dropdown-item">                 
+                        <a href="{{ route('profilePage') }}" class="dropdown-item"> <i class="fa-solid fa-user me-2"></i> Profile </a>
+                </li>
                 <li class="dropdown-item">                 
                     <form action="{{route('logout')}}" method="POST">
                         @csrf 
