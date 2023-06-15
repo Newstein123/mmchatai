@@ -42,10 +42,10 @@
 <body>
     @include('frontend.layouts.header')
     <div class="row home-container">
-        <div class="col-12 col-md-3" id="chat_history_container">
+        <div class="col-12 col-lg-3" id="chat_history_container">
             @include('frontend.layouts.parts.sidebar')
         </div>
-        <div class="col-12 col-md-9">
+        <div class="col-12 col-lg-9">
             @yield('content')
         </div>
     </div>
