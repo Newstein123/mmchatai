@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div><!--Name-->
-                <!--Position-->
+                <!--Link-->
                 <div class="ibox ">
                     <div class="ibox-title">
                         <h5>Link</h5>
@@ -62,7 +62,25 @@
                             </div>
                         </div>
                     </div>
-                </div><!--Position-->
+                </div>
+                <!--Link-->
+                <!--Position-->
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Position</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-group  row">
+                            <div class="col-sm-12">
+                                <input type="text" name="position"  class="form-control @error('position') is-invalid @enderror" value={{ old('Position') }} >
+                                @error('link')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                @enderror 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Position-->
                 <!--Image -->
                 <div class="ibox ">
                     <div class="ibox-title">

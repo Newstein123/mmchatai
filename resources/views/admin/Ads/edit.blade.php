@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div><!--Name-->
-                <!--Position-->
+                <!--Link-->
                 <div class="ibox ">
                     <div class="ibox-title">
                         <h5>Link</h5>
@@ -57,6 +57,22 @@
                             <div class="col-sm-12">
                                 <input type="text" name="link"  class="form-control" @error('link') is-invalid @enderror value="{{ old('link',$ads->link) }}">
                                 @error('link')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                @enderror 
+                            </div>
+                        </div>
+                    </div>
+                </div><!--Link-->
+                <!--Position-->
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Position </h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-group  row">
+                            <div class="col-sm-12">
+                                <input type="text" name="position"  class="form-control" @error('position') is-invalid @enderror value="{{ old('position',$ads->position) }}">
+                                @error('position')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror 
                             </div>

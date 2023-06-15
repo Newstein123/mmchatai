@@ -26,16 +26,7 @@ class AuthController extends Controller
     {   
 
         $validator = Validator::make($request->all(), [
-            'type' => [
-                'required',
-                function ($attribute, $value, $fail) {
-                    if (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $value) &&
-                        !preg_match('/^09/', $value)
-                    ) {
-                        $fail('Enter valid email or phone number.');
-                    }
-                },
-            ],
+            'email' => 'required | unique:customers',
             'name' => 'required',
             'password' => 'required|min:8',
             'confirm_password' => 'required| same:password',
@@ -46,36 +37,18 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        
-        $type = $request->type;
-        $user = Customer::where('phone', $type)->orWhere('email', $type)->first();
-
-        if($user) {
-            return redirect()->back()->with('error', 'User already exists');
-        }
-        
-        $phone = "";
-        $email = "";
-        if(preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $type)) {
-            $email .=  $type;
-        } else {
-            $phone .= $type;
-        } 
-
         $user = new Customer();
         $user->name = $request->input('name');
-        $user->email = $email != "" ? $email :  NULL;
+        $user->email = $request->input('email');
         $user->phone = $phone ?? NULL;
         $user->company = $request->input('company');
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        if($email != "") {
-            Mail::to($user->email)->send(new VerifyEmail($user));
-            return redirect('/login')->with('message', 'Click <a href="https://gmail.com"> here </a>to verify you email');
-        } else {
-            return redirect('/login')->with('message', 'Please verify your phone number');
-        }
+        
+        Mail::to($user->email)->send(new VerifyEmail($user));
+        return redirect('/login')->with('message', 'Please verify your email');
+        
     }
 
     public function showLoginForm()

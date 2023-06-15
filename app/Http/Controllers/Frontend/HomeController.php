@@ -33,8 +33,9 @@ class HomeController extends ChatController
             ]);
 
         } else {   
-            $ads = Ad::orderBy('created_at', 'desc')->get();
-            return view('frontend.home',compact('ads'));
+            $adpopup = Ad::where('position', 'popup')->first();
+            $ads = Ad::where('position', 'footer')->orderBy('created_at', 'desc')->get();
+            return view('frontend.home',compact('ads', 'adpopup'));
         }
     }
     

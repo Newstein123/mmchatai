@@ -96,9 +96,9 @@
             @enderror
 
             <div class="form-group">
-                <input type="email" class="form-control my-3" name="type" placeholder="Email" required="">
+                <input type="email" class="form-control my-3" name="email" placeholder="Email" required="">
             </div>
-            @error('type')
+            @error('email')
                 <span class="text-danger">
                     <small>{{$message}}</small>
                 </span>

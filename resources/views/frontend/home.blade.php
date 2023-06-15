@@ -5,16 +5,33 @@
 {{--show login form --}}
 @if (!session('user'))
     @section('script')
-        @include('frontend.layouts.parts.modal')
+       <script>
+        $(document).ready(function() {
+            $('#authForm').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+
+            $('#authForm').modal('show')
+        });
+       </script>
     @endsection
 @endif
-
+@include('frontend.layouts.parts.modal')
 <div class="me-0 me-md-3">
     @if (session('message'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong> {{session('message')}}. Welcome {{ session('user') ? session('user')->name : ''}}  </strong> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
-        </div>
+        @section('script')
+            <script>
+            $(document).ready(function() {
+                $('#adPopup').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+
+                $('#adPopup').modal('show')
+            });
+            </script>
+        @endsection
     @endif
     <div class="question-container mt-3">
         <form action="ai.php" method="post" id="form" class="text-center">
@@ -65,7 +82,7 @@
                     <li class="mx-4 list-unstyled">
                         <a href="{{ $ad->link }}" target="_black"><img
                                 src="{{ asset('storage/ads/' . $ad->image) }}"
-                                style="width:250px;height:70px;pading:10px;" alt=""></a>
+                                style="width:250px;height:100px;pading:10px;" alt=""></a>
                     </li>
                 @endforeach
             </div>

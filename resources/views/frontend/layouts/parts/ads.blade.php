@@ -17,7 +17,7 @@
      document.addEventListener('DOMContentLoaded', function() {
          new Splide('.splide', {
              autoplay: true, // Enable auto-scrolling
-             interval: 3000, // Set the desired interval (in milliseconds) between each slide transition
+             interval: 2000, // Set the desired interval (in milliseconds) between each slide transition
              pauseOnHover: boolean = true,
              arrows: false,
              autoWidth: true,
@@ -28,7 +28,7 @@
              focus: 'center',
              perPage: 4,
              autoScroll: {
-                 speed: 1,
+                speed : 2,
                  perMove: 1
              },
          }).mount();

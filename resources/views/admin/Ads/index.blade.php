@@ -34,6 +34,7 @@
                                     <tr>
                                         <th> Id </th>
                                         <th> Name </th>
+                                        <th> Position </th>
                                         <th> Link </th>
                                         <th>Image </th>
                                         <th>Status</th>
@@ -46,6 +47,7 @@
                                         <tr class="gradeU">
                                             <td>{{ $ad->id }}</td>
                                             <td>{{ $ad->name }}</td>
+                                            <td> {{$ad->position}} </td>
                                             <td>{{ $ad->link }}</td>
                                             <td>
                                                 @if ($ad->image == null)
@@ -57,6 +59,7 @@
                                                         alt="">
                                                 @endif
                                             </td>
+                        
                                             <td width='20%'>
                                                 <div class="switch">
                                                     <div class="onoffswitch slide round">

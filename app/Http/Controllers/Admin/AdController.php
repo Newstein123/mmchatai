@@ -23,9 +23,10 @@ class AdController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
         $this->adsDatavalidate($request, 'create');
         $data = $this->getData($request);
+
         // Start image create
         if ($request->hasFile('image')) {
             $fileName = uniqid() . '_' . $request->file('image')->getClientOriginalName();
@@ -54,6 +55,7 @@ class AdController extends Controller
     {
         $this->adsDatavalidate($request, 'update');
         $data = $this->getData($request);
+        
 
         // Start image update
         if ($request->hasFile('image')) {
@@ -116,6 +118,7 @@ class AdController extends Controller
         $response = [
             'name' => $request->name,
             'link' => $request->link,
+            'position' => $request->position,
             'status' => $request->status
         ];
         return $response;
@@ -127,6 +130,7 @@ class AdController extends Controller
         $adsDataValidate = [
             'name' => 'required',
             'link' => 'required',
+            'position' => 'required'
         ];
         $adsDataValidate['image'] = $action == 'create' ? 'required|mimes:jpg,png,jpeg,webp|file' : "mimes:jpg,png,jpeg,webp|file";
         Validator::make($request->all(), $adsDataValidate)->validate();

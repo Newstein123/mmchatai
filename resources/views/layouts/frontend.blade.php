@@ -51,13 +51,11 @@
     </div>
     @include('frontend.layouts.footer')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> --}}
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/splide.min.js') }}"></script>
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
+    @yield('script')
 </body>
-
 </html>
