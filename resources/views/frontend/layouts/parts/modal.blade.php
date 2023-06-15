@@ -20,8 +20,8 @@
             </div>
             <div class="modal-button my-5">
                 <div class="d-flex justify-content-around">
-                    <a href="{{route('login')}}" class="btn bg-custom"> Login </a>
-                    <a href="{{route('register')}}" class="btn bg-custom"> Register </a>
+                    <a href="{{route('login')}}" class="btn btn-lg bg-custom"> Login </a>
+                    <a href="{{route('register')}}" class="btn btn-lg bg-custom"> Register </a>
                 </div>
             </div>
         </div>
@@ -34,10 +34,8 @@
     {{-- Ads popup modal  --}}
     <div class="modal fade" id="adPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div class="modal-content">       
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
           <div class="modal-body">
               <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid">  
           </div>
