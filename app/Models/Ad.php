@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
+    const APPROVED  = 1;
+    const REJECTED  = 2;
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'link',
+        'image',
+        'status'
+    ];
+
+    
+
+
 }

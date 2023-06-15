@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\ChatUser;
-use Illuminate\Http\Request;
+use App\Models\Ad;
 use App\Models\Chat;
+use App\Models\ChatUser;
 use App\Models\UserChat;
 use App\Models\UserOldData;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends ChatController
 {
@@ -32,7 +33,8 @@ class HomeController extends ChatController
             ]);
 
         } else {   
-            return view('frontend.home');
+            $ads = Ad::orderBy('created_at', 'desc')->get();
+            return view('frontend.home',compact('ads'));
         }
     }
     

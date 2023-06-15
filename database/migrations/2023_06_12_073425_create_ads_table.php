@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('link');
             $table->string('image');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });
     }
