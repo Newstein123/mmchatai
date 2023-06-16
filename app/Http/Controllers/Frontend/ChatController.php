@@ -165,7 +165,11 @@ class ChatController extends Controller
 
     // Delete one conversation 
     public function chat_delete($id)
-    {
+    {   
+        if(session('conversation_id') == $id) {
+            session()->forget('conversation_id');
+        }
+        
         $chat = UserChat::where('conversation_id', $id)->first();
         if($chat) {
             $chat->delete();

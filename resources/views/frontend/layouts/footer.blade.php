@@ -78,6 +78,7 @@
         <div class="container">
             <p>Copyright &copy; {{ date('Y') }} {{ generalSetting('Website Name') }} <span class="hidden-xs">All
                     Rights Reserved.</span></p>
+            <p class="mt-3"> Developed by <span><a href="#">MISL.</a></span> Powered by Google Cloud Translation and ChatGPT. </p>
         </div>
     </div>
 </div>

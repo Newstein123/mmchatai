@@ -23,12 +23,7 @@
         @section('script')
             <script>
             $(document).ready(function() {
-                $('#adPopup').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-
-                $('#adPopup').modal('show')
+                $('#adPopup').modal('show');
             });
             </script>
         @endsection

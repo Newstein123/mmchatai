@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="middle-box text-center loginscreen animated fadeInDown d-flex align-items-center vh-100">
         <div>
             <a href="/" class="my-3">
-                <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
+                <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-75">
             </a>
-            <h3 class="my-3">User Login</h3>
+            <h5 class="my-3">User Login</h5>
             @include('frontend.session.message')
             <form class="m-t" role="form" action="{{route('login.submit')}}" method="POST">
                 @csrf
