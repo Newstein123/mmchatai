@@ -40,7 +40,7 @@ class AuthController extends Controller
         $user = new Customer();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->phone = $phone ?? NULL;
+        $user->phone = $request->input('phone') ?? NULL;
         $user->company = $request->input('company');
         $user->password = Hash::make($request->input('password'));
         $user->save();

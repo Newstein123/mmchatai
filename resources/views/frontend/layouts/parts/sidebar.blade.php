@@ -10,13 +10,13 @@
                 @endphp
                     <li class="list-group-item sidebar-item {{$value == $row->conversation_id ? 'list-active' : '' }} ">
                         <div class="row">
-                            <div class="col-10 col-lg-9">
+                            <div class="col-8 col-lg-7 col-xl-9">
                                 <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark overflow-hidden myanmar-font"    
                                     >
-                                        {{$row->name}}
+                                        {{Str::limit($row->name, 50, "...")}}
                                 </a>
                             </div>
-                            <div class="col-2 col-lg-3">
+                            <div class="col-4 col-lg-5 col-xl-3">
                                 <div class="action-button">
                                     <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
                                     data-conversationId="{{$row->conversation_id}}"    
@@ -57,7 +57,7 @@
     @endif
 
     <!-- Edit Conversation  -->
-<div class="modal fade" id="editChatName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade edit-chat-box" id="editChatName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

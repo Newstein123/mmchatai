@@ -107,11 +107,7 @@ body {
 #chat_history {
     background-color: #fff;
     border-radius: 5px;
-}
-
-
-#chat_history {
-    height: 80vh;
+    height: 85vh;
 }
 
 /* ads */
@@ -229,6 +225,16 @@ body {
 
 .modal {
     top : 30% !important;
+    --bs-modal-width : 400px !important;
+    --bs-modal-padding : 3rem !important
+}
+
+.ad-popup {
+    --bs-modal-padding : 1rem !important
+}
+
+.edit-chat-box {
+    --bs-modal-padding : 1rem !important;
     --bs-modal-width : 300px !important;
 }
 
@@ -245,7 +251,7 @@ body {
 }
 
 .navbar-img {
-    width: 50%;
+    width: 60%;
 }
 
 

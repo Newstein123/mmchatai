@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light sticky-top">
   <div class="container">
       <a class="navbar-brand" href="/">
         <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid navbar-img">

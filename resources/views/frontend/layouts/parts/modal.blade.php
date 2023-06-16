@@ -18,9 +18,9 @@
             <div class="modal-img">
                 <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-100">
             </div>
-            <div class="modal-button mt-3">               
-                    <a href="{{route('login')}}" class="btn btn bg-custom w-100 my-2"> Login </a>
-                    <a href="{{route('register')}}" class="btn btn bg-custom w-100 my-2"> Register </a>
+            <div class="modal-button mt-4">               
+                    <a href="{{route('login')}}" class="btn btn-sm bg-custom w-100 my-2"> Login </a>
+                    <a href="{{route('register')}}" class="btn btn-sm bg-custom w-100 my-2"> Register </a>
             </div>
         </div>
       </div>
@@ -28,14 +28,12 @@
   </div>
 
   {{-- end auth form  --}}
-
     {{-- Ads popup modal  --}}
-    <div class="modal fade" id="adPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade ad-popup" id="adPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">       
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body">
-              @if ($adpopup)
+            @if ($adpopup)
                 <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid"> 
               @endif 
           </div>
