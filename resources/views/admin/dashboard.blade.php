@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 @section('content')
 <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-4">
         <div class="ibox ">
             <div class="ibox-title">
                 <div class="ibox-tools">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-4">
         <div class="ibox ">
             <div class="ibox-title">
                 <div class="ibox-tools">
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-4">
         <div class="ibox ">
             <div class="ibox-title">
                 <div class="ibox-tools">
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-4">
         <div class="ibox ">
             <div class="ibox-title">
                 <div class="ibox-tools">
@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-4">
         <div class="ibox ">
             <div class="ibox-title">
                 <div class="ibox-tools">

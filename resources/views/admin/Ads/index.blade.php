@@ -38,7 +38,6 @@
                                         <th> Link </th>
                                         <th>Image </th>
                                         <th>Status</th>
-                                        <th></th>
                                         <th> Action </th>
                                     </tr>
                                 </thead>
@@ -74,7 +73,6 @@
                                                         </label>
                                                     </div>
                                             </td>
-                                            <td></td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     @can('edit users')
@@ -102,10 +100,10 @@
                                     <tr>
                                         <th> Id </th>
                                         <th> Name </th>
-                                        <th> Link </th>
-                                        <th> Image </th>
-                                        <th> Status</th>
-                                        <th> </th>
+                                        <th> Position </th>
+                                        <th>Link  </th>
+                                        <th> Image</th>
+                                        <th>Status </th>
                                         <th> Action </th>
                                     </tr>
                                 </tfoot>

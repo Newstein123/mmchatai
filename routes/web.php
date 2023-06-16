@@ -73,10 +73,10 @@ Route::post('admin/register', [RegisterController::class, 'register']);
 
 Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
 
-// frontend profile
+// frontend profile & change password
 Route::get('/userprofile',[ProfileController::class,'index'])->name('profilePage');
-// change password
-Route::post('passwordChange',[ProfileController::class, 'passwordChange'])->name('ProfilePasswordChange');
+Route::get('/userprofile/changePasswordPage',[ProfileController::class,'ChangePasswordPage'])->name('PasswordChangePage');
+Route::post('/passwordChange',[ProfileController::class, 'passwordChange'])->name('ProfilePasswordChange');
 
 
 // Admin Middleware 

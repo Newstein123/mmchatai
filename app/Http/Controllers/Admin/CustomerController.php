@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ResponseController;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class CustomerController extends Controller
+class CustomerController extends ResponseController
 {
     public function index()
     {   
@@ -89,7 +90,7 @@ class CustomerController extends Controller
 
     public function delete(Request $request)
     {
-        $user = Customer::findOrFail($request->id);
+        $user = Customer::find($request->id);
         if($user) {
             $user->delete();
             return $this->successMessage('', 'Customer Deleted Successfully');

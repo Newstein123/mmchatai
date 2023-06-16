@@ -13,7 +13,11 @@ class ProfileController extends Controller
     //profile page
     public function index()
     {
-        return view('frontend.profile.index');
+        return view('frontend.profile.profile');
+    }
+
+    public function ChangePasswordPage(){
+        return view('frontend.profile.changePassword');
     }
 
     // change Password
@@ -29,7 +33,9 @@ class ProfileController extends Controller
             Customer::where('id', session('user')->id)->update($data);
 
             session()->forget('user');
-            return redirect('/');
+            return redirect('/')->with('SuccessPassword','Password changed.!Please Log in again...');
+        }else{
+            return redirect()->route('PasswordChangePage')->with('wrongPassword','Your Password is Not Match Try Again...!');
         }
     }
 

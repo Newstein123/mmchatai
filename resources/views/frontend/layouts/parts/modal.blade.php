@@ -16,14 +16,20 @@
       <div class="modal-content">
         <div class="modal-body text-center auth-modal-body">
             <div class="modal-img">
-                <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
+                <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-100">
             </div>
-            <div class="modal-button my-5">
-                <div class="d-flex justify-content-around">
-                    <a href="{{route('login')}}" class="btn bg-custom"> Login </a>
-                    <a href="{{route('register')}}" class="btn bg-custom"> Register </a>
-                </div>
+            <div class="modal-button mt-3">               
+                    <a href="{{route('login')}}" class="btn btn bg-custom w-100 my-2"> Login </a>
+                    <a href="{{route('register')}}" class="btn btn bg-custom w-100 my-2"> Register </a>
             </div>
+            @if (session('SuccessPassword'))
+              <div class="col-12 py-2">
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fa-solid fa-circle-check"></i> {{session('SuccessPassword')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          </div>
+        @endif
         </div>
       </div>
     </div>
@@ -34,12 +40,12 @@
     {{-- Ads popup modal  --}}
     <div class="modal fade" id="adPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div class="modal-content">       
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
           <div class="modal-body">
-              <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid">  
+              @if ($adpopup)
+                <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid"> 
+              @endif 
           </div>
         </div>
       </div>
