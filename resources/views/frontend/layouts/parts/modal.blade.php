@@ -22,6 +22,14 @@
                     <a href="{{route('login')}}" class="btn btn bg-custom w-100 my-2"> Login </a>
                     <a href="{{route('register')}}" class="btn btn bg-custom w-100 my-2"> Register </a>
             </div>
+            @if (session('SuccessPassword'))
+              <div class="col-12 py-2">
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fa-solid fa-circle-check"></i> {{session('SuccessPassword')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          </div>
+        @endif
         </div>
       </div>
     </div>
