@@ -15,8 +15,8 @@
 </head>
 <body>
     @include('frontend.layouts.header')
-    <div class="row home-container" style="height : 60vh">
-        <div class="col-12 col-lg-12">
+    <div class="row home-container"  style="height: 100vh">
+        <div class="col-12 col-lg-12 d-flex align-items-center 100vh">        
             @yield('content')
         </div>
     </div>
