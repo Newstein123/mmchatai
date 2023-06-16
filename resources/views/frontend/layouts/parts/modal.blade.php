@@ -42,7 +42,9 @@
         <div class="modal-content">       
           <div class="modal-body">
             @if ($adpopup)
-                <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid"> 
+                <a href="{{ $adpopup->link }}">
+                  <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid">  
+                </a> 
               @endif 
           </div>
         </div>

@@ -1,50 +1,48 @@
 @extends('layouts.frontendProfile')
 @section('title', 'Profile')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center ">
-        <div class="col-md-8 ">
-            <div class="card ">
-                <div class="card-header"> {{ __('User Profile') }}</div>
-                <div class="card-body ">
-                    <form method="" action="" >
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control"  name="name" value="{{ session('user')->name }}" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control"  name="name" value="{{ session('user')->email }}" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control"  name="name" value="{{ session('user')->phone }}" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('Company') }}</label>
-                            <div class="col-md-6">
-                                <input  type="text" class="form-control"  name="name" value="{{ session('user')->company }}" disabled>
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-md-8 ">
+                <div class="card ">
+                    <h3 class="text-center text-dark pt-5">{{ __('User Profile') }}</h3>
+                    <div class="card-body mb-5 pt-4">
+                        <div class="ibox-content">
+                            <div class="table-responsive my-3">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td> Name </td>
+                                            <td> {{ session('user')->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td> Email </td>
+                                            <td> {{ session('user')->email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td> Phone </td>
+                                            <td> {{ session('user')->phone }} </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Date Of Use </td>
+                                            <td> {{ session('user')->created_at->toFormattedDateString() }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                    <a class="btn bg-custom" href="{{ route('PasswordChangePage') }}">
-                                      Change Password
-                                    </a>
-                                    <a href="{{ route('home') }}" class="btn bg-custom">Back Home</a>
+                            <div class="col-md-8">
+                                <a class="btn btn-sm bg-custom" href="{{ route('PasswordChangePage') }}">
+                                    Password
+                                </a>
+                                <a href="{{ route('home') }}" class="btn btn-sm bg-custom">Back Home</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-    
+
 @endsection

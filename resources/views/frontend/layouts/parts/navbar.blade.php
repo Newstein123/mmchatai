@@ -58,7 +58,7 @@
           <a class="nav-link" href="https://myanmarictsolutions.pro/contact.php"> Contact Us </a>
         </li>
         <li class="nav-item d-lg-none">
-          <a class="nav-link" href="https://myanmarictsolutions.pro/contact.php"> Profile </a>
+          <a class="nav-link" href="{{ route('profilePage') }}"> Profile </a>
         </li>
         <li class="nav-item d-lg-none">
           <a class="nav-link"> Chat History 

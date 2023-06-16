@@ -74,10 +74,11 @@
         @if ($ads->count() <= 4)
             <div class="d-flex justify-content-between flex-wrap justify-content-lg-center">
                 @foreach ($ads as $ad)
-                    <li class="list-unstyled">
+                    <div>
                         <a href="{{ $ad->link }}" target="_black"><img
-                                src="{{ asset('storage/ads/' . $ad->image) }}" alt="" class="ad-image"></a>
-                    </li>
+                                src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
+                            </a>
+                    </div>
                 @endforeach
             </div>
         @else

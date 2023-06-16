@@ -72,9 +72,15 @@
                     <div class="ibox-content">
                         <div class="form-group  row">
                             <div class="col-sm-12">
-                                <input type="text" name="position"  class="form-control @error('position') is-invalid @enderror" value={{ old('Position') }} >
-                                @error('link')
-                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                <select name="position" class="form-control @error('position') is-invalid @enderror" >
+                                    <option value="">Choose Ads Position</option>
+                                    <option value="popup" >Popup</option>
+                                    <option value="footer">Footer</option>
+                                </select>
+                                @error('position')
+                                <div class="alert alert-danger mt-2">
+                                {{$message}}
+                                </div>
                                 @enderror 
                             </div>
                         </div>

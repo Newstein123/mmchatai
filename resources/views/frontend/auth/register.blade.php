@@ -62,8 +62,8 @@
             <div class="form-group">
                     <div class="checkbox i-checks">
                         <label> <input type="checkbox" name="terms&policy" required>
-                            Agree the <a href="https://myanmarictsolutions.pro/terms-of-services.php">Terms</a> and 
-                            <a href="https://myanmarictsolutions.pro/privacy-policy.php">Policy</a>
+                            Agree the <a href="#">Terms</a> and 
+                            <a href="#">Policy</a>
                         </label>
                     </div>
             </div>

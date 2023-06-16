@@ -65,9 +65,9 @@
         <div class="container-fluid">
             <div class="">
                 <ul class="d-flex list-unstyled justify-content-center">
-                    <li><a href="https://myanmarictsolutions.pro/terms-of-services.php" target="_blank"
+                    <li><a href="#" target="_blank"
                             class="text-mute me-2 text-decoration-none">Terms of Services</a></li>
-                    <li><a href="https://myanmarictsolutions.pro/privacy-policy.php" target="_blank"
+                    <li><a href="#" target="_blank"
                             class="text-mute text-decoration-none">Privacy Policy</a></li>
                 </ul>
             </div>
