@@ -16,13 +16,11 @@
       <div class="modal-content">
         <div class="modal-body text-center auth-modal-body">
             <div class="modal-img">
-                <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-50">
+                <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-100">
             </div>
-            <div class="modal-button my-5">
-                <div class="d-flex justify-content-around">
-                    <a href="{{route('login')}}" class="btn btn-lg bg-custom"> Login </a>
-                    <a href="{{route('register')}}" class="btn btn-lg bg-custom"> Register </a>
-                </div>
+            <div class="modal-button mt-3">               
+                    <a href="{{route('login')}}" class="btn btn bg-custom w-100 my-2"> Login </a>
+                    <a href="{{route('register')}}" class="btn btn bg-custom w-100 my-2"> Register </a>
             </div>
         </div>
       </div>
@@ -37,7 +35,9 @@
         <div class="modal-content">       
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body">
-              <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid">  
+              @if ($adpopup)
+                <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid"> 
+              @endif 
           </div>
         </div>
       </div>
