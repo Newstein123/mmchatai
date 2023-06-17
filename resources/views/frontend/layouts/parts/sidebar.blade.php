@@ -17,7 +17,7 @@
                                 </a>
                             </div>
                             <div class="col-4 col-lg-5 col-xl-3">
-                                <div class="action-button">
+                                <div class="action-button d-flex">
                                     <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
                                     data-conversationId="{{$row->conversation_id}}"    
                                     >

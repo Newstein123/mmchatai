@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('status')->default('yes')->nullable();
             $table->string('position');
+            $table->integer('click_counts')->default(0);
             $table->timestamps();
         });
     }

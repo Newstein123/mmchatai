@@ -33,9 +33,30 @@ class HomeController extends ChatController
             ]);
 
         } else {   
-            $adpopup = Ad::where('position', 'popup')->where('status', 'yes')->first();
+            $adpopup = Ad::where('position', 'popup')->where('status', 'yes')->get();
             $ads = Ad::where('position', 'footer')->where('status', 'yes')->orderBy('created_at', 'desc')->get();
             return view('frontend.home',compact('ads', 'adpopup'));
+        }
+    }
+
+    public function ad_count($id) {
+        $ad = Ad::find($id);
+        if($ad) {
+
+            $ad->update([
+                'click_counts' => $ad->click_counts + 1,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => "count updated",
+                'data' => $ad->click_counts,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Ad not found",
+            ]);
         }
     }
     

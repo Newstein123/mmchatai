@@ -19,7 +19,7 @@
 @endif
 @include('frontend.layouts.parts.modal')
 <div class="me-0 me-md-3">
-    @if (session('message'))
+    @if (session('message') && count($adpopup) > 0 )
         @section('script')
             <script>
             $(document).ready(function() {
@@ -75,8 +75,8 @@
             <div class="d-flex justify-content-between flex-wrap justify-content-lg-center pt-2">
                 @foreach ($ads as $ad)
                     <div>
-                        <a href="{{ $ad->link }}" target="_black">
-                          <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
+                        <a href="{{ $ad->link }}" target="_black" onclick="adCount('{{route('adCount', $ad->id)}}')">
+                            <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
                         </a>
                     </div>
                 @endforeach

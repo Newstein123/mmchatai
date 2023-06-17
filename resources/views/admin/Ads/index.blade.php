@@ -38,6 +38,7 @@
                                         <th> Link </th>
                                         <th>Image </th>
                                         <th>Status</th>
+                                        <th> Click Count </th>
                                         <th> Action </th>
                                     </tr>
                                 </thead>
@@ -73,6 +74,7 @@
                                                         </label>
                                                     </div>
                                             </td>
+                                            <td> {{$ad->click_counts}} </td>
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     @can('edit users')
