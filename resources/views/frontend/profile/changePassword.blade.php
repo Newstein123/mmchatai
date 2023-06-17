@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8" style="width: 650px;height:500px;" >
+            <div class="col-md-8" >
                 <div class="card" >
                     <h3 class="text-center text-dark pt-5">{{ __('Change Password') }}</h3>
                     <div class="card-body mb-5 pt-4">

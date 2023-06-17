@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Ad;
 use App\Models\Chat;
 use App\Models\ChatUser;
+use App\Models\UserChat;
 use App\Models\UserOldData;
 use Illuminate\Http\Request;
 use Orhanerday\OpenAi\OpenAi;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-use App\Models\UserChat;
 use Google\Cloud\Translate\V2\TranslateClient;
 
 class ChatController extends Controller
@@ -135,10 +136,11 @@ class ChatController extends Controller
     public function chat_detail($id)
     {
         $chats = Chat::where('conversation_id', $id)->orderBy('id','desc')->get();
+        $adpopup = Ad::where('position', 'popup')->where('status', 'yes')->first();
         if(count($chats) > 0) {
             return view('frontend.chat.detail', compact('chats'));
         } else {
-            return view('frontend.home');
+            return redirect('/');
         }
     }
 

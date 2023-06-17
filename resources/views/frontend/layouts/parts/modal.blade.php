@@ -42,9 +42,9 @@
         <div class="modal-content">       
           <div class="modal-body">
             @if ($adpopup)
-                <a href="{{ $adpopup->link }}">
+                {{-- <a href="{{ $adpopup->link }}"> --}}
                   <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid">  
-                </a> 
+                {{-- </a>  --}}
               @endif 
           </div>
         </div>

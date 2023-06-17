@@ -1,3 +1,12 @@
+@php
+    if (session('user')) {
+        $chats = App\Models\UserChat::where('user_id', session('user')->id)
+            ->orderBy('id', 'desc')
+            ->get();
+    } else {
+        $chats = [];
+    }
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,19 +26,43 @@
 
 <body>
     @include('frontend.layouts.header')
+    
+    <div class="home-container" style="height: 100vh">
+        <div class="row">
+        <div class="d-flex align-items-center 100vh">
+            <div class="col-12 col-lg-3" id="chat_history_container">
+                @include('frontend.layouts.parts.sidebar')
+            </div>
+            <div class="col-12 col-lg-9 ">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+    </div>
+@include('frontend.layouts.footer')
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/splide.min.js') }}"></script>
+<script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
+
+
+    {{-- ss --}}
+    {{-- @include('frontend.layouts.header')
     <div class="row home-container" style="height: 100vh">
         <div class="d-flex align-items-center 100vh">
             @yield('content')
         </div>
     </div>
     {{-- </div> --}}
-    @include('frontend.layouts.footer')
+    {{-- @include('frontend.layouts.footer')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/splide.min.js') }}"></script>
-    <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
+    <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script> --}} 
 </body>
 
 </html>
