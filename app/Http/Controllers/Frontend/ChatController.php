@@ -178,6 +178,7 @@ class ChatController extends Controller
                 UserOldData::create([
                     'user_id' => session('user')->id,
                     'question' => $con->human,
+                    'answer' => $con->ai_translated_text,
                 ]);
                 
                 $con->delete();
@@ -271,6 +272,7 @@ class ChatController extends Controller
                 UserOldData::create([
                     'user_id' => $user_id,
                     'question' => $row->human,
+                    'answer' => $row->ai_translated_text,
                 ]);
             }
 
