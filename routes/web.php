@@ -78,6 +78,9 @@ Route::get('/userprofile',[ProfileController::class,'index'])->name('profilePage
 Route::get('/userprofile/changePasswordPage',[ProfileController::class,'ChangePasswordPage'])->name('PasswordChangePage');
 Route::post('/passwordChange',[ProfileController::class, 'passwordChange'])->name('ProfilePasswordChange');
 
+// Ad Count 
+
+Route::post('/adcount/{id}', [HomeController::class, 'ad_count'])->name('adCount');
 
 // Admin Middleware 
 

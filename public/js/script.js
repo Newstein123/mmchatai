@@ -10,27 +10,30 @@ $(document).ready(function(){
 
     $('#form').submit(function(e){  
         e.preventDefault();
-        const prompt = $('#prompt').val();
+        const prompt = $('#prompt').val()
+        const uniqueId = Date.now();
         $('#generate').hide();
         $('#text-loading').show();
         const html = `
-        <div class="d-flex my-2 bg-mute p-md-2">
-            <div class="me-2">
-                <i class="fa-solid fa-user bg-custom p-md-3 p-1 text-white rounded-circle me-2"></i>   
+            <div id="${uniqueId}">
+                <div class="d-flex my-2 bg-mute p-md-2">
+                    <div class="me-2">
+                        <i class="fa-solid fa-user bg-custom p-md-3 p-1 text-white rounded-circle me-2"></i>   
+                    </div>
+                    <div class="text-white">
+                        <p> ${prompt} </p>
+                    </div>
+                </div>
+                <p id="loading" class="text-white"> Loading ... </p>
             </div>
-            <div class="text-white">
-                <p> ${prompt} </p>
-            </div>
-        </div>
-        <p id="loading" class="text-white"> Loading ... </p>
         `
         $('#data').prepend(html);
         $('.data-container').scrollTop();
-        getResponse(prompt)
+        getResponse(prompt, uniqueId)
           
     })
 
-    function getResponse(prompt) {
+    function getResponse(prompt, uniqueId) {
         $.ajax({
             method: 'GET', // or 'GET' depending on your requirement
             url: "/ai_response",
@@ -40,7 +43,7 @@ $(document).ready(function(){
             },
             success: function(response) { 
                 console.log(response) 
-                addResult(response) 
+                addResult(response, uniqueId) 
                 if(response.chat_count) {
                     window.location.reload();
                 }
@@ -54,7 +57,7 @@ $(document).ready(function(){
         });
     }
 
-    function addResult(response) {
+    function addResult(response, uniqueId) {
         let res = ""
         if(response.status == 401) {
             $('.alert-warning').show()
@@ -64,12 +67,12 @@ $(document).ready(function(){
             if(response.success) {                
                 res = `
                 <div class="d-flex my-2 p-md-2">
-                            <div class="me-2">
-                                <i class="fa-solid fa-reply p-md-3 p-1  text-white bg-success rounded-circle me-2"> </i>
-                            </div>
-                            <div class="text-white">
-                                <p> ${response.data}</p>
-                            </div>
+                    <div class="me-2">
+                        <i class="fa-solid fa-reply p-md-3 p-1  text-white bg-success rounded-circle me-2"> </i>
+                    </div>
+                    <div class="text-white">
+                        <p> ${response.data}</p>
+                    </div>
                 </div>
                 `
             } else {
@@ -82,7 +85,7 @@ $(document).ready(function(){
         $('#loading').hide();
         $('#text-loading').hide();
         $('#generate').show();
-        $('#data').prepend(res);
+        $(`#${uniqueId}`).append(res);
     }
 
     function showAndHideToggle() {      
@@ -207,5 +210,22 @@ $(document).ready(function(){
             }
         })
     })
-      
+
+   
+
 })
+
+ // Ad Count 
+
+ function adCount(url) {
+    $.ajax({
+        url : url,
+        method : 'POST',
+        success : function(res) {
+            console.log(res)
+        },
+        error : function(e, xhr) {
+            console.log(e , xhr)
+        }
+    })
+ }

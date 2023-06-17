@@ -41,9 +41,9 @@
       <div class="modal-dialog">
         <div class="modal-content">       
           <div class="modal-body">
-            @if ($adpopup)
-                <a href="{{ $adpopup->link }}">
-                  <img src="{{asset('storage/ads/'.$adpopup->image)}}" alt="" class="img-fluid">  
+            @if (count($adpopup) > 0)
+                <a href="{{ $adpopup[0]->link }}">
+                  <img src="{{asset('storage/ads/'.$adpopup[0]->image)}}" alt="" class="img-fluid">  
                 </a> 
               @endif 
           </div>

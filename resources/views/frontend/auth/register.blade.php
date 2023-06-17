@@ -7,7 +7,7 @@
         <a href="/">
             <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-75">
         </a>
-        <h3 class="my-3">Register to MISL ChatAI</h3>
+        <h5 class="my-3">Register to MISL ChatAI</h5>
         @include('frontend.session.message')
         <form class="m-t" role="form" action="{{route('register.submit')}}" method="POST">
             @csrf
@@ -30,7 +30,7 @@
              @enderror
 
             <div class="form-group">
-                <input type="text" class="form-control my-3" name="phone" placeholder="Phone(Optional)" required="">
+                <input type="text" class="form-control my-3" name="phone" placeholder="Phone(Optional)">
             </div>
             @error('phone')
                 <span class="text-danger">

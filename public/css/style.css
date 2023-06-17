@@ -336,6 +336,10 @@ body {
     .sidebar-item a {
         font-size: 12px !important;
     }
+
+    .sidebar-item i {
+        font-size: 10px !important;
+    }
     
     .ad-image {
         width: 150px !important;

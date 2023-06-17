@@ -138,7 +138,7 @@ class ChatController extends Controller
         if(count($chats) > 0) {
             return view('frontend.chat.detail', compact('chats'));
         } else {
-            return view('frontend.home');
+            return redirect('/');
         }
     }
 
