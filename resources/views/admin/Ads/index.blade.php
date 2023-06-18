@@ -13,9 +13,9 @@
                 </li>
             </ol>
         </div>
-        <div class="col-lg-2">
-            <a href="{{ route('ads#CreatePage') }}" class="btn btn-success btn-xs  mt-5">
-                <i class="fa fa-plus"></i> Create</a>
+        <div class="col-md-2 mt-4">
+            <a href="{{ route('ads#CreatePage') }}" class="btn btn-secondary btn-sm  mt-5">
+                <i class="fa fa-plus"></i> Create Ads</a>
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">

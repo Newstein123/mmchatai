@@ -3,8 +3,8 @@
 @section('content')
     <div class="container ">
         <div class="row justify-content-center vh-100">
-            <div class="col-md-8 ">
-                <div class="bg-transpart ">
+            <div class="col-md-8">
+                <div class="bg-transpart">
                     <h3 class="text-center text-white pt-5">{{ __('User Profile') }}</h3>
                     <div class="card-body mb-5 pt-4 ">
                         <div class="ibox-content">
@@ -21,11 +21,21 @@
                                         </tr>
                                         <tr>
                                             <td> Phone </td>
-                                            <td> {{ session('user')->phone }} </td>
+                                            <td> @if (session('user')->phone)
+                                                    {{ session('user')->phone }}   
+                                                @else
+                                                -
+                                                @endif 
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td> Company </td>
-                                            <td> {{ session('user')->company }} </td>
+                                            <td> @if ( session('user')->company)
+                                                    {{ session('user')->company }}
+                                                @else
+                                                -
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td> Date Of Use </td>
@@ -38,9 +48,8 @@
                         <div class="row mb-0">
                             <div class="col-md-8">
                                 <a class="btn bg-custom" href="{{ route('PasswordChangePage') }}">
-                                    Password
+                                    <small>Edit Password</small>
                                 </a>
-                                {{-- <a href="{{ route('home') }}" class="btn btn-sm bg-custom">Back Home</a> --}}
                             </div>
                         </div>
                     </div>
