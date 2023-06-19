@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TermsPolicyController;
+use Illuminate\Auth\Notifications\ResetPassword;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Frontend\AuthController;
@@ -13,10 +15,11 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Frontend\ProfileController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Frontend\VerificationController;
-use App\Http\Controllers\Admin\AdController;
-use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Frontend\ResetPasswordController;
+use App\Http\Controllers\Frontend\forgetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,13 +77,21 @@ Route::post('admin/register', [RegisterController::class, 'register']);
 Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
 
 // frontend profile & change password
-Route::get('/userprofile',[ProfileController::class,'index'])->name('profilePage');
-Route::get('/userprofile/changePasswordPage',[ProfileController::class,'ChangePasswordPage'])->name('PasswordChangePage');
-Route::post('/passwordChange',[ProfileController::class, 'passwordChange'])->name('ProfilePasswordChange');
+Route::get('/userprofile', [ProfileController::class, 'index'])->name('profilePage');
+Route::get('/userprofile/changePasswordPage', [ProfileController::class, 'ChangePasswordPage'])->name('PasswordChangePage');
+Route::post('/passwordChange', [ProfileController::class, 'passwordChange'])->name('ProfilePasswordChange');
 
 // Ad Count 
 
 Route::post('/adcount/{id}', [HomeController::class, 'ad_count'])->name('adCount');
+
+// forget Password
+
+Route::get('/forgetPassowrd', [forgetPasswordController::class, 'showForgetPasswordForm'])->name('forgetpasswordForm');
+Route::get('/successForm', [forgetPasswordController::class, 'SuccessForm'])->name('successForm');
+Route::post('forgetPassword', [forgetPasswordController::class, 'sendResetLinkEmail'])->name('password#email');
+Route::get('/resetPassword/{token}', [ResetPasswordController::class, 'showResetPasswordForm'])->name('resetpasswordForm');
+Route::post('/resetpassword/', [ResetPasswordController::class, 'resetPassword'])->name('password#update');
 
 // Admin Middleware 
 
@@ -109,8 +120,6 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::put('/edit/{id}', [CustomerController::class, 'update'])->name('customerUpdate');
         Route::post('/delete', [CustomerController::class, 'delete'])->name('customerDelete');
     });
-
-    
 
     // Question 
 
@@ -151,6 +160,4 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
     Route::post('/adsDelete/{id}', [AdController::class, 'destroy'])->name('ads#delete');
     // status change
     Route::get('ads/changestatus', [AdController::class, 'change_ads_status'])->name('ChangeAdsStatus');
-
-    
 });

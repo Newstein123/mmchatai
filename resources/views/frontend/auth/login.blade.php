@@ -46,6 +46,7 @@
                         </div>
                     @endif
                 </div>
+                <a href="{{ route('forgetpasswordForm') }}"><small>Forget Your Password?</small></a>
                 <p class="text-muted text-center"><small>Do not have an account?</small></p>
                 <a class="btn btn-sm bg-custom btn-block" href="{{route('register')}}">Create an account</a>
             </form>
