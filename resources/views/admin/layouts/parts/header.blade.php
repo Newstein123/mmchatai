@@ -3,7 +3,7 @@
     <div class="navbar-header">
         <a class="navbar-minimalize minimalize-styl-2 bg-custom rounded" href="#"><i class="fa fa-bars"></i> </a>
     </div>
-        <div class="px-5">
+        <div class="px-3">
             <ul class="nav navbar-top-links navbar-right">
                 <li class="text-capitalize font-weight-bold">
                     <i class="fa fa-user mr-2"></i> {{ auth()->user()->name }}

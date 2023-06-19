@@ -5,7 +5,7 @@
         <div class="row justify-content-center vh-100" >
             <div class="col-md-8">
                 <div class="bg-transpart">
-                    <h3 class="text-white text-center mt-3">{{ __('Change Password') }}</h3>
+                    <h3 class="text-white text-center pt-5">{{ __('Edit Password') }}</h3>
                     <div class="card-body mb-5 pt-4">
                         @if (session('wrongPassword'))
                             <div class="col-12">
@@ -18,8 +18,7 @@
                         @endif
                         <form method="post" action="{{ route('ProfilePasswordChange') }}">
                             @csrf
-                            <div class="row mb-3">
-                                {{-- <label class="col-md-4 col-form-label text-md-end"></label> --}}
+                            <div class="row mb-4  my-3 py-2">
                                 <div class="col-md-12">
                                     <input type="password" class="form-control @error('oldpassword')is-invalid @enderror"
                                         name="oldpassword" placeholder="Old Password...">
@@ -28,8 +27,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                {{-- <label class="col-md-4 col-form-label text-md-end"></label> --}}
+                            <div class="row mb-4  my-3 py-2">
                                 <div class="col-md-12">
                                     <input type="password" class="form-control @error('oldpassword')is-invalid @enderror"
                                         name="newpassword" placeholder="New Password...">
@@ -38,8 +36,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                {{-- <label class="col-md-4 col-form-label text-md-end"></label> --}}
+                            <div class="row mb-4  my-3 py-2">
                                 <div class="col-md-12">
                                     <input type="password" class="form-control @error('oldpassword')is-invalid @enderror"
                                         name="confirmpassword" placeholder="Confirm Password...">
@@ -50,8 +47,7 @@
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6">
-                                    <button class="btn bg-custom" type="submit">Change Password</button>
-                                    {{-- <a href="{{ route('profilePage') }}" class="btn btn-sm bg-custom">Back Profile</a> --}}
+                                    <button class="btn bg-custom" type="submit"><small class="">Change Password</small></button>
                                 </div>
                             </div>
                         </form>

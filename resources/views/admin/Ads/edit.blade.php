@@ -19,9 +19,9 @@
                 </ol>
             </div>
             <div class="col-lg-2">
-                <a href="{{ route('ads#Page') }}" class="btn btn-success btn-xs mt-5">
+                <a href="{{ route('ads#Page') }}" class="btn btn-secondary btn-sm mt-5">
                     <i class="fa fa-reply"></i> back</a>
-                <button type="submit" class="btn btn-success btn-xs mt-5">
+                <button type="submit" class="btn btn-secondary btn-sm mt-5">
                     <i class="fa fa-folder"></i> Update
                 </button>
             </div>
