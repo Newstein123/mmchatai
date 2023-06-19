@@ -217,7 +217,9 @@ $(document).ready(function(){
 
  // Ad Count 
 
- function adCount(url) {
+ function adCount(url, href) {
+    console.log(href)
+    if(href == "#") return false;
     $.ajax({
         url : url,
         method : 'POST',

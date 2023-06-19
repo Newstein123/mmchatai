@@ -75,7 +75,7 @@
             <div class="d-flex justify-content-between flex-wrap justify-content-lg-center pt-2">
                 @foreach ($ads as $ad)
                     <div>
-                        <a href="{{ $ad->link }}" target="_black" onclick="adCount('{{route('adCount', $ad->id)}}')">
+                        <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
                             <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
                         </a>
                     </div>

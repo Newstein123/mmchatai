@@ -34,6 +34,9 @@
       </div>
     </div>
   </div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adPopup">
+    Open Modal 
+  </button>
 
   {{-- end auth form  --}}
     {{-- Ads popup modal  --}}
@@ -43,7 +46,8 @@
           <div class="modal-body">
             @if (count($adpopup) > 0)
                 <a href="{{ $adpopup[0]->link }}">
-                  <img src="{{asset('storage/ads/'.$adpopup[0]->image)}}" alt="" class="img-fluid">  
+                  <img src="{{asset('storage/ads/'.$adpopup[0]->image)}}" alt="" class="img-fluid  position-relative"> 
+                <i class="fa-solid fa-xmark position-absolute top-0 end-0 px-1 py-0 rounded-circle bg-custom" data-bs-dismiss="modal"></i>
                 </a> 
               @endif 
           </div>
