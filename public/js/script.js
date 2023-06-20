@@ -16,7 +16,7 @@ $(document).ready(function(){
         $('#text-loading').show();
         const html = `
             <div id="${uniqueId}">
-                <div class="d-flex my-2 bg-mute p-md-2">
+                <div class="d-flex my-2 bg-mute p-md-2 p-1">
                     <div class="me-2">
                         <i class="fa-solid fa-user bg-custom p-md-3 p-1 text-white rounded-circle me-2"></i>   
                     </div>
@@ -66,7 +66,7 @@ $(document).ready(function(){
         } else {
             if(response.success) {                
                 res = `
-                <div class="d-flex my-2 p-md-2">
+                <div class="d-flex my-2 p-md-2 p-1">
                     <div class="me-2">
                         <i class="fa-solid fa-reply p-md-3 p-1  text-white bg-success rounded-circle me-2"> </i>
                     </div>

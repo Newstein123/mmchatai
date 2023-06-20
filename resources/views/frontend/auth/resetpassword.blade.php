@@ -6,7 +6,7 @@
             <a href="/" class="my-3">
                 <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-75">
             </a>
-            <h6 class="my-3">Create New Password</h6>
+            <h6 class="my-3">Update Password</h6>
             @include('frontend.session.message')
             <form method="POST" action="{{ route('password#update') }}">
                 @csrf
@@ -23,7 +23,7 @@
                 @error('password_confirmation')
                     <span>{{ $message }}</span>
                 @enderror
-                <button type="submit" class="btn btn-sm bg-custom">New Password</button>
+                <button type="submit" class="btn btn-sm bg-custom">Edit Password</button>
             </form>
         </div>
     </div>

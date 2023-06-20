@@ -40,7 +40,7 @@
                 </button>
             </div>
         </form>
-        <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 70vh">
+        <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 64vh">
             <div id="data">
                 @if (session('conversation_id'))
                     @php
@@ -48,7 +48,7 @@
                     @endphp
                     @foreach ($chats as $row)  
                     {{-- Questions --}}
-                    <div class="d-flex my-2 bg-mute p-md-2">
+                    <div class="d-flex my-2 bg-mute p-md-2 p-1">
                         <div class="me-2">
                             <i class="fa-solid fa-user bg-custom p-md-3 p-1 text-white rounded-circle me-2"></i>   
                         </div>
@@ -57,7 +57,7 @@
                         </div>
                     </div> 
                     {{-- Answers  --}}
-                    <div class="d-flex my-2 p-md-2">
+                    <div class="d-flex my-2 p-md-2 p-1">
                         <div class="me-2">
                             <i class="fa-solid fa-reply p-md-3 p-1  text-white bg-success rounded-circle me-2"> </i>
                         </div>
@@ -68,11 +68,12 @@
                     @endforeach
                 @endif
             </div>
+            
         </div>
         {{-- Ads  --}}
-
-        @if ($ads->count() <= 4)
-            <div class="d-flex justify-content-between flex-wrap justify-content-lg-center pt-2">
+        <div class="">
+            @if ($ads->count() <= 4)
+            <div class="d-flex justify-content-between justify-content-sm-between flex-wrap justify-content-lg-between">
                 @foreach ($ads as $ad)
                     <div>
                         <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
@@ -86,6 +87,7 @@
                 @include('frontend.layouts.parts.ads')
             </div>
         @endif
+           </div>
     </div>
 </div>
 @endsection

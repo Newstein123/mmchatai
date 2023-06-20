@@ -6,7 +6,7 @@
                 <img src="{{ asset('img/logo/' . generalSetting('logo')) }}" alt="" class="img-fluid w-75">
             </a>
 
-            <h6 class="text-custom mt-3 p-4 shadow-sm">Password Verification has been send successfully.Please Check your
+            <h6 class="text-success text-start mt-3 p-3 shadow-sm lh-base">Password Verification has been send successfully.Please Check your
                 email! </h6>
             <a href=""></a>
         </div>

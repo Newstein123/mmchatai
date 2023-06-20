@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="keywords" content="chatgpt, myanmar, ai, openai, googletranslate">
     <link rel="shortcut icon" href="{{ asset('img/logo/' . generalSetting('logo')) }}" type="image/png">
     <title> {{ generalSetting('title') }} | @yield('title') </title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
