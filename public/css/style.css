@@ -240,7 +240,7 @@ body {
 /* ad image  */
 
 .ad-image {
-    width: 250px !important;
+    width: 240px !important;
     height: 120px !important;
     padding: 10px !important;
 }
@@ -253,6 +253,60 @@ body {
     width: 60%;
 }
 
+
+/*start mobile view */
+@media (max-width: 768px)  {
+    .ad-image{
+        width: 250px !important;
+        height: 100px !important;
+        padding: 5px !important;
+    }
+
+    .data-container {
+        height: 60vh !important;
+    }
+
+    .desktop{
+        display: none;
+    }
+
+    .mobile{
+        display: block;
+    }
+}
+/*end  mobile view */
+
+/* start desktop and laptop view */
+
+@media (min-width: 768px)  {
+    .ad-image{
+        width: 250px;
+        padding: 5px;
+    }
+
+    .desktop{
+        display: block;
+    }
+
+    .mobile{
+        display: none;
+    }
+
+    .data-container {
+        height: 60vh !important;
+    }
+}
+
+/* end desktop and laptop view */
+
+@media(max-width : 992px) and (min-width :(700px)) {
+    .ad-image{
+        width: 100px !important;
+        padding: 5px;
+    }
+}
+
+/* 992px less than device  */
 
 @media(max-width : 992px) {
     #chat_history_container {
@@ -277,7 +331,7 @@ body {
     }
     
     .data-container {
-        height: 100vh !important;
+        height: 70vh !important;
     }
 
     .navbar-collapse {
@@ -308,7 +362,7 @@ body {
 
     .ad-image {
         width: 180px !important;
-        padding: 5px !important;
+        padding: 8px !important;
     }
     .navbar-brand {
         width: 50% !important;
@@ -340,12 +394,22 @@ body {
         font-size: 10px !important;
     }
 
+<<<<<<< Updated upstream
     .list-group-item small {
         font-size: 10px !important;
+=======
+    .data-container {
+        height: 66vh !important;
+    }
+
+    .data-container {
+        height: 70vh !important;
+>>>>>>> Stashed changes
     }
     
     .ad-image {
         width: 150px !important;
+        height: 90px !important;
         padding: 5px !important;
     }
 }
@@ -360,11 +424,16 @@ body {
     }
 
     .ad-image {
-        width: 200px !important;
+        width: 180px !important;
         padding: 5px !important;
+    }
+
+    .data-container {
+        height: 68vh !important;
     }
     
 }
+
 
 /* scroll bar  */
 

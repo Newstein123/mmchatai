@@ -48,7 +48,7 @@
                         <div class="row mb-0">
                             <div class="col-md-8">
                                 <a class="btn bg-custom" href="{{ route('PasswordChangePage') }}">
-                                    <small>Edit Password</small>
+                                    <small>Change Password</small>
                                 </a>
                             </div>
                         </div>

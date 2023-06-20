@@ -1,13 +1,15 @@
  {{-- ads start --}}
  <section id="thumbnail-carousel" class="splide" data-bs-ride="carousel"
      aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-     <div class="splide__track ">
+     <div class="splide__track">
          <ul class="splide__list ">
-                 @foreach ($ads as $ad)
-                     <li class="splide__slide mx-2 list-unstyled">
-                         <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')"><img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1" alt=""></a>
-                     </li>
-                 @endforeach
+             @foreach ($ads as $ad)
+                 <li class="splide__slide mx-2 list-unstyled">
+                     <a href="{{ $ad->link }}" target="{{ $ad->link !== '#' ? '_black' : '' }}"
+                         onclick="adCount('{{ route('adCount', $ad->id) }}', '{{ $ad->link }}')"><img
+                             src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1" alt=""></a>
+                 </li>
+             @endforeach
          </ul>
      </div>
  </section>
@@ -25,11 +27,17 @@
              type: 'loop',
              drag: 'free',
              focus: 'center',
-             perPage: 4,
+             perPage: 1,
              autoScroll: {
-                speed : 2,
+                 speed: 2,
                  perMove: 1
              },
+             breakpoints: {
+                 768: {
+                    autoplay: true, // Enable auto-scrolling at or below 768px width
+                    interval: 2000, // Disable auto-scrolling in mobile view
+                 }
+             }
          }).mount();
      });
  </script>

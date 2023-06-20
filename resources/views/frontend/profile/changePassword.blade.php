@@ -5,7 +5,7 @@
         <div class="row justify-content-center vh-100" >
             <div class="col-md-8">
                 <div class="bg-transpart">
-                    <h3 class="text-white text-center pt-5">{{ __('Edit Password') }}</h3>
+                    <h3 class="text-white text-center pt-5">{{ __('Update Password') }}</h3>
                     <div class="card-body mb-5 pt-4">
                         @if (session('wrongPassword'))
                             <div class="col-12">

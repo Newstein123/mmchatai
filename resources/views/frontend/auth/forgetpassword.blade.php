@@ -10,17 +10,19 @@
             <form class="m-t" role="form" action="{{ route('password#email') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <input type="email" class="form-control my-3 {{ session('error') ? 'is-invalid' : '' }} "
-                        name="email" placeholder="Enter Email..">
+                    <input type="email" class="form-control my-3 @error('email') is-invalid @enderror" name="email"
+                        placeholder="Enter Email..">
+                    @error('email')
+                        <span class="text-danger">
+                            <small class="text-danger"> {{ $message }}</small>
+                        </span>
+                    @enderror
                 </div>
-                @error('email')
-                    <span class="text-danger">
-                        <small> {{ $message }}</small>
-                    </span>
-                @enderror
+
 
                 <button type="submit" class="btn bg-custom btn-sm block full-width m-b">Send Email</button>
                 <div class="d-flex justify-content-between align-items-center">
+                    <a href="{{ route('login') }}" class="btn bg-custom btn-sm block full-width m-b"> Back Login</a>
                 </div>
             </form>
         </div>
