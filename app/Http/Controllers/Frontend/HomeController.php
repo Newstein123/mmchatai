@@ -16,6 +16,11 @@ class HomeController extends ChatController
     {   
         if ($request->ajax()) {
             if(session('conversation_id')) {
+                $chat_history = Chat::where('conversation_id', session('conversation_id'))->first();
+                $chat = UserChat::where('conversation_id', session('conversation_id'))->first();
+                $chat->update([
+                    'name' => $chat_history->human,
+                ]);
                 session()->forget('conversation_id');
             }
 

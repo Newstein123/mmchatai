@@ -40,17 +40,16 @@
 </head>
 
 <body>
-    @include('frontend.layouts.header')
-    
+    @include('frontend.layouts.header')   
         <div class="home-container">
             <div class="row">
-        <div class="col-12 col-lg-3" id="chat_history_container">
-            @include('frontend.layouts.parts.sidebar')
-        </div>
-        <div class="col-12 col-lg-9">
-            @yield('content')
-        </div>
-        </div>
+                <div class="col-12 col-lg-3" id="chat_history_container">
+                    @include('frontend.layouts.parts.sidebar')
+                </div>
+                <div class="col-12 col-lg-9">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     @include('frontend.layouts.footer')
     <script src="{{ asset('js/jquery.min.js') }}"></script>

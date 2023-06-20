@@ -229,7 +229,7 @@ body {
 }
 
 .ad-popup {
-    --bs-modal-padding : 1rem !important
+    --bs-modal-padding : 0rem !important
 }
 
 .edit-chat-box {
@@ -337,6 +337,10 @@ body {
     }
 
     .sidebar-item i {
+        font-size: 10px !important;
+    }
+
+    .list-group-item small {
         font-size: 10px !important;
     }
     

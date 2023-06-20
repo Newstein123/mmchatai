@@ -34,9 +34,9 @@
       </div>
     </div>
   </div>
-  {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adPopup">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adPopup">
     Open Modal 
-  </button> --}}
+  </button>
 
   {{-- end auth form  --}}
     {{-- Ads popup modal  --}}

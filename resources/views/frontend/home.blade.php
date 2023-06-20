@@ -73,20 +73,20 @@
         {{-- Ads  --}}
         <div class="">
             @if ($ads->count() <= 4)
-            <div class="d-flex justify-content-between justify-content-sm-between flex-wrap justify-content-lg-between">
-                @foreach ($ads as $ad)
-                    <div>
-                        <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
-                            <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="pt-3">
-                @include('frontend.layouts.parts.ads')
-            </div>
-        @endif
+                <div class="d-flex justify-content-between justify-content-sm-between flex-wrap justify-content-lg-between">
+                    @foreach ($ads as $ad)
+                        <div>
+                            <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
+                                <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="pt-3">
+                    @include('frontend.layouts.parts.ads')
+                </div>
+            @endif
            </div>
     </div>
 </div>

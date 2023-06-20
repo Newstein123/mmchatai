@@ -92,6 +92,9 @@
                         </div>
                     </div>
                     <!--Position-->
+                    {{-- status starts   --}}
+                    <input type="hidden" name="status" value="{{$ads->status}}">
+                    {{-- status ends  --}}
                     <!--Image -->
                     <div class="ibox ">
                         <div class="ibox-title">
