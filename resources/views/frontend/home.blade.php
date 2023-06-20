@@ -73,23 +73,6 @@
         {{--start desktop Ads  --}}
         <div class="desktop pt-1">
             @if ($ads->count() <= 4)
-<<<<<<< Updated upstream
-                <div class="d-flex justify-content-between justify-content-sm-between flex-wrap justify-content-lg-between">
-                    @foreach ($ads as $ad)
-                        <div>
-                            <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
-                                <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            @else
-                <div class="pt-3">
-                    @include('frontend.layouts.parts.ads')
-                </div>
-            @endif
-           </div>
-=======
             <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center pt-2">
                 @foreach ($ads as $ad)
                     <div>
@@ -108,7 +91,7 @@
         {{-- end desktop ads --}}
 
         {{-- mobile ads --}}
-        <div class="mobile">
+        <div class="mobile pb-2">
             @if ($ads->count() <= 2)
             <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center pt-2">
                 @foreach ($ads as $ad)
@@ -126,7 +109,6 @@
             @endif
         </div>
         {{-- mobile ads --}}
->>>>>>> Stashed changes
     </div>
 </div>
 @endsection

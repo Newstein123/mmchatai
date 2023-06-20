@@ -280,7 +280,7 @@ body {
 
 @media (min-width: 768px)  {
     .ad-image{
-        width: 250px;
+        width: 230px;
         padding: 5px;
     }
 
@@ -394,17 +394,12 @@ body {
         font-size: 10px !important;
     }
 
-<<<<<<< Updated upstream
-    .list-group-item small {
-        font-size: 10px !important;
-=======
     .data-container {
         height: 66vh !important;
     }
 
     .data-container {
         height: 70vh !important;
->>>>>>> Stashed changes
     }
     
     .ad-image {
