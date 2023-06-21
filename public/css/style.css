@@ -56,11 +56,15 @@ body {
 }
 /* data container  */
 
-.data-container  p {
+.data-container {
+    height: 70vh;
+}
+
+.data-container  p, .detail-container p {
     font-family: 'Myanmar Sans Pro';
 }
 
-.data-container i {
+.data-container i, .detail-container i {
     font-size: 12px;
 }
 
@@ -291,20 +295,8 @@ body {
     .mobile{
         display: none;
     }
-
-    .data-container {
-        height: 60vh !important;
-    }
 }
 
-/* end desktop and laptop view */
-
-@media(max-width : 992px) and (min-width :(700px)) {
-    .ad-image{
-        width: 100px !important;
-        padding: 5px;
-    }
-}
 
 /* 992px less than device  */
 

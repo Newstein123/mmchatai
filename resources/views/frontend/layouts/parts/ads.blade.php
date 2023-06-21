@@ -34,8 +34,8 @@
              },
              breakpoints: {
                  768: {
-                    autoplay: true, // Enable auto-scrolling at or below 768px width
-                    interval: 2000, // Disable auto-scrolling in mobile view
+                    autoplay: true,
+                    interval: 2000, 
                  }
              }
          }).mount();

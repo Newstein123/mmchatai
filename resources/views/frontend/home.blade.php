@@ -40,7 +40,7 @@
                 </button>
             </div>
         </form>
-        <div class="data-container w-100 rounded mt-4 py-3 overflow-auto" style="height : 64vh">
+        <div class="data-container w-100 rounded mt-4 py-3 overflow-auto">
             <div id="data">
                 @if (session('conversation_id'))
                     @php
@@ -70,45 +70,50 @@
             </div>
             
         </div>
-        {{--start desktop Ads  --}}
-        <div class="desktop pt-1">
-            @if ($ads->count() <= 4)
-            <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center">
-                @foreach ($ads as $ad)
-                    <div>
-                        <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
-                            <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-            @else
-            <div class="pt-3">
-                @include('frontend.layouts.parts.ads')
-            </div>
-            @endif
-        </div>
-        {{-- end desktop ads --}}
+        
 
-        {{-- mobile ads --}}
-        <div class="mobile pb-2">
-            @if ($ads->count() <= 2)
-            <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center pt-2">
-                @foreach ($ads as $ad)
-                    <div>
-                        <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
-                            <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
-                        </a>
+        @if (count($ads) <= 4)
+                {{-- mobile ads --}}
+
+                <div class="mobile pb-2">
+                    @if ($ads->count() <= 2)
+                        <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center pt-2">
+                            @foreach ($ads as $ad)
+                                <div>
+                                    <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
+                                        <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else 
+                        <div class="mt-3">
+                            @include('frontend.layouts.parts.ads')
+                        </div>
+                    @endif
+                </div>
+            {{-- mobile ads --}}
+
+            {{--start desktop Ads  --}}
+            <div class="desktop pt-1">
+                @if (count($ads) <= 4)
+                    <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center">
+                        @foreach ($ads as $ad)
+                            <div>
+                                <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">
+                                    <img src="{{ asset('storage/ads/' . $ad->image) }}" class="ad-image py-1">
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                @endif
             </div>
-            @else
-            <div class="pt-3">
+            {{-- end desktop ads --}}
+        @else 
+            <div class="mt-3">
                 @include('frontend.layouts.parts.ads')
             </div>
-            @endif
-        </div>
-        {{-- mobile ads --}}
+        @endif
     </div>
 </div>
 @endsection
