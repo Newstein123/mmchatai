@@ -30,7 +30,11 @@ class AdController extends Controller
         // Start image create
         if ($request->hasFile('image')) {
             $fileName = uniqid() . '_' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/ads', $fileName);
+            $file = $request->file('image');
+            $path = public_path('img/ads');
+            $file->storeAs($path, $fileName);
+
+            // $request->file('image')->storeAs('public/ads', $fileName);
             $data['image'] = $fileName;
         }
         // end image create

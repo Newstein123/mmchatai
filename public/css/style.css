@@ -365,7 +365,7 @@ body {
     }
 }
 
-@media (min-width: 992px) and (max-width : 1024px) {
+@media (min-width: 992px) and (max-width : 1280px) {
     .navbar-expand-lg .navbar-collapse {
         margin-left: 5em;
     }
@@ -401,13 +401,13 @@ body {
     }
 }
 
-@media (min-width: 1026px) and (max-width : 1400px) {
+@media (min-width: 1281px) and (max-width : 1400px) {
     .navbar-expand-lg .navbar-collapse {
         margin-left: 7em;
     }
 
     .navbar-expand-lg .navbar-collapse a {
-        font-size: 14px;
+        font-size: 14px;    
     }
 
     .ad-image {

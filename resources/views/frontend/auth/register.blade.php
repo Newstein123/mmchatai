@@ -59,6 +59,18 @@
                     <small> {{$message}} </small>
                 </span> 
             @enderror
+            <div class="my-3">
+                @if(config('services.recaptcha.key'))
+                    <div class="g-recaptcha"
+                        data-sitekey="{{config('services.recaptcha.key')}}">
+                    </div>
+                @endif
+                @error('g-recaptcha-response')
+                    <div class="text-danger">
+                        {{$message}}
+                    </div>
+               @enderror
+            </div>
             <div class="form-group">
                     <div class="checkbox i-checks">
                         <label> <input type="checkbox" name="terms&policy" required>
