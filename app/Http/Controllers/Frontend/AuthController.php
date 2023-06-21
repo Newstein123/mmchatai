@@ -31,7 +31,7 @@ class AuthController extends Controller
             'password' => 'required|min:8',
             'confirm_password' => 'required| same:password',
             'terms&policy' => 'required',
-            'g-recaptcha-response' => 'required'
+            // 'g-recaptcha-response' => 'required'
         ]);
     
         if ($validator->fails()) {
@@ -75,7 +75,7 @@ class AuthController extends Controller
                 },
             ],
             'password' => 'required|min:8',
-            'g-recaptcha-response' => 'required'
+            // 'g-recaptcha-response' => 'required'
         ]);
     
         if ($validator->fails()) {
