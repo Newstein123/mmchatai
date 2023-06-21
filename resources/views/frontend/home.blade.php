@@ -73,7 +73,7 @@
         {{--start desktop Ads  --}}
         <div class="desktop pt-1">
             @if ($ads->count() <= 4)
-            <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center pt-2">
+            <div class="d-flex justify-content-center justify-content-sm-center flex-wrap justify-content-lg-center">
                 @foreach ($ads as $ad)
                     <div>
                         <a href="{{ $ad->link }}" target="{{$ad->link !== "#" ? "_black" : ""}}" onclick="adCount('{{route('adCount', $ad->id)}}', '{{$ad->link}}')">

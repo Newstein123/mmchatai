@@ -399,7 +399,7 @@ body {
     }
 
     .data-container {
-        height: 70vh !important;
+        height: 73vh !important;
     }
     
     .ad-image {
@@ -419,12 +419,12 @@ body {
     }
 
     .ad-image {
-        width: 180px !important;
-        padding: 5px !important;
+        width: 190px !important;
+        padding: 8px !important;
     }
 
     .data-container {
-        height: 68vh !important;
+        height: 63vh !important;
     }
     
 }
