@@ -94,7 +94,7 @@ body {
     background-image: url('/img/page.png');
     background-color: #303843;
     z-index: 2;
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px 50px;
 }
 
@@ -257,6 +257,35 @@ body {
     width: 60%;
 }
 
+/* start hover edit and delete */
+.hover-btn{
+    display: none;
+}
+
+.sidebar-btn{
+    position:absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(240, 242, 240,1);
+    padding:0px 10px;   
+}
+
+.sidebar-item:hover .hover-btn{
+    display: block;
+    
+}
+
+.sidebar-item{
+    overflow: hidden;
+    height: 47px;
+    padding: 30px;
+}
+
+.text{
+    position: relative;    
+}
+/* end hover edit and delete*/
+
 
 /*start mobile view */
 @media (max-width: 768px)  {
@@ -379,7 +408,7 @@ body {
     }
 
     .sidebar-item a {
-        font-size: 12px !important;
+        font-size: 11px !important;
     }
 
     .sidebar-item i {
@@ -408,6 +437,10 @@ body {
 
     .navbar-expand-lg .navbar-collapse a {
         font-size: 14px;    
+    }
+
+    .sidebar-item a {
+        font-size: 12px !important;
     }
 
     .ad-image {

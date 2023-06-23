@@ -8,30 +8,40 @@
                 @php
                     $value = Request::segment(2);
                 @endphp
-                    <li class="list-group-item sidebar-item {{$value == $row->conversation_id ? 'list-active' : '' }} ">
-                        <div class="row">
-                            <div class="col-8 col-lg-7 col-xl-9">
-                                <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark overflow-hidden myanmar-font"    
-                                    >
-                                        {{Str::limit($row->name, 50, "...")}}
-                                </a>
-                            </div>
-                            <div class="col-4 col-lg-5 col-xl-3">
-                                <div class="action-button d-flex">
-                                    <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
-                                    data-conversationId="{{$row->conversation_id}}"    
-                                    >
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="btn btn-sm delete_chat" data-conversationId="{{$row->conversation_id}}" >
-                                        <i class="fa-solid fa-trash-can" ></i>
-                                    </button>
+                    <li class="p-3 list-style-type-none border-bottom sidebar-item  {{$value == $row->conversation_id ? 'list-active' : '' }} ">
+                        {{-- <div class="row"> --}}
+                        {{--     <div class="col-9 col-lg-8 col-xl-8 text"> --}}
+                                <div class="text">
+                                    <a href="{{route('chatDetail', $row->conversation_id)}}" class="text-decoration-none text-dark myanmar-font "    
+                                        >
+                                            {{Str::limit($row->name, 45, "...")}}
+                                    </a>
+                                <div class="hover-btn">
+                                    <div class="row sidebar-btn">
+                                        <div class="col-6 p-0">
+                                            <button class="btn btn-sm editChatName" data-bs-toggle="modal" data-bs-target="#editChatName" data-chatName="{{$row->name}}"
+                                                data-conversationId="{{$row->conversation_id}}"    
+                                                >
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                </button>
+                                        </div>
+                                        <div class="col-6 p-0">
+                                            <button class="btn btn-sm delete_chat" data-conversationId="{{$row->conversation_id}}" >
+                                                <i class="fa-solid fa-trash-can" ></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            {{-- </div> --}}
+                            {{-- <div class="col-3 col-lg-4 col-xl-2 hover-btn"> --}}
+                                {{-- <div class="action-button d-flex"> --}}
+                                    
+                                </div>
+                           {{-- </div> --}}
+                          {{--</div> --}}
                     </li>
                 @endforeach
-            @else              
+            @else               
                 <li class="list-group-item text-center">
                     <small> No Conversations Yet </small>
                 </li>
