@@ -4,7 +4,9 @@
       <a class="navbar-brand" href="/">
         <img src="{{asset('img/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid navbar-img">
       </a>
-      <button class="navbar-toggler bg-custom btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler bg-custom btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+      {{!session('user') ? 'disabled' : ''}}
+      >
         <i class="fa-solid fa-bars"></i>
       </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
