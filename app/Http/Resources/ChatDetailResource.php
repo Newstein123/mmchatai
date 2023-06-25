@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ChatResource extends JsonResource
+class ChatDetailResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,8 @@ class ChatResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'conversation' => ChatHistoryResource::collection($this->history_data),
-            'name' => $this->name,
+            'question' => $this->human,
+            'answer' => $this->ai,
         ];
     }
 }

@@ -16,7 +16,6 @@ class ChatController extends Controller
     public function index($id) {
         $user_id = 1;
         $chat = UserChat::where('conversation_id', $id)->where('user_id', $user_id)->get();
-        return response()->json($chat);
         return ChatResource::collection($chat)->additional([
             "success" => true,
             "count" => $chat->count(),
@@ -26,7 +25,6 @@ class ChatController extends Controller
     public function chat_name() {
         $user_id = 1;
         $chat = UserChat::where('user_id', $user_id)->orderBy('id', 'desc')->get();
-        return response()->json($chat);
         return ChatNameResource::collection($chat)->additional([
             'success' => true,
             "count" => $chat->count(),
