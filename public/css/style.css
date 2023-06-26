@@ -94,7 +94,7 @@ body {
     background-image: url('/img/page.png');
     background-color: #303843;
     z-index: 2;
-    font-size: 16px;
+    font-size: 16px; 
     padding: 10px 50px;
 }
 
@@ -281,7 +281,7 @@ body {
     padding: 30px;
 }
 
-.text{
+.sidebar-text {
     position: relative;    
 }
 /* end hover edit and delete*/
