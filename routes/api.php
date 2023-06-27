@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/chat/{id}', [ChatController::class, 'index']);
 Route::get('chat_name', [ChatController::class, 'chat_name']);
+Route::post('/aiResponse', [ChatController::class, 'aiResponse']);

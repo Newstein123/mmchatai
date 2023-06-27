@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\AiResponseController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ChatHistoryResource;
 use App\Http\Resources\ChatNameResource;
@@ -11,7 +12,7 @@ use App\Models\User;
 use App\Models\UserChat;
 use Illuminate\Http\Request;
 
-class ChatController extends Controller
+class ChatController extends AiResponseController
 {
     public function index($id) {
         $user_id = 1;
@@ -29,5 +30,14 @@ class ChatController extends Controller
             'success' => true,
             "count" => $chat->count(),
         ]); 
+    }
+ 
+    public function aiResponse(Request $request) {
+        $user_id = $request->user_id ?? 1;
+        $prompt = $request->prompt;
+        $conversation_id = $request->conversation_id ?? 'kadfladf77ad';
+        $input = $this->extractInput($prompt);
+        $data = $this->getAiResponse($user_id, $conversation_id, $input, $prompt);
+        return response()->json($data);
     }
 }
