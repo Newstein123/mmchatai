@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Closure;
 use App\Models\Customer;
 use App\Mail\VerifyEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +33,16 @@ class AuthController extends Controller
             'password' => 'required|min:8',
             'confirm_password' => 'required| same:password',
             'terms&policy' => 'required',
-            // 'g-recaptcha-response' => 'required'
+            'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, Closure $fail) {
+                $g_resposnse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                    'secret' => config('services.recaptcha.secrect'),
+                    'response' => null,
+                    'remoteip' => request()->ip(),
+                ]);
+                if (!$g_resposnse->json('success')) {
+                    $fail("The {$attribute} is invalid.");
+                }
+            },]
         ]);
     
         if ($validator->fails()) {

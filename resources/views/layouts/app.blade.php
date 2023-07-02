@@ -20,15 +20,7 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('template/inspinia.min.js')}}"></script>
 <script src="{{asset('template/popper.min.js')}}"></script>
-<script>
-    function onClick(e) {
-      e.preventDefault();
-      grecaptcha.ready(function() {
-        grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
-            // Add your logic to submit to your backend server here.
-        });
-      });
-    }
-</script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+@yield('script')
 </body>
 </html>
