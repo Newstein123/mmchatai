@@ -90,7 +90,7 @@
 @section('script')
     <script>
         function onSubmit(token) {
-     document.getElementById("registerForm").submit();
-   }
+        document.getElementById("registerForm").submit();
+    }
     </script>
 @endsection

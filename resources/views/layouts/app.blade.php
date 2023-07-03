@@ -21,6 +21,7 @@
 <script src="{{asset('template/inspinia.min.js')}}"></script>
 <script src="{{asset('template/popper.min.js')}}"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+
 @yield('script')
 </body>
 </html>
