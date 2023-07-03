@@ -12,7 +12,7 @@ class CustomerController extends ResponseController
 {
     public function index()
     {   
-        $users = Customer::orderBy('id', 'desc')->get();
+        $users = Customer::latest()->paginate(20);
         return view('admin.customer.index', compact('users'));
     }
 

@@ -37,6 +37,30 @@ $(document).ready(function() {
             "positionClass": "toast-top-right",
             "timeOut": "5000",
         }
+
+     // view datial
+     $(document).on('click','#AjaxModalCall',function(e){
+        e.preventDefault();
+        var url = $(this).attr('data-url');
+        console.log(url);
+        $('.modal-body').html('');     
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'html'
+        })
+        .done(function(data){
+            console.log(data)
+            $('.modal-body').html(data); // load response 
+            $('#AjaxModal').modal('show');  
+        })
+        .fail(function(e, xhr){
+            console.log(e, xhr)
+            $('#dynamic-content').html('<i class="fa fa-sign"></i> Something went wrong, Please try again...');
+            $('#modal-loader').hide();
+        });
+    });
+    
 })
 
 

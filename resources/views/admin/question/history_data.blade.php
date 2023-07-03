@@ -25,49 +25,79 @@
             </div>
             <div class="ibox-content">
                 <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover dataTables-example" >
-            <thead>
-            <tr>
-                <th> Id </th>
-                <th> Name </th>
-                <th> Email/Phone </th>
-                <th> Customer Question  </th>
-                <th> Date </th>
-            </tr>
-            </thead>
-            <tbody>
-                @php
-                    $id = 1;
-                @endphp
-                @foreach ($history_data as $chat)
-                    @foreach ($chat->history_data as $data)
-                    <tr class="gradeU">
-                        <td> {{ $id++ }} </td>
-                        <td> {{ $chat->user->name }}</td>
-                        <td> {{$chat->user->email ?? $chat->user->phone}}</td>
-                        <td> 
-                            {{$data->human}}
-                        </td>
-                        <td> {{$chat->created_at->toFormattedDateString() }} </td>
-                    </tr>
-                    @endforeach
-                @endforeach
-            </tbody>
-            <tfoot>
-            <tr>
-                <th> Id </th>
-                <th> Name </th>
-                <th> Email/Phone</th>
-                <th> Customer Question </th>
-                <th> Date </th>
-            </tr>
-            </tfoot>
-            </table>
+                    <table class="table table-striped table-bordered table-hover" >
+                        <thead>
+                            <tr>
+                                <th> Id </th>
+                                <th> Name </th>
+                                <th> Email/Phone </th>
+                                <th> Customer Question  </th>
+                                <th> Date </th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $id = 1;
+                            @endphp
+                            @foreach ($history_data as $chat)
+                                @foreach ($chat->history_data as $data)
+                                <tr class="gradeU">
+                                    <td> {{ $id++ }} </td>
+                                    <td> {{ $chat->user->name }}</td>
+                                    <td> {{$chat->user->email ?? $chat->user->phone}}</td>
+                                    <td> 
+                                        {{$data->human}}
+                                    </td>
+                                    <td> {{$chat->created_at->toFormattedDateString() }} </td>
+                                    <td>
+                                        <a data-toggle="modal" id="AjaxModalCall" 
+                                            data-target="#AjaxModal" 
+                                            data-url="{{ route('showHistoryAnswer', $data->id) }}" 
+                                            class="btn btn-xs btn-primary text-white"
+                                            data-toggle="tooltip" data-placement="top" 
+                                            title="view">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th> Id </th>
+                                <th> Name </th>
+                                <th> Email/Phone</th>
+                                <th> Customer Question </th>
+                                <th> Date </th>
+                                <th> Action </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="float-right">
+                        {{$history_data->links('admin.layouts.pagination_ui')}}
+                    </div>
                 </div>
-
             </div>
-        </div>
-    </div>
     </div>
 </div>
+
+{{-- Answer Modal  --}}
+
+<div class="modal fade" id="AjaxModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Answer </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'></div>
+        </div>
+    </div>
+</div>
+
 @endsection
