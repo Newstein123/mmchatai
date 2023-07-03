@@ -57,7 +57,7 @@
     <script src="{{asset('template/js/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <script src="{{asset('template/js/plugins/switchery/switchery.js')}}"></script>
-    <script src="{{asset('template/js/plugins/splide/splide.min.js')}}"></script>
+    <script src="{{asset('template/js/plugins/splide/splide.min.js')}}"></script>   
     <script src="{{ asset('template/js/ajax_method.js') }}"></script>
     <script src="{{ asset('template/js/script.js') }}"></script>
     <script src="{{ asset('template/js/plugins/glightbox/js/glightbox.min.js') }}"></script>
@@ -67,5 +67,6 @@
             new Switchery(this);
         });
     </script>
+
 </body>
 </html>
