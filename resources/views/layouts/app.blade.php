@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('template/css/animate.css')}}">
     <link href="{{asset('template/css/plugins/iCheck/custom.css')}}" rel="stylesheet">
 </head>
-<body class="gray-bg">
+<body>
 @yield('content')
 
 <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>

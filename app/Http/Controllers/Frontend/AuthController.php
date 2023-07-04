@@ -33,16 +33,16 @@ class AuthController extends Controller
             'password' => 'required|min:8',
             'confirm_password' => 'required| same:password',
             'terms&policy' => 'required',
-            'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, Closure $fail) {
-                $g_resposnse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-                    'secret' => config('services.recaptcha.secrect'),
-                    'response' => null,
-                    'remoteip' => request()->ip(),
-                ]);
-                if (!$g_resposnse->json('success')) {
-                    $fail("The {$attribute} is invalid.");
-                }
-            },]
+            // 'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, Closure $fail) {
+            //     $g_resposnse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            //         'secret' => config('services.recaptcha.secrect'),
+            //         'response' => null,
+            //         'remoteip' => request()->ip(),
+            //     ]);
+            //     if (!$g_resposnse->json('success')) {
+            //         $fail("The {$attribute} is invalid.");
+            //     }
+            // },]
         ]);
     
         if ($validator->fails()) {
