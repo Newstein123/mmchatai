@@ -12,7 +12,7 @@ class Chat extends Model
     protected $table = "chat_history";
 
     function user_chat() {
-        return $this->hasOne(ChatUser::class, 'conversation_id', 'conversation_id');
+        return $this->hasOne(UserChat::class, 'conversation_id', 'conversation_id');
     }
 
 }

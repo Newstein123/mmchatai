@@ -47,19 +47,18 @@
                                 $id = 1;
                             @endphp
                             @foreach ($history_data as $chat)
-                                @foreach ($chat->history_data as $data)
                                 <tr class="gradeU">
                                     <td> {{ $id++ }} </td>
-                                    <td> {{ $chat->user->name }}</td>
-                                    <td> {{$chat->user->email ?? $chat->user->phone}}</td>
+                                    <td> {{ $chat->user_chat->user->name }}</td>
+                                    <td> {{$chat->user_chat->user->email ?? $chat->user_chat->user->phone}}</td>
                                     <td> 
-                                        {{$data->human}}
+                                        {{$chat->human}}
                                     </td>
                                     <td> {{$chat->created_at->toFormattedDateString() }} </td>
                                     <td>
                                         <a data-toggle="modal" id="AjaxModalCall" 
                                             data-target="#AjaxModal" 
-                                            data-url="{{ route('showHistoryAnswer', $data->id) }}" 
+                                            data-url="{{ route('showHistoryAnswer', $chat->id) }}" 
                                             class="btn btn-xs btn-primary text-white"
                                             data-toggle="tooltip" data-placement="top" 
                                             title="view">
@@ -68,7 +67,6 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            @endforeach
                         </tbody>
                         <tfoot>
                             <tr>

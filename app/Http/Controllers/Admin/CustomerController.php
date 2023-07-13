@@ -17,6 +17,7 @@ class CustomerController extends ResponseController
         $email = $request->query('email');
         $login_type = $request->query('login_type');
         $email_verified = $request->query('email_verified');
+        $date = $request->query('date');
 
         if($name) {
             $query->where('name', 'like', '%'.$name.'%');
@@ -33,6 +34,19 @@ class CustomerController extends ResponseController
         if($email_verified == 'yes') {
             $query->where('email_verified_at', '!=', null);
         }
+
+        if($date) {
+            $query->whereDate('created_at', $date);
+        }
+
+        $array = array(
+            'name' => $name,
+            'email' => $email,
+            'login_type' => $login_type,
+            'email_verified' => $email_verified,
+        );
+
+        session()->put('filter', $array);
 
         $users = $query->paginate(10)->appends($request->except('page'));
         return view('admin.customer.index', compact('users'));

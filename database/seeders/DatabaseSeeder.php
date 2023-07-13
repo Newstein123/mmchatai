@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             GeneralSettingSeeder::class,
             UserSeeder::class,
             CustomerSeeder::class,
+            KeyWordSeeder::class,
+            ChatSeeder::class,
         ]);
     }
 }

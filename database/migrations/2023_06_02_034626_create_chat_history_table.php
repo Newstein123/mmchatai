@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('chat_history', function (Blueprint $table) {
             $table->id();
-            $table->string('conversation_id');
+            $table->string('conversation_id')->nullable();
             $table->text('human');
-            $table->text('translated_human_text');
+            $table->text('translated_human_text')->nullable();
             $table->text('ai');
-            $table->text('translated_ai_text');
-            $table->integer('prompt_tokens')->default(0);
-            $table->integer('completion_tokens')->default(0);
+            $table->text('translated_ai_text')->nullable();
+            $table->integer('prompt_tokens')->default(0)->nullable();
+            $table->integer('completion_tokens')->default(0)->nullable();
             $table->integer('total_tokens')->default(0);
-            $table->dateTime('expire_date');
+            $table->dateTime('expired_date')->nullable();
             $table->timestamps();
         });
     }

@@ -72,7 +72,7 @@ class AiResponseController extends Controller
                     'completion_tokens' => $completion_tokens, 
                     'total_tokens' => $total_tokens,
                     'conversation_id' => $conversation_id,
-                    'expire_date' => $expirationDateTime,
+                    'expired_date' => $expirationDateTime,
                 ]);
 
                 $chat_count = getConversationCount($user_id);

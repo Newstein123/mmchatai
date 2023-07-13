@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TermsPolicyController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\KeywordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\ChatController;
@@ -128,6 +129,12 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
         Route::match(['get', 'post'],'/old-data', [QuestionController::class, 'old_data'])->name('oldData');
         Route::get('/history/{id}', [QuestionController::class, 'showHistoryAnswer'])->name('showHistoryAnswer');
         Route::get('/old-data/{id}', [QuestionController::class, 'showOldAnswer'])->name('showOldAnswer');
+    });
+
+    // Keywords 
+
+    Route::prefix('keyword')->group(function () {   
+        Route::get('/', [KeywordController::class, 'index'])->name('keywordIndex');
     });
 
     Route::prefix('setting')->group(function () {

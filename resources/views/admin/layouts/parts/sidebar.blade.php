@@ -47,9 +47,17 @@
                 </li>
             @endcan
             {{-- ads link --}}
-            <li>
-                <a href="{{ route('ads#Page') }}"><i class="fa fa-bullhorn"></i> <span class="nav-label">Advertise</span></a>
-            </li>
+            @can('view ads')
+                <li class="{{ request()->is('admin/ads*') ? 'active' : '' }}">
+                    <a href="{{ route('ads#Page') }}"><i class="fa fa-bullhorn"></i> <span class="nav-label">Advertise</span></a>
+                </li>
+            @endcan
+
+            @can('view keywords')
+                <li class="{{ request()->is('admin/keywords*') ? 'active' : '' }}">
+                    <a href="{{ route('keywordIndex') }}"><i class="fa fa-key" aria-hidden="true"></i> <span class="nav-label"> Keyword Finder </span></a>
+                </li>
+            @endcan
             @can('view setting')
                 <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}">
                     <a href=""><i class="fa fa-cogs"></i> <span class="nav-label"> Setting </span><span

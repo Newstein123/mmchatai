@@ -13,13 +13,11 @@ class QuestionController extends Controller
 {
     public function history_data(Request $request)
     {   
-        $query = UserChat::with('history_data')->latest();
+        $query = Chat::latest();
         $question = $request->query('question');
 
         if($question) {
-            $query->whereHas('history_data', function($q) use ($question) {
-                $q->where('human', 'like', "%$question%");
-            });
+            $query->where('human', 'like', "%$question%");
         }
 
         $history_data = $query->paginate(10)->appends($request->except('page'));

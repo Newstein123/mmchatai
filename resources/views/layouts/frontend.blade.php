@@ -40,7 +40,13 @@
 </head>
 
 <body>
-    @include('frontend.layouts.header')   
+    {{-- <div id="loading" class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="spinner-grow text-primary me-2" style="width: 2em" role="status"></div>    
+        <div class="spinner-grow text-warning me-2" style="width: 1.5em; height : 1.5em" role="status"></div>    
+        <div class="spinner-grow text-danger" style="width: 1em; height: 1em" role="status"></div>    
+    </div> --}}
+    <div class="mmchatai">
+        @include('frontend.layouts.header')   
         <div class="home-container">
             <div class="row">
                 <div class="col-12 col-lg-3" id="chat_history_container">
@@ -51,7 +57,8 @@
                 </div>
             </div>
         </div>
-    @include('frontend.layouts.footer')
+        @include('frontend.layouts.footer')
+    </div>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
@@ -59,5 +66,7 @@
     <script src="{{ asset('js/splide.min.js') }}"></script>
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
     @yield('script')
+    <script>
+    </script>
 </body>
 </html>

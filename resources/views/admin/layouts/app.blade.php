@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="{{asset('css/sweetalert.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/plugins/switchery/switchery.css')}}">
     <link rel="stylesheet" href="{{asset('template/css/plugins/splide/splide.min.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/plugins/select2/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <script src="{{asset('js/chart.min.js')}}"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -23,8 +25,9 @@
         <div id="page-wrapper" class="gray-bg">
             @include('admin.layouts.parts.header')
             <div class="wrapper wrapper-content">
-                @yield('content')
-               
+                <div class="min-vh-100">
+                    @yield('content')
+                </div>
                 @include('admin.layouts.parts.footer')
             </div>  
         </div>
@@ -43,6 +46,7 @@
     <script src="{{ asset('template/js/plugins/flot/jquery.flot.pie.js') }}"></script>
     <script src="{{ asset('template/js/plugins/flot/jquery.flot.symbol.js') }}"></script>
     <script src="{{ asset('template/js/plugins/flot/jquery.flot.time.js') }}"></script>
+    <script src="{{ asset('template/js/plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('template/js/plugins/peity/jquery.peity.min.js') }}"></script>
     <script src="{{ asset('template/js/demo/peity-demo.js') }}"></script>
     <script src="{{ asset('template/js/inspinia.js') }}"></script>
@@ -62,9 +66,18 @@
     <script src="{{ asset('template/js/script.js') }}"></script>
     <script src="{{ asset('template/js/plugins/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    @yield('script')
     <script>
         $('.switchery').each(function() {
             new Switchery(this);
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+            placeholder: 'Select keywords', // Placeholder text
+        
+            });
         });
     </script>
 

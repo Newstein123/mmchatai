@@ -33,7 +33,11 @@ class PermissionSeeder extends Seeder
             'view general setting',
             'view account setting',
             'edit account setting',
-            'view questions'
+            'view questions',
+            'view ads',
+            'view keywords',
+            'create keywords',
+            'delete keywords',
         ];
 
         foreach($permissions as $permission) {
