@@ -124,8 +124,8 @@ Route::prefix('admin')->middleware('role:super-admin|admin|editor')->group(funct
     // Question 
 
     Route::prefix('question')->group(function () {
-        Route::get('/history-data', [QuestionController::class, 'history_data'])->name('historyData');
-        Route::get('/old-data', [QuestionController::class, 'old_data'])->name('oldData');
+        Route::match(['get', 'post'], '/history-data', [QuestionController::class, 'history_data'])->name('historyData');
+        Route::match(['get', 'post'],'/old-data', [QuestionController::class, 'old_data'])->name('oldData');
         Route::get('/history/{id}', [QuestionController::class, 'showHistoryAnswer'])->name('showHistoryAnswer');
         Route::get('/old-data/{id}', [QuestionController::class, 'showOldAnswer'])->name('showOldAnswer');
     });

@@ -11,15 +11,31 @@ use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
-    public function history_data()
+    public function history_data(Request $request)
     {   
-        $history_data = UserChat::latest()->paginate(2);
+        $query = UserChat::with('history_data')->latest();
+        $question = $request->query('question');
+
+        if($question) {
+            $query->whereHas('history_data', function($q) use ($question) {
+                $q->where('human', 'like', "%$question%");
+            });
+        }
+
+        $history_data = $query->paginate(10)->appends($request->except('page'));
         return view('admin.question.history_data', compact('history_data'));
     }
 
-    public function old_data()
+    public function old_data(Request $request)
     {
-        $old_data = UserOldData::latest()->paginate(5);
+        $query = UserOldData::latest();
+        $question = $request->query('question');
+
+        if($question) {
+            $query->where('question', 'like', "%$question%");
+        }
+
+        $old_data = $query->paginate(10)->appends($request->except('page'));
         return view('admin.question.old_data', compact('old_data'));
     }
 

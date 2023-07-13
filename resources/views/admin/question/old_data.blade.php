@@ -24,6 +24,12 @@
                 </div>
             </div>
             <div class="ibox-content">
+                <form action="" method="get">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <input type="text" placeholder="Enter Question" name= "question" class="form-control my-3 mr-3">
+                        <button class="btn bg-custom"> Search </button>
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" >
                         <thead>

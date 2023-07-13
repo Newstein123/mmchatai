@@ -10,9 +10,31 @@ use Illuminate\Validation\Rule;
 
 class CustomerController extends ResponseController
 {
-    public function index()
+    public function index(Request $request)
     {   
-        $users = Customer::latest()->paginate(20);
+        $query = Customer::latest();
+        $name = $request->query('name');
+        $email = $request->query('email');
+        $login_type = $request->query('login_type');
+        $email_verified = $request->query('email_verified');
+
+        if($name) {
+            $query->where('name', 'like', '%'.$name.'%');
+        }
+
+        if($email) {
+            $query->where('email', 'like', '%'.$email.'%');
+        }
+
+        if($login_type) {
+            $query->where('login_type', $login_type);
+        }
+
+        if($email_verified == 'yes') {
+            $query->where('email_verified_at', '!=', null);
+        }
+
+        $users = $query->paginate(10)->appends($request->except('page'));
         return view('admin.customer.index', compact('users'));
     }
 

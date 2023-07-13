@@ -24,6 +24,28 @@
                 </div>
             </div>
             <div class="ibox-content">
+                <form action="" method="get">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <input type="text" placeholder="Enter Name" name= "name" class="form-control my-3 mr-3">
+                        <input type="text" placeholder="Enter Email" name= "email" class="form-control my-3 mr-3">
+                        <select name="login_type" id="" class="form-control my-3 mr-3">
+                            <option value=""> Select Login Type </option>
+                            @php
+                                $types = ['google', 'facebook', 'manual']
+                            @endphp
+
+                            @foreach ($types as $type)
+                                <option value="{{$type}}" class="text-capitalize"> {{$type}} </option>
+                            @endforeach
+                        </select>
+                        <select name="email_verified" id="" class="form-control my-3 mr-3">
+                            <option value=""> Select Email Verified  </option>
+                            <option value="yes"> Yes </option>
+                            <option value="no"> No </option>
+                        </select>
+                        <button class="btn bg-custom"> Search </button>
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" >
                         <thead>
