@@ -33,6 +33,6 @@ class KeywordController extends Controller
         $total_user = Customer::count();
         $totalUserByPercentage = (count($user_count) / $total_user) * 100;
         $keywords = KeyWord::latest()->get();
-        return view('admin.keyword.index', compact('keywords', 'question_count', 'totalQuestionByPercentage', 'user_count', 'totalUserByPercentage'));
+        return view('admin.keyword.index', compact('keywords', 'question_count', 'totalQuestionByPercentage', 'user_count', 'totalUserByPercentage', 'total_question', 'total_user'));
     }
 }

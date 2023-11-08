@@ -45,7 +45,7 @@
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins"> {{$question_count}} </h1>
-                    <small>Total Questions </small>
+                    <small>Total Questions : {{$total_question}} </small>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins"> {{count($user_count)}} </h1>
-                    <small>Today Customers </small>
+                    <small>Today Customers : {{$total_user}} </small>
                 </div>
             </div>
         </div> 

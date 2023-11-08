@@ -145,7 +145,9 @@ class AiResponseController extends Controller
     
     protected function translate($lang, $text)
     {   
-        $google_api_key = "AIzaSyAsQ-ubN_yG4C-__3rXVD3UjPom_X7WJBY";
+        // $google_api_key = "AIzaSyAsQ-ubN_yG4C-__3rXVD3UjPom_X7WJBY";
+        $google_api_key = "AIzaSyAiAoYHpQ0rgfbaNnOKTwwEGBUX9jPvDgM";
+        
         $translate = new TranslateClient([
             'key' => $google_api_key,
         ]);
